@@ -11,35 +11,43 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* **Ph.D. Candidate in Electronic Science and Technology**, ShanghaiTech University, Shanghai, China  
+  2020 – Expected Jul. 2026  
+  *Advisor: Prof. Pingqiang Zhou*
 
-Work experience
+* **B.Eng. in Electronic Engineering**, ShanghaiTech University, Shanghai, China  
+  2016 – 2020
+
+Projects
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* **AI-Driven Electromagnetic Simulation Acceleration Technology**  
+  *EDA Challenge-Based R&D Project, Shanghai Municipal Science and Technology Commission*  
+  Nov. 2022 – Nov. 2023  
+  * Led development of ML-enhanced EM simulation methods.  
+  * Achieved sub-1% modeling error for broadband multiport RF systems up to 100 GHz.  
+  * Delivered over **200× speedup** compared with conventional EM simulation workflows.
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* **Towards Real-Time Drone Detection on Embedded Platforms**  
+  *3rd Place, DAC System Design Contest*  
+  Nov. 2018 – Sept. 2019  
+  * Optimized Tiny-YOLOv3 by reducing label-predicting channels.  
+  * Deployed on NVIDIA Jetson TX2 with TensorRT, improving inference speed from 25 FPS to 47 FPS.
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
+
+Teaching
+======
+* **Teaching Assistant**, UPenn–ShanghaiTech Joint Summer Camp, 2019  
+* **Teaching Assistant**, ShanghaiTech University, 2019 – Present  
+  * EE111L Electric Circuits Lab, Spring 2019  
+  * EE213 Digital Integrated Circuits II, Fall 2021  
+  * SI200 Academic Paper Writing, Spring 2022  
+
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* **Languages:** Chinese (native), English  
+* **Programming:** Python, C/C++, MATLAB, Verilog  
+* **EDA / Simulation Tools:** Cadence Virtuoso, ADS, COMSOL, Ansys HFSS, PyTorch
+
 
 Publications
 ======
@@ -47,7 +55,7 @@ Publications
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks
+<!-- Talks
 ======
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html  %}
@@ -61,4 +69,4 @@ Teaching
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* Currently signed in to 43 different slack teams -->
