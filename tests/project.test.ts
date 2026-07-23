@@ -6,6 +6,7 @@ describe("project configuration", () => {
     expect(pkg.scripts).toMatchObject({
       dev: "astro dev",
       build: "astro build",
+      preview: "astro preview",
       check: "astro check",
       test: "vitest run",
       verify: "pnpm run check && pnpm run test && pnpm run build",
