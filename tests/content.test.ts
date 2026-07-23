@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
+import cvSource from "../src/data/cv.yml?raw";
+import publicationSource from "../src/data/publications.yml?raw";
+import siteSource from "../src/data/site.yml?raw";
 import {
   cv,
+  isSupportedLinkUrl,
+  loadPortfolioContent,
   publications,
   resolveSelectedPublications,
   selectedPublications,
@@ -31,8 +36,8 @@ describe("portfolio content", () => {
     expect(() =>
       resolveSelectedPublications(
         [
-          { id: "duplicate" },
-          { id: "duplicate" },
+          { id: "duplicate", selected: true },
+          { id: "duplicate", selected: true },
         ],
         ["duplicate"],
       ),
@@ -40,8 +45,49 @@ describe("portfolio content", () => {
   });
 
   it("rejects unknown selected publication IDs with an actionable error", () => {
-    expect(() => resolveSelectedPublications([{ id: "known" }], ["missing"])).toThrow(
+    expect(() => resolveSelectedPublications([{ id: "known", selected: false }], ["missing"])).toThrow(
       'Unknown selected publication ID: "missing"',
+    );
+  });
+
+  it.each(["https://", "https://exa mple.com", "mailto:", "mailto:not-an-email", "ftp://example.com"])(
+    "rejects malformed or unsupported link URL %s",
+    (url) => {
+      expect(isSupportedLinkUrl(url)).toBe(false);
+    },
+  );
+
+  it("rejects duplicate selected IDs and selected flag/list mismatches", () => {
+    expect(() => resolveSelectedPublications([{ id: "selected", selected: true }], ["selected", "selected"])).toThrow(
+      'Duplicate selected publication ID: "selected"',
+    );
+    expect(() => resolveSelectedPublications([{ id: "listed", selected: false }], ["listed"])).toThrow(
+      'Selected publication mismatch: "listed" is listed in site.yml but selected is false',
+    );
+    expect(() => resolveSelectedPublications([{ id: "flagged", selected: true }], [])).toThrow(
+      'Selected publication mismatch: "flagged" is selected in publications.yml but missing from site.yml',
+    );
+  });
+
+  it.each(["site.yml", "publications.yml", "cv.yml"])(
+    "includes %s in YAML parsing diagnostics",
+    (filename) => {
+      const sources = { siteSource, publicationSource, cvSource };
+      const sourceKey = {
+        "site.yml": "siteSource",
+        "publications.yml": "publicationSource",
+        "cv.yml": "cvSource",
+      }[filename] as keyof typeof sources;
+
+      expect(() => loadPortfolioContent({ ...sources, [sourceKey]: "invalid: [" })).toThrow(filename);
+    },
+  );
+
+  it("includes the source filename and field path in schema diagnostics", () => {
+    const whitespaceName = siteSource.replace("name: Huifan Zhang", 'name: "   "');
+
+    expect(() => loadPortfolioContent({ siteSource: whitespaceName, publicationSource, cvSource })).toThrow(
+      /site\.yml.*name/s,
     );
   });
 });

@@ -4,10 +4,28 @@ import cvSource from "../data/cv.yml?raw";
 import publicationSource from "../data/publications.yml?raw";
 import siteSource from "../data/site.yml?raw";
 
-const requiredString = z.string().min(1);
-const urlLike = z
-  .string()
-  .refine((value) => /^(https?:\/\/|mailto:)/.test(value), "Must be an HTTP(S) or mailto URL");
+const requiredString = z.string().trim().min(1);
+const email = z.string().trim().pipe(z.email());
+
+export function isSupportedLinkUrl(value: string): boolean {
+  try {
+    const url = new URL(value);
+    if (url.protocol === "http:" || url.protocol === "https:") {
+      return url.hostname.length > 0;
+    }
+    if (url.protocol === "mailto:") {
+      return email.safeParse(decodeURIComponent(url.pathname)).success;
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+const urlLike = requiredString.refine(
+  isSupportedLinkUrl,
+  "Must be a valid HTTP(S) URL or mailto URL with a valid recipient",
+);
 const linkSchema = z.object({ label: requiredString, url: urlLike }).strict();
 
 const siteSchema = z
@@ -16,11 +34,16 @@ const siteSchema = z
     role: requiredString,
     institution: requiredString,
     location: requiredString,
-    email: z.email(),
+    email,
     availability: requiredString,
     tagline: requiredString,
     summary: requiredString,
-    portrait: z.object({ src: z.string().startsWith("/"), alt: requiredString }).strict(),
+    portrait: z
+      .object({
+        src: requiredString.refine((value) => value.startsWith("/"), "Must be an absolute path"),
+        alt: requiredString,
+      })
+      .strict(),
     researchAreas: z
       .array(z.object({ title: requiredString, description: requiredString }).strict())
       .length(3),
@@ -85,11 +108,12 @@ const cvSchema = z
   })
   .strict();
 
-export function resolveSelectedPublications<T extends { id: string }>(
+export function resolveSelectedPublications<T extends { id: string; selected: boolean }>(
   items: T[],
   selectedIds: string[],
 ): T[] {
   const publicationById = new Map<string, T>();
+  const selectedIdSet = new Set<string>();
 
   for (const item of items) {
     if (publicationById.has(item.id)) {
@@ -98,22 +122,67 @@ export function resolveSelectedPublications<T extends { id: string }>(
     publicationById.set(item.id, item);
   }
 
-  return selectedIds.map((id) => {
+  for (const id of selectedIds) {
+    if (selectedIdSet.has(id)) {
+      throw new Error(`Duplicate selected publication ID: "${id}"`);
+    }
+    selectedIdSet.add(id);
+  }
+
+  const selected = selectedIds.map((id) => {
     const publication = publicationById.get(id);
     if (!publication) {
       throw new Error(`Unknown selected publication ID: "${id}"`);
     }
+    if (!publication.selected) {
+      throw new Error(
+        `Selected publication mismatch: "${id}" is listed in site.yml but selected is false`,
+      );
+    }
     return publication;
   });
+
+  for (const publication of items) {
+    if (publication.selected && !selectedIdSet.has(publication.id)) {
+      throw new Error(
+        `Selected publication mismatch: "${publication.id}" is selected in publications.yml but missing from site.yml`,
+      );
+    }
+  }
+
+  return selected;
 }
 
-export const site = siteSchema.parse(parse(siteSource));
-export const publications = z
-  .array(publicationSchema)
-  .parse(parse(publicationSource))
-  .sort((a, b) => b.year - a.year);
-export const cv = cvSchema.parse(parse(cvSource));
-export const selectedPublications = resolveSelectedPublications(
-  publications,
-  site.selectedPublications,
-);
+interface ContentSources {
+  siteSource: string;
+  publicationSource: string;
+  cvSource: string;
+}
+
+function parseContentSource<T>(filename: string, source: string, schema: z.ZodType<T>): T {
+  try {
+    return schema.parse(parse(source));
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`Invalid ${filename}: ${message}`, { cause: error });
+  }
+}
+
+export function loadPortfolioContent(sources: ContentSources) {
+  const site = parseContentSource("site.yml", sources.siteSource, siteSchema);
+  const publications = parseContentSource(
+    "publications.yml",
+    sources.publicationSource,
+    z.array(publicationSchema),
+  ).sort((a, b) => b.year - a.year);
+  const cv = parseContentSource("cv.yml", sources.cvSource, cvSchema);
+  const selectedPublications = resolveSelectedPublications(publications, site.selectedPublications);
+
+  return { site, publications, cv, selectedPublications };
+}
+
+export const { site, publications, cv, selectedPublications } = loadPortfolioContent({
+  siteSource,
+  publicationSource,
+  cvSource,
+});
