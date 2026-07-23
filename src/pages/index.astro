@@ -1,16 +1,78 @@
 ---
 import BauhausMark from "../components/BauhausMark.astro";
+import ContactLinks from "../components/ContactLinks.astro";
+import PublicationList from "../components/PublicationList.astro";
+import ResearchAreas from "../components/ResearchAreas.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site } from "../lib/content";
+import { cv, selectedPublications, site } from "../lib/content";
 ---
 
 <BaseLayout title={site.name} description={site.summary} image={site.portrait.src}>
-  <section class="page-container shell-intro" aria-labelledby="site-title">
-    <div class="shell-intro__copy">
-      <p class="eyebrow">Research &middot; EDA &middot; RF</p>
+  <section class="page-container hero" aria-labelledby="site-title">
+    <div class="hero__copy">
+      <p class="eyebrow hero__availability">{site.availability}</p>
       <h1 id="site-title">{site.name}</h1>
-      <p class="shell-intro__tagline">{site.tagline}</p>
+      <p class="hero__identity">{site.role} <span aria-hidden="true">/</span> {site.institution}</p>
+      <p class="hero__tagline">{site.tagline}</p>
+      <p class="hero__summary">{site.summary}</p>
+      <div class="hero__actions" aria-label="Profile pages">
+        <a class="button-link button-link--primary" href="/publications/">Publications</a>
+        <a class="button-link" href="/cv/">CV</a>
+      </div>
     </div>
-    <BauhausMark />
+
+    <div class="hero__portrait">
+      <BauhausMark />
+      <div class="hero__portrait-frame">
+        <img
+          src={site.portrait.src}
+          alt={site.portrait.alt}
+          width="720"
+          height="720"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-container homepage-section research-section" aria-labelledby="research-heading">
+    <header class="section-heading">
+      <p class="eyebrow">Three connected directions</p>
+      <h2 id="research-heading">Research focus</h2>
+    </header>
+    <ResearchAreas areas={site.researchAreas} />
+  </section>
+
+  <section class="page-container homepage-section selected-section" aria-labelledby="selected-heading">
+    <header class="section-heading section-heading--split">
+      <div>
+        <p class="eyebrow">Recent contributions</p>
+        <h2 id="selected-heading">Selected work</h2>
+      </div>
+      <a class="section-link" href="/publications/">View all publications</a>
+    </header>
+    <PublicationList items={selectedPublications} compact />
+  </section>
+
+  <aside class="page-container status-bridge" aria-label="Current status and education">
+    <p class="status-bridge__label">Current status</p>
+    <p>{site.availability}</p>
+    <p class="status-bridge__education">
+      {cv.education[0].degree} &middot; {cv.education[0].institution} &middot; {cv.education[0].period}
+    </p>
+  </aside>
+
+  <section class="contact-section" aria-labelledby="contact-heading">
+    <div class="page-container contact-section__inner">
+      <div>
+        <p class="eyebrow">Research conversations welcome</p>
+        <h2 id="contact-heading">Contact</h2>
+      </div>
+      <p class="contact-section__prompt">
+        Interested in EDA, RF modeling, or physics-aware machine learning? Let&rsquo;s compare notes.
+      </p>
+      <ContactLinks />
+    </div>
   </section>
 </BaseLayout>

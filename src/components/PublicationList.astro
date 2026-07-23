@@ -1,0 +1,66 @@
+---
+import { isExternalHttpUrl } from "../lib/content";
+
+interface PublicationLink {
+  label: string;
+  url: string;
+}
+
+interface Publication {
+  title: string;
+  authors: string;
+  venue: string;
+  year: number;
+  type: "journal" | "conference";
+  summary: string;
+  selected: boolean;
+  links: PublicationLink[];
+}
+
+interface Props {
+  items: Publication[];
+  compact?: boolean;
+}
+
+const { items, compact = false } = Astro.props;
+---
+
+<div class:list={["publication-list", { "publication-list--compact": compact }]}>
+  {
+    items.map((item) => (
+      <article class="publication-item">
+        <div class="publication-item__meta">
+          <span>{item.year}</span>
+          <span>{item.type}</span>
+          {item.selected && <span class="publication-item__selected">Selected work</span>}
+        </div>
+        <div class="publication-item__body">
+          <h3>{item.title}</h3>
+          <p class="publication-item__authors">{item.authors}</p>
+          <p class="publication-item__venue">{item.venue}</p>
+          {!compact && <p class="publication-item__summary">{item.summary}</p>}
+          {item.links.length > 0 && (
+            <ul class="publication-item__links" aria-label={`Links for ${item.title}`}>
+              {item.links.map((link) => {
+                const isExternal = isExternalHttpUrl(link.url);
+
+                return (
+                  <li class="publication-link">
+                    <a
+                      href={link.url}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      aria-label={isExternal ? `${link.label} (opens in a new tab)` : link.label}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      </article>
+    ))
+  }
+</div>

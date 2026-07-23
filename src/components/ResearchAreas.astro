@@ -1,0 +1,26 @@
+---
+interface ResearchArea {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  areas: ResearchArea[];
+}
+
+const { areas } = Astro.props;
+---
+
+<ol class="research-areas">
+  {
+    areas.map((area, index) => (
+      <li class="research-area">
+        <span class="research-area__number" aria-hidden="true">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <h3>{area.title}</h3>
+        <p>{area.description}</p>
+      </li>
+    ))
+  }
+</ol>
