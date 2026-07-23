@@ -1,0 +1,31 @@
+name: Huifan Zhang
+role: Ph.D. Candidate in Electronic Science and Technology
+institution: ShanghaiTech University
+location: Shanghai, China
+email: zhanghf@shanghaitech.edu.cn
+availability: Seeking postdoctoral research opportunities in EDA
+tagline: Machine learning for RF circuits, electronic design automation, and photonic computing.
+summary: I develop physics-aware and data-efficient learning methods that make circuit, device, and electromagnetic design faster and more reliable.
+portrait:
+  src: /images/profile.png
+  alt: Portrait of Huifan Zhang
+researchAreas:
+  - title: AI-assisted RF circuit synthesis
+    description: Data-efficient modeling and optimization for RF passive components and integrated circuits.
+  - title: Machine learning for EDA
+    description: Physics-informed learning for electromagnetic simulation, device modeling, and design-space exploration.
+  - title: Optical neural networks
+    description: Integrated photonic architectures and quantization-aware optical computing.
+selectedPublications:
+  - aspdac-2026
+  - date-2025
+  - tcasii-2023
+links:
+  - label: Email
+    url: mailto:zhanghf@shanghaitech.edu.cn
+  - label: GitHub
+    url: https://github.com/ivancanull
+  - label: Google Scholar
+    url: https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en
+  - label: ORCID
+    url: https://orcid.org/0000-0002-5892-931X
