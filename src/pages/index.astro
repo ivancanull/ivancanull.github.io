@@ -1,0 +1,16 @@
+---
+import BauhausMark from "../components/BauhausMark.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../lib/content";
+---
+
+<BaseLayout title={site.name} description={site.summary} image={site.portrait.src}>
+  <section class="page-container shell-intro" aria-labelledby="site-title">
+    <div class="shell-intro__copy">
+      <p class="eyebrow">Research &middot; EDA &middot; RF</p>
+      <h1 id="site-title">{site.name}</h1>
+      <p class="shell-intro__tagline">{site.tagline}</p>
+    </div>
+    <BauhausMark />
+  </section>
+</BaseLayout>

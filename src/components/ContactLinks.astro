@@ -1,0 +1,28 @@
+---
+import { site } from "../lib/content";
+---
+
+<ul class="contact-links" aria-label="Contact links">
+  {
+    site.links.map((link) => {
+      const isExternal = link.url.startsWith("http://") || link.url.startsWith("https://");
+      const accessibleLabel = isExternal
+        ? `${link.label} profile (opens in a new tab)`
+        : `Email ${site.name}`;
+
+      return (
+        <li>
+          <a
+            class="contact-link"
+            href={link.url}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noreferrer" : undefined}
+            aria-label={accessibleLabel}
+          >
+            {link.label}
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

@@ -12,8 +12,9 @@ describe("project configuration", () => {
       build: "astro build",
       preview: "astro preview",
       check: "astro check",
-      test: "vitest run",
-      verify: "pnpm run check && pnpm run test && pnpm run build",
+      test: "vitest run --exclude tests/output.test.ts",
+      "test:output": "astro build && vitest run tests/output.test.ts",
+      verify: "pnpm run test && pnpm run test:output && pnpm run check",
     });
   });
 });

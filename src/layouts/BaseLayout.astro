@@ -1,0 +1,62 @@
+---
+import "@fontsource-variable/archivo";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "../styles/global.css";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { site } from "../lib/content";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const documentTitle = title === site.name ? title : `${title} | ${site.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const socialImage = image ? new URL(image, Astro.site ?? Astro.url.origin) : undefined;
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  affiliation: {
+    "@type": "Organization",
+    name: site.institution,
+  },
+  address: site.location,
+  email: site.email,
+  url: new URL("/", Astro.site ?? Astro.url.origin).href,
+  sameAs: site.links.filter((link) => link.url.startsWith("http")).map((link) => link.url),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f4f0e6" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+
+    <title>{documentTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} is:inline></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <SiteHeader />
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
