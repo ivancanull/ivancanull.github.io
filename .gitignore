@@ -21,6 +21,7 @@ package-lock.json
 
 # Ignore local design brainstorming artifacts
 .superpowers/
+.worktrees/
 
 # Ignore files created by MacOS
 .DS_Store
