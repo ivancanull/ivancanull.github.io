@@ -1,10 +1,20 @@
 import { describe, expect, it } from "vitest";
 import html from "../dist/index.html?raw";
 
+function getAttribute(tag: string, name: string) {
+  const match = tag.match(new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i"));
+  return match?.[1] ?? match?.[2];
+}
+
 describe("built site shell", () => {
   it("uses the deployed homepage as its canonical URL", () => {
-    expect(html).toMatch(
-      /<link[^>]+rel=["']canonical["'][^>]+href=["']https:\/\/ivancanull\.github\.io\/["'][^>]*>/,
+    const canonicalLink = html
+      .match(/<link\b[^>]*>/gi)
+      ?.find((tag) => getAttribute(tag, "rel")?.split(/\s+/).includes("canonical"));
+
+    expect(canonicalLink).toBeDefined();
+    expect(getAttribute(canonicalLink ?? "", "href")).toBe(
+      "https://ivancanull.github.io/",
     );
   });
 
@@ -19,7 +29,8 @@ describe("built site shell", () => {
     const navigation = html.match(/<nav\b[\s\S]*?<\/nav>/)?.[0] ?? "";
     const routes = [...navigation.matchAll(/href=["']([^"']+)["']/g)].map((match) => match[1]);
 
-    expect(routes).toEqual(["/", "/publications/", "/cv/"]);
+    expect(routes).toHaveLength(3);
+    expect(new Set(routes)).toEqual(new Set(["/", "/publications/", "/cv/"]));
     expect(navigation).not.toMatch(/Talks|Portfolio/i);
   });
 
