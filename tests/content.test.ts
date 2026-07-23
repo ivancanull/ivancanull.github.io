@@ -4,6 +4,7 @@ import publicationSource from "../src/data/publications.yml?raw";
 import siteSource from "../src/data/site.yml?raw";
 import {
   cv,
+  isExternalHttpUrl,
   isSupportedLinkUrl,
   loadPortfolioContent,
   publications,
@@ -13,6 +14,12 @@ import {
 } from "../src/lib/content";
 
 describe("portfolio content", () => {
+  it("classifies external HTTP links using normalized URL protocols", () => {
+    expect(isExternalHttpUrl("HTTPS://example.com/profile")).toBe(true);
+    expect(isExternalHttpUrl("hTtP://example.com/profile")).toBe(true);
+    expect(isExternalHttpUrl("mailto:person@example.com")).toBe(false);
+  });
+
   it("loads Huifan Zhang's identity and contact routes", () => {
     expect(site.name).toBe("Huifan Zhang");
     expect(site.email).toBe("zhanghf@shanghaitech.edu.cn");

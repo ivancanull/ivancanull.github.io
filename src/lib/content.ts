@@ -7,6 +7,15 @@ import siteSource from "../data/site.yml?raw";
 const requiredString = z.string().trim().min(1);
 const email = z.string().trim().pipe(z.email());
 
+export function isExternalHttpUrl(value: string): boolean {
+  try {
+    const protocol = new URL(value).protocol;
+    return protocol === "http:" || protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 export function isSupportedLinkUrl(value: string): boolean {
   try {
     const url = new URL(value);

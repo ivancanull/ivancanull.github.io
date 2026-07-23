@@ -5,7 +5,8 @@ import "@fontsource/ibm-plex-mono/500.css";
 import "../styles/global.css";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { site } from "../lib/content";
+import { isExternalHttpUrl, site } from "../lib/content";
+import { serializeJsonLd } from "../lib/json-ld";
 
 interface Props {
   title: string;
@@ -29,8 +30,9 @@ const personSchema = {
   address: site.location,
   email: site.email,
   url: new URL("/", Astro.site ?? Astro.url.origin).href,
-  sameAs: site.links.filter((link) => link.url.startsWith("http")).map((link) => link.url),
+  sameAs: site.links.filter((link) => isExternalHttpUrl(link.url)).map((link) => link.url),
 };
+const serializedPersonSchema = serializeJsonLd(personSchema);
 ---
 
 <!doctype html>
@@ -49,7 +51,7 @@ const personSchema = {
     {socialImage && <meta property="og:image" content={socialImage} />}
 
     <title>{documentTitle}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} is:inline></script>
+    <script type="application/ld+json" set:html={serializedPersonSchema} is:inline></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>

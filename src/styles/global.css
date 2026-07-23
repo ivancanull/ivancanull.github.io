@@ -157,8 +157,12 @@ a:hover {
 }
 
 .site-nav__link--active {
-  color: var(--color-red);
+  color: var(--color-charcoal);
   font-weight: 500;
+}
+
+.site-nav__link--active::after {
+  background: var(--color-red);
 }
 
 .shell-intro {
