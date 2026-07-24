@@ -1,5 +1,12 @@
 import { accessSync, constants } from "node:fs";
 
+export const layoutViewports = [
+  { name: "desktop", width: 1440, height: 1000, captureArtifacts: true },
+  { name: "mobile", width: 390, height: 844, captureArtifacts: true },
+  { name: "small", width: 320, height: 568, captureArtifacts: false },
+  { name: "tablet", width: 768, height: 1024, captureArtifacts: false },
+];
+
 function executableExists(path) {
   try {
     accessSync(path, constants.X_OK);

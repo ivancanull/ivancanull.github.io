@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { resolve, sep } from "node:path";
 import { parse } from "yaml";
 import { z } from "zod";
 import cvSource from "../data/cv.yml?raw";
@@ -6,6 +8,16 @@ import siteSource from "../data/site.yml?raw";
 
 const requiredString = z.string().trim().min(1);
 const email = z.string().trim().pipe(z.email());
+
+export function publicAssetExists(
+  source: string,
+  publicDirectory = resolve(process.cwd(), "public"),
+): boolean {
+  const publicRoot = resolve(publicDirectory);
+  const assetPath = resolve(publicRoot, `.${source}`);
+
+  return source.startsWith("/") && assetPath.startsWith(`${publicRoot}${sep}`) && existsSync(assetPath);
+}
 
 export function isExternalHttpUrl(value: string): boolean {
   try {

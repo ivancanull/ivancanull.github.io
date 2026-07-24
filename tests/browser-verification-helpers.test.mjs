@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import * as browserHelpers from "../docs/verification/browser-helpers.mjs";
 import {
   readPngDimensions,
   resolveBrowserExecutable,
@@ -9,6 +10,15 @@ import {
 } from "../docs/verification/browser-helpers.mjs";
 
 describe("browser verification helpers", () => {
+  it("checks every route at the specified responsive widths without adding screenshot artifacts", () => {
+    expect(browserHelpers.layoutViewports).toEqual([
+      { name: "desktop", width: 1440, height: 1000, captureArtifacts: true },
+      { name: "mobile", width: 390, height: 844, captureArtifacts: true },
+      { name: "small", width: 320, height: 568, captureArtifacts: false },
+      { name: "tablet", width: 768, height: 1024, captureArtifacts: false },
+    ]);
+  });
+
   it("reads dimensions from a PNG IHDR chunk", () => {
     const png = Buffer.alloc(24);
     Buffer.from("89504e470d0a1a0a", "hex").copy(png);

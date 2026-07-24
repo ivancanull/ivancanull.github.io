@@ -62,6 +62,14 @@ describe("global styles", () => {
       /\.research-area__number\s*{[^}]*color:\s*var\(--color-charcoal\)/s,
     );
   });
+
+  it("scales page-intro headings below their desktop minimum on 320px screens", () => {
+    const narrowMedia = globalCss.match(
+      /@media\s*\(max-width:\s*22\.5rem\)\s*{([\s\S]*?)(?=\n})/i,
+    )?.[1] ?? "";
+
+    expect(narrowMedia).toMatch(/\.page-intro\s+h1\s*{[^}]*font-size:\s*3\.5rem/is);
+  });
 });
 
 describe("print stylesheet", () => {

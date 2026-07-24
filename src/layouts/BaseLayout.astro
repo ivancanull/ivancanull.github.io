@@ -14,9 +14,10 @@ interface Props {
   description: string;
   image?: string;
   printable?: boolean;
+  robots?: string;
 }
 
-const { title, description, image, printable = false } = Astro.props;
+const { title, description, image, printable = false, robots } = Astro.props;
 const documentTitle = title === site.name ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 const socialImage = image ? new URL(image, Astro.site ?? Astro.url.origin) : undefined;
@@ -43,6 +44,7 @@ const serializedPersonSchema = serializeJsonLd(personSchema);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
     <meta name="theme-color" content="#f4f0e6" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={canonical} />

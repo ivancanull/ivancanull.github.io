@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import html from "../dist/index.html?raw";
 import publicationsHtml from "../dist/publications/index.html?raw";
 import cvHtml from "../dist/cv/index.html?raw";
+import notFoundHtml from "../dist/404.html?raw";
 import { cv, isExternalHttpUrl, publications, selectedPublications, site } from "../src/lib/content";
 
 function getAttribute(tag: string, name: string) {
@@ -82,6 +83,14 @@ describe("built site shell", () => {
     const homeLink = navigation.match(/<a\b[^>]*href=["']\/["'][^>]*>/)?.[0] ?? "";
 
     expect(homeLink).toMatch(/aria-current=["']page["']/);
+  });
+
+  it("prevents the generated 404 page from being indexed", () => {
+    const robotsTag = notFoundHtml
+      .match(/<meta\b[^>]*>/gi)
+      ?.find((tag) => getAttribute(tag, "name") === "robots");
+
+    expect(getAttribute(robotsTag ?? "", "content")).toBe("noindex, nofollow");
   });
 });
 
@@ -212,6 +221,19 @@ describe("built publications page", () => {
         (match) => Number(match[1]),
       ),
     ).toEqual([2026, 2025, 2024, 2023, 2019]);
+  });
+
+  it("gives every DOI link a unique accessible name containing its publication title", () => {
+    const doiLinks = [...publicationsHtml.matchAll(/<a\b[^>]*>\s*DOI\s*<\/a>/gi)].map(
+      (match) => match[0],
+    );
+    const accessibleNames = doiLinks.map((link) => getAttribute(link, "aria-label"));
+
+    expect(doiLinks).toHaveLength(publications.length);
+    expect(accessibleNames).toEqual(
+      publications.map(({ title }) => `DOI for ${title} (opens in a new tab)`),
+    );
+    expect(new Set(accessibleNames)).toHaveLength(publications.length);
   });
 
   it("links securely to Google Scholar", () => {

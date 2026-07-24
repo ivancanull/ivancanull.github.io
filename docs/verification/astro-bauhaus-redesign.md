@@ -1,6 +1,6 @@
 # Astro Bauhaus redesign verification
 
-Verified on 2026-07-24 from base commit `6d10232dbe2609a166d3f00ba3278043d2b81d8a`.
+Verified on 2026-07-24 from parent commit `8ef6745253432c5e764c202a0352a22ae63dbf0e`.
 
 ## Runtime and commands
 
@@ -28,8 +28,8 @@ pnpm install --frozen-lockfile
 # Already up to date; exit 0.
 
 pnpm run verify
-# 7 test files and 53 tests passed.
-# Astro check: 26 files, 0 errors, 0 warnings, 0 hints.
+# 8 test files and 70 tests passed.
+# Astro check: 29 files, 0 errors, 0 warnings, 0 hints.
 # Astro build: 4 pages built; exit 0.
 
 git diff --check
@@ -44,7 +44,7 @@ The portable production-browser verification command is:
 ```sh
 pnpm install --frozen-lockfile
 pnpm run verify:browser
-# 6 page checks, 6 full-page screenshots, 6 exact-viewport screenshots,
+# 12 page/layout checks, 6 full-page screenshots, 6 exact-viewport screenshots,
 # 0 failed layouts, 3 keyboard routes, 0 failed keyboard routes,
 # reduced-motion, print-style, and PDF pagination assertions passed; exit 0.
 ```
@@ -53,7 +53,7 @@ pnpm run verify:browser
 
 ## Responsive visual inspection
 
-Home, Publications, and CV were captured in two distinct forms at both required viewport sizes:
+Home, Publications, and CV were captured in two distinct forms at the exact 1440 x 1000 and 390 x 844 screenshot sizes. The same routes receive layout-only checks at 320 x 568 and 768 x 1024, covering every representative width required by the design specification without adding redundant artifacts.
 
 - Exact-viewport PNGs contain only the visible browser viewport and are exactly 1440 x 1000 or 390 x 844 pixels.
 - Full-page JPEGs preserve the complete document for end-to-end layout inspection and are taller than the configured viewport.
@@ -70,8 +70,14 @@ The harness reads each viewport PNG's IHDR width and height from the screenshot 
 | Home | 390 x 844 | 390 x 844 | 390 x 4307 | 390 / 390 | Pass |
 | Publications | 390 x 844 | 390 x 844 | 390 x 3720 | 390 / 390 | Pass |
 | CV | 390 x 844 | 390 x 844 | 390 x 4788 | 390 / 390 | Pass |
+| Home | 320 x 568 | Not captured | Not captured | 320 / 320 | Pass |
+| Publications | 320 x 568 | Not captured | Not captured | 320 / 320 | Pass |
+| CV | 320 x 568 | Not captured | Not captured | 320 / 320 | Pass |
+| Home | 768 x 1024 | Not captured | Not captured | 768 / 768 | Pass |
+| Publications | 768 x 1024 | Not captured | Not captured | 768 / 768 | Pass |
+| CV | 768 x 1024 | Not captured | Not captured | 768 / 768 | Pass |
 
-Across all six page/viewport combinations, the automated scan found zero elements outside the viewport width, zero overflow-clipped text nodes, zero text elements below 11 px, zero broken images, and zero overlapping top-level content regions. The Home portrait loaded at its natural 720 x 720 dimensions in both viewports. Mobile top-level content positions increased in DOM order on every page; no CSS reordering changed the reading order.
+Across all 12 page/viewport combinations, the automated scan found zero elements outside the viewport width, zero overflow-clipped text nodes, zero text elements below 11 px, zero broken images, and zero overlapping top-level content regions. The Home portrait loaded at its natural 720 x 720 dimensions at all four widths. Top-level content positions increased in DOM order on every page; no CSS reordering changed the reading order.
 
 Direct visual inspection found no clipping, overlap, unreadable text, broken portrait treatment, or excessive red/yellow/blue coverage. Primary colors remain limited to identity and navigation marks, small status/selection accents, the portrait geometry, and the Home status panel; the ivory/black content field remains dominant.
 
@@ -103,7 +109,7 @@ Every `page.goto` response is required to be HTTP 2xx before layout evidence is 
 | Publications | 200 | Publications \| Huifan Zhang | Publications | Efficient RF Passive Components Modeling | Pass |
 | CV | 200 | CV \| Huifan Zhang | Huifan Zhang | Research Projects | Pass |
 
-These checks run at both viewport sizes and again before keyboard/print inspection. Unit fixtures prove that an HTTP 404 and a 200 fallback/Home document both fail the route validator, so a missing route cannot produce passing layout evidence.
+These checks run at all four viewport widths and again before keyboard/print inspection. Unit fixtures prove that an HTTP 404 and a 200 fallback/Home document both fail the route validator, so a missing route cannot produce passing layout evidence.
 
 ## Keyboard and focus
 
@@ -209,13 +215,35 @@ pnpm install --frozen-lockfile
 # Already up to date; exit 0.
 
 pnpm run verify
-# 8 test files and 65 tests passed.
+# 8 test files and 70 tests passed.
 # Astro check: 29 files, 0 errors, 0 warnings, 0 hints.
 # Astro build: 4 pages built; exit 0.
 
 git diff --check
 # No output; exit 0.
 ```
+
+## Final review regressions
+
+Final review added test-first coverage for the narrow heading, portrait fallback, DOI names, 404 metadata, and the missing responsive widths. The relevant RED evidence was:
+
+```sh
+pnpm exec vitest run tests/styles.test.mjs tests/browser-verification-helpers.test.mjs
+# RED: 2 failed; the 320px heading override and 320/768 viewport configuration were absent.
+
+pnpm run verify:browser
+# RED: /publications/ failed at 320px; HTML client / scroll width was 320 / 321.
+
+pnpm exec vitest run tests/content.test.ts
+# RED: publicAssetExists was undefined.
+
+pnpm exec vitest run tests/output.test.ts
+# RED: DOI links all exposed "DOI (opens in a new tab)" and the 404 robots value was absent.
+```
+
+The narrow intro type now scales to 3.5rem inside the existing 22.5rem breakpoint. The portrait path is checked against `public/` during the Astro build; a missing path omits both the image and social-image metadata and uses the existing Bauhaus geometry instead. DOI accessible names include their publication titles while the visible text remains `DOI`, and the generated 404 carries `noindex, nofollow`.
+
+Focused GREEN runs passed 22 style/browser-helper tests, 19 content tests, and 18 output tests. The final full browser run checked all three routes at 320, 390, 768, and 1440 pixels with zero failed layouts while retaining exactly the six specified screenshot pairs.
 
 ## Limitations
 

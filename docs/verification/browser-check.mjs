@@ -6,6 +6,7 @@ import { setTimeout as delay } from "node:timers/promises";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { chromium } from "playwright-core";
 import {
+  layoutViewports,
   readPngDimensions,
   resolveBrowserExecutable,
   selectUniquePdfEndToken,
@@ -49,11 +50,6 @@ const routes = [
     heading: "Huifan Zhang",
     stableContent: "Research Projects",
   },
-];
-
-const viewports = [
-  { name: "desktop", width: 1440, height: 1000 },
-  { name: "mobile", width: 390, height: 844 },
 ];
 
 const hiddenSelectorExpectations = [
@@ -423,73 +419,82 @@ const results = {
     browserType: "Chromium via an installed Chrome/Chromium executable",
     browserExecutablePath,
   },
+  layoutChecks: [],
   screenshots: [],
   keyboard: [],
 };
 
 try {
   browser = await chromium.launch({ executablePath: browserExecutablePath, headless: true });
-  for (const viewport of viewports) {
+  for (const viewport of layoutViewports) {
     const context = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: "no-preference" });
     const page = await context.newPage();
     for (const route of routes) {
       const routeEvidence = await waitForPage(page, route);
       await waitForCaptureAnimations(page);
-      const fullPageFilename = `${route.name}-${viewport.name}.jpg`;
-      await page.screenshot({
-        path: resolve(assetsDirectory, fullPageFilename),
-        fullPage: true,
-        type: "jpeg",
-        quality: 82,
-      });
-
-      await page.evaluate(() => scrollTo(0, 0));
-      const viewportFilename = `${route.name}-${viewport.name}-viewport.png`;
-      const viewportScreenshot = await page.screenshot({
-        path: resolve(assetsDirectory, viewportFilename),
-        fullPage: false,
-        type: "png",
-      });
-      const viewportImageDimensions = readPngDimensions(viewportScreenshot);
-      if (
-        viewportImageDimensions.width !== viewport.width ||
-        viewportImageDimensions.height !== viewport.height
-      ) {
-        throw new Error(
-          `${viewportFilename} is ${viewportImageDimensions.width}x${viewportImageDimensions.height}; expected ${viewport.width}x${viewport.height}`,
-        );
-      }
-
-      results.screenshots.push({
+      const layout = await collectLayout(page);
+      results.layoutChecks.push({
         route: route.path,
         viewport,
-        fullPageArtifact: `docs/verification/assets/${fullPageFilename}`,
-        viewportArtifact: `docs/verification/assets/${viewportFilename}`,
-        viewportImageDimensions,
-        viewportDimensionsMatch: true,
         routeEvidence,
-        layout: await collectLayout(page),
+        layout,
       });
+
+      if (viewport.captureArtifacts) {
+        const fullPageFilename = `${route.name}-${viewport.name}.jpg`;
+        await page.screenshot({
+          path: resolve(assetsDirectory, fullPageFilename),
+          fullPage: true,
+          type: "jpeg",
+          quality: 82,
+        });
+
+        await page.evaluate(() => scrollTo(0, 0));
+        const viewportFilename = `${route.name}-${viewport.name}-viewport.png`;
+        const viewportScreenshot = await page.screenshot({
+          path: resolve(assetsDirectory, viewportFilename),
+          fullPage: false,
+          type: "png",
+        });
+        const viewportImageDimensions = readPngDimensions(viewportScreenshot);
+        if (
+          viewportImageDimensions.width !== viewport.width ||
+          viewportImageDimensions.height !== viewport.height
+        ) {
+          throw new Error(
+            `${viewportFilename} is ${viewportImageDimensions.width}x${viewportImageDimensions.height}; expected ${viewport.width}x${viewport.height}`,
+          );
+        }
+
+        results.screenshots.push({
+          route: route.path,
+          viewport,
+          fullPageArtifact: `docs/verification/assets/${fullPageFilename}`,
+          viewportArtifact: `docs/verification/assets/${viewportFilename}`,
+          viewportImageDimensions,
+          viewportDimensionsMatch: true,
+        });
+      }
     }
     await context.close();
   }
 
   for (const route of routes) {
-    const context = await browser.newContext({ viewport: viewports[0], reducedMotion: "no-preference" });
+    const context = await browser.newContext({ viewport: layoutViewports[0], reducedMotion: "no-preference" });
     const page = await context.newPage();
     const routeEvidence = await waitForPage(page, route);
     results.keyboard.push({ route: route.path, routeEvidence, ...(await verifyKeyboard(page)) });
     await context.close();
   }
 
-  const normalContext = await browser.newContext({ viewport: viewports[0], reducedMotion: "no-preference" });
+  const normalContext = await browser.newContext({ viewport: layoutViewports[0], reducedMotion: "no-preference" });
   const normalPage = await normalContext.newPage();
   await waitForPage(normalPage, routes[0]);
   const normalAnimations = await animationStyles(normalPage);
   const normalScrollBehavior = await normalPage.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior);
   await normalContext.close();
 
-  const reducedContext = await browser.newContext({ viewport: viewports[0], reducedMotion: "reduce" });
+  const reducedContext = await browser.newContext({ viewport: layoutViewports[0], reducedMotion: "reduce" });
   const reducedPage = await reducedContext.newPage();
   await waitForPage(reducedPage, routes[0]);
   const reducedAnimations = await animationStyles(reducedPage);
@@ -509,7 +514,7 @@ try {
     ),
   };
 
-  const printContext = await browser.newContext({ viewport: viewports[0] });
+  const printContext = await browser.newContext({ viewport: layoutViewports[0] });
   const printPage = await printContext.newPage();
   await printPage.emulateMedia({ media: "print", reducedMotion: "reduce" });
   const printRouteEvidence = await waitForPage(printPage, routes[2]);
@@ -679,7 +684,7 @@ try {
   }
 }
 
-const failedLayouts = results.screenshots.filter(({ layout }) =>
+const failedLayouts = results.layoutChecks.filter(({ layout }) =>
   layout.dimensions.htmlScrollWidth > layout.dimensions.htmlClientWidth ||
   layout.dimensions.bodyScrollWidth > layout.dimensions.bodyClientWidth ||
   layout.overflowingElements.length > 0 ||
@@ -717,7 +722,7 @@ const failedPrint =
 console.log(
   JSON.stringify(
     {
-      pageChecks: results.screenshots.length,
+      pageChecks: results.layoutChecks.length,
       fullPageScreenshots: results.screenshots.length,
       exactViewportScreenshots: results.screenshots.filter(({ viewportDimensionsMatch }) => viewportDimensionsMatch).length,
       failedLayouts: failedLayouts.map(({ route, viewport }) => `${route} ${viewport.name}`),

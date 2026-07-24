@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import cvSource from "../src/data/cv.yml?raw";
 import publicationSource from "../src/data/publications.yml?raw";
 import siteSource from "../src/data/site.yml?raw";
+import * as contentModule from "../src/lib/content";
 import {
   cv,
   isExternalHttpUrl,
@@ -14,6 +15,18 @@ import {
 } from "../src/lib/content";
 
 describe("portfolio content", () => {
+  it("detects a missing public portrait at build time", () => {
+    const publicAssetExists = (
+      contentModule as typeof contentModule & {
+        publicAssetExists?: (source: string) => boolean;
+      }
+    ).publicAssetExists;
+
+    expect(publicAssetExists).toBeTypeOf("function");
+    expect(publicAssetExists?.("/images/profile.png")).toBe(true);
+    expect(publicAssetExists?.("/images/mistyped-profile.png")).toBe(false);
+  });
+
   it("classifies external HTTP links using normalized URL protocols", () => {
     expect(isExternalHttpUrl("HTTPS://example.com/profile")).toBe(true);
     expect(isExternalHttpUrl("hTtP://example.com/profile")).toBe(true);

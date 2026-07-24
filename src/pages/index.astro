@@ -4,10 +4,12 @@ import ContactLinks from "../components/ContactLinks.astro";
 import PublicationList from "../components/PublicationList.astro";
 import ResearchAreas from "../components/ResearchAreas.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { cv, selectedPublications, site } from "../lib/content";
+import { cv, publicAssetExists, selectedPublications, site } from "../lib/content";
+
+const hasPortrait = publicAssetExists(site.portrait.src);
 ---
 
-<BaseLayout title={site.name} description={site.summary} image={site.portrait.src}>
+<BaseLayout title={site.name} description={site.summary} image={hasPortrait ? site.portrait.src : undefined}>
   <section class="page-container hero" aria-labelledby="site-title">
     <div class="hero__copy">
       <p class="eyebrow hero__availability">{site.availability}</p>
@@ -21,18 +23,22 @@ import { cv, selectedPublications, site } from "../lib/content";
       </div>
     </div>
 
-    <div class="hero__portrait">
+    <div class:list={["hero__portrait", { "hero__portrait--geometry": !hasPortrait }]}>
       <BauhausMark />
-      <div class="hero__portrait-frame">
-        <img
-          src={site.portrait.src}
-          alt={site.portrait.alt}
-          width="720"
-          height="720"
-          loading="eager"
-          fetchpriority="high"
-        />
-      </div>
+      {
+        hasPortrait && (
+          <div class="hero__portrait-frame">
+            <img
+              src={site.portrait.src}
+              alt={site.portrait.alt}
+              width="720"
+              height="720"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+        )
+      }
     </div>
   </section>
 

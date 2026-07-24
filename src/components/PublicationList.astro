@@ -43,6 +43,9 @@ const { items, compact = false } = Astro.props;
             <ul class="publication-item__links" aria-label={`Links for ${item.title}`}>
               {item.links.map((link) => {
                 const isExternal = isExternalHttpUrl(link.url);
+                const accessibleLabel = link.label.toLowerCase() === "doi"
+                  ? `${link.label} for ${item.title}`
+                  : link.label;
 
                 return (
                   <li class="publication-link">
@@ -50,7 +53,7 @@ const { items, compact = false } = Astro.props;
                       href={link.url}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      aria-label={isExternal ? `${link.label} (opens in a new tab)` : link.label}
+                      aria-label={isExternal ? `${accessibleLabel} (opens in a new tab)` : accessibleLabel}
                     >
                       {link.label}
                     </a>

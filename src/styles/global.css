@@ -295,6 +295,15 @@ a:hover {
   bottom: -22%;
 }
 
+.hero__portrait--geometry {
+  aspect-ratio: 1;
+}
+
+.hero__portrait--geometry > .bauhaus-mark {
+  inset: 0;
+  width: 100%;
+}
+
 .bauhaus-mark {
   aspect-ratio: 1;
   display: grid;
@@ -918,6 +927,10 @@ a:hover {
 
   .hero h1 {
     font-size: 3.65rem;
+  }
+
+  .page-intro h1 {
+    font-size: 3.5rem;
   }
 
   .hero__availability {
