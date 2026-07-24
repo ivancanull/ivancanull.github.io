@@ -39,6 +39,30 @@ describe("portfolio content", () => {
     expect(Object.keys(cv.skills)).toEqual(["Programming", "EDA / Simulation", "Languages"]);
   });
 
+  it("rejects a CV without the education required by the homepage", () => {
+    const emptyEducation = cvSource.replace(/education:\n[\s\S]*?\nprojects:/, "education: []\n\nprojects:");
+
+    expect(() =>
+      loadPortfolioContent({ siteSource, publicationSource, cvSource: emptyEducation }),
+    ).toThrow(/cv\.yml.*education/s);
+  });
+
+  it("accepts mailto links in publication content", () => {
+    const publicationWithMailto = publicationSource.replace(
+      "url: https://doi.org/10.1109/asp-dac66049.2026.11420493",
+      "url: mailto:papers@example.edu",
+    );
+
+    const content = loadPortfolioContent({
+      siteSource,
+      publicationSource: publicationWithMailto,
+      cvSource,
+    });
+
+    expect(content.publications[0].links[0].url).toBe("mailto:papers@example.edu");
+    expect(isExternalHttpUrl(content.publications[0].links[0].url)).toBe(false);
+  });
+
   it("rejects duplicate publication IDs with an actionable error", () => {
     expect(() =>
       resolveSelectedPublications(

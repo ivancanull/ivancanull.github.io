@@ -376,7 +376,7 @@ a:hover {
 .research-area__number {
   grid-column: 1 / span 1;
   padding-top: 0.28rem;
-  color: var(--color-red);
+  color: var(--color-charcoal);
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.82rem;
   font-weight: 500;

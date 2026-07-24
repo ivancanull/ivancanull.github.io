@@ -77,16 +77,18 @@ const publicationSchema = z
 
 const cvSchema = z
   .object({
-    education: z.array(
-      z
-        .object({
-          degree: requiredString,
-          institution: requiredString,
-          period: requiredString,
-          detail: requiredString.optional(),
-        })
-        .strict(),
-    ),
+    education: z
+      .array(
+        z
+          .object({
+            degree: requiredString,
+            institution: requiredString,
+            period: requiredString,
+            detail: requiredString.optional(),
+          })
+          .strict(),
+      )
+      .min(1),
     projects: z.array(
       z
         .object({

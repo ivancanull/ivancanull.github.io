@@ -48,4 +48,17 @@ describe("global styles", () => {
       /\.site-nav__link--active::after\s*{[^}]*background:\s*var\(--color-red\)/s,
     );
   });
+
+  it("uses AA-contrast normal text for research-area numbers", () => {
+    const foregroundLuminance = relativeLuminance(colorToken("charcoal"));
+    const backgroundLuminance = relativeLuminance(colorToken("ivory"));
+    const contrast =
+      (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
+      (Math.min(foregroundLuminance, backgroundLuminance) + 0.05);
+
+    expect(contrast).toBeGreaterThanOrEqual(4.5);
+    expect(globalCss).toMatch(
+      /\.research-area__number\s*{[^}]*color:\s*var\(--color-charcoal\)/s,
+    );
+  });
 });

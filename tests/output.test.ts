@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import html from "../dist/index.html?raw";
-import { selectedPublications, site } from "../src/lib/content";
+import { isExternalHttpUrl, selectedPublications, site } from "../src/lib/content";
 
 function getAttribute(tag: string, name: string) {
   const match = tag.match(new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i"));
@@ -93,7 +93,8 @@ describe("built hiring homepage", () => {
     expect(
       areas.map((area) => site.researchAreas.findIndex(({ title }) => area.includes(title))),
     ).toEqual([0, 1, 2]);
-    expect(html).toMatch(/<ol\b[^>]*class=["'][^"']*\bresearch-areas\b/i);
+    const list = html.match(/<ol\b[^>]*class=["'][^"']*\bresearch-areas\b[^>]*>/i)?.[0] ?? "";
+    expect(getAttribute(list, "role")).toBe("list");
   });
 
   it("renders exactly the selected publications in site.yml order", () => {
@@ -127,16 +128,29 @@ describe("built hiring homepage", () => {
     }
   });
 
-  it("secures publication links that open in a new tab", () => {
+  it("opens only external publication links in a secured new tab", () => {
     const publicationLinks = elementsWithClass("publication-link").map(
       (link) => link.match(/<a\b[^>]*>/i)?.[0] ?? "",
     );
 
     expect(publicationLinks).not.toHaveLength(0);
-    for (const link of publicationLinks) {
-      expect(getAttribute(link, "target")).toBe("_blank");
-      expect(getAttribute(link, "rel")?.split(/\s+/)).toContain("noreferrer");
-      expect(getAttribute(link, "aria-label")).toMatch(/opens in a new tab/i);
+    for (const expected of selectedPublications.flatMap((publication) => publication.links)) {
+      const link = publicationLinks.find(
+        (candidate) => getAttribute(candidate, "href") === expected.url.replaceAll("&", "&amp;"),
+      );
+
+      expect(link).toBeDefined();
+      if (isExternalHttpUrl(expected.url)) {
+        expect(getAttribute(link ?? "", "target")).toBe("_blank");
+        expect(getAttribute(link ?? "", "rel")?.split(/\s+/)).toEqual(
+          expect.arrayContaining(["noopener", "noreferrer"]),
+        );
+        expect(getAttribute(link ?? "", "aria-label")).toMatch(/opens in a new tab/i);
+      } else {
+        expect(getAttribute(link ?? "", "target")).toBeUndefined();
+        expect(getAttribute(link ?? "", "rel")).toBeUndefined();
+        expect(getAttribute(link ?? "", "aria-label")).not.toMatch(/opens in a new tab/i);
+      }
     }
   });
 });
