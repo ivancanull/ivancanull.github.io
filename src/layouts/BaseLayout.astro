@@ -3,6 +3,7 @@ import "@fontsource-variable/archivo";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "../styles/global.css";
+import printStylesheetUrl from "../styles/print.css?url";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { isExternalHttpUrl, site } from "../lib/content";
@@ -12,9 +13,10 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  printable?: boolean;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, printable = false } = Astro.props;
 const documentTitle = title === site.name ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 const socialImage = image ? new URL(image, Astro.site ?? Astro.url.origin) : undefined;
@@ -43,6 +45,7 @@ const serializedPersonSchema = serializeJsonLd(personSchema);
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f4f0e6" />
     <link rel="canonical" href={canonical} />
+    {printable && <link rel="stylesheet" href={printStylesheetUrl} media="print" />}
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={documentTitle} />

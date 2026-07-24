@@ -16,7 +16,7 @@ import { isExternalHttpUrl, site } from "../lib/content";
             class="contact-link"
             href={link.url}
             target={isExternal ? "_blank" : undefined}
-            rel={isExternal ? "noreferrer" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
             aria-label={accessibleLabel}
           >
             {link.label}

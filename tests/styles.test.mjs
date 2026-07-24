@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 const globalCss = readFileSync(new URL("../src/styles/global.css", import.meta.url), "utf8");
+const printCss = readFileSync(new URL("../src/styles/print.css", import.meta.url), "utf8");
 
 function relativeLuminance(hex) {
   const channels = hex
@@ -60,5 +61,28 @@ describe("global styles", () => {
     expect(globalCss).toMatch(
       /\.research-area__number\s*{[^}]*color:\s*var\(--color-charcoal\)/s,
     );
+  });
+});
+
+describe("print stylesheet", () => {
+  it("uses a compact black-on-white document treatment and removes motion", () => {
+    expect(printCss).toMatch(/color:\s*(?:#000(?:000)?|black)\b/i);
+    expect(printCss).toMatch(/background:\s*(?:#fff(?:fff)?|white)\b/i);
+    expect(printCss).toMatch(/font-size:\s*(?:10|11)pt\b/i);
+    expect(printCss).toMatch(/animation(?:-duration)?:\s*(?:none|0s)\b/i);
+    expect(printCss).toMatch(/transition(?:-duration)?:\s*(?:none|0s)\b/i);
+  });
+
+  it("hides chrome and decorations while preserving substantive CV content", () => {
+    expect(printCss).toMatch(/\.site-header[\s\S]*\.site-footer[\s\S]*display:\s*none\b/i);
+    expect(printCss).toMatch(/\.cv-contact[\s\S]*display:\s*none\b/i);
+    expect(printCss).not.toMatch(/\.cv-section[^{]*{[^}]*display:\s*none\b/is);
+    expect(printCss).not.toMatch(/\.publication-item\s*{[^}]*display:\s*none\b/is);
+    expect(printCss).toMatch(/(?:break-inside|page-break-inside):\s*avoid\b/i);
+  });
+
+  it("prints useful HTTP URLs but not mailto destinations", () => {
+    expect(printCss).toMatch(/a\[href\^=["']https?:\/\/["']\]::after/i);
+    expect(printCss).toMatch(/a\[href\^=["']mailto:["']\]::after[^{]*{[^}]*content:\s*none\b/is);
   });
 });

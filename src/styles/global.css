@@ -576,6 +576,156 @@ a:hover {
   font-weight: 500;
 }
 
+.page-intro,
+.cv-intro {
+  padding-block: clamp(4rem, 9vw, 7rem);
+  border-bottom: var(--line);
+}
+
+.page-intro h1,
+.cv-intro h1 {
+  max-width: 10ch;
+  margin: 0;
+  font-size: clamp(3.75rem, 9vw, 8rem);
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+}
+
+.page-intro > p:not(.eyebrow) {
+  max-width: 45rem;
+  margin: 2rem 0 0;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+.page-intro .contact-links {
+  margin-top: 2rem;
+  justify-content: flex-start;
+}
+
+.publication-years {
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.publication-year {
+  display: grid;
+  grid-template-columns: minmax(5rem, 2fr) minmax(0, 10fr);
+  column-gap: clamp(1rem, 2.2vw, 2rem);
+}
+
+.publication-year__heading {
+  margin: 0;
+  padding-top: clamp(2rem, 4vw, 3.25rem);
+  border-top: var(--line);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.cv-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cv-intro__role {
+  margin-bottom: 0;
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  font-weight: 650;
+}
+
+.cv-intro__role + p {
+  margin-top: 0.35rem;
+}
+
+.cv-contact .contact-links {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.cv-document {
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.cv-section {
+  padding-block: clamp(2.75rem, 6vw, 5rem);
+  border-bottom: var(--line);
+  display: grid;
+  grid-template-columns: minmax(8rem, 3fr) minmax(0, 9fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.cv-section h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  line-height: 1.05;
+}
+
+.cv-section h2 span {
+  margin-right: 0.75rem;
+  color: var(--color-blue);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+}
+
+.cv-entries {
+  display: grid;
+  gap: 2.25rem;
+}
+
+.cv-entry h3,
+.cv-entry p,
+.cv-entry ul {
+  margin-block: 0;
+}
+
+.cv-entry__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cv-entry__heading h3 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.cv-entry__heading p {
+  flex: 0 0 auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+}
+
+.cv-entry > p,
+.cv-entry ul {
+  margin-top: 0.45rem;
+}
+
+.skill-list,
+.skill-list dd {
+  margin: 0;
+}
+
+.skill-list > div {
+  padding-block: 0.85rem;
+  border-top: 1px solid var(--color-charcoal);
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) 2fr;
+  gap: 1rem;
+}
+
+.skill-list dt {
+  font-weight: 700;
+}
+
+.publication-list--compact .publication-item {
+  padding-block: 1.5rem;
+}
+
+.publication-list--compact .publication-item h3 {
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .site-nav__link::after,
   .skip-link {
@@ -736,6 +886,25 @@ a:hover {
   .contact-links {
     justify-content: flex-start;
   }
+
+  .publication-year,
+  .cv-section {
+    grid-template-columns: 1fr;
+  }
+
+  .publication-year__heading {
+    padding-bottom: 0.75rem;
+  }
+
+  .cv-intro,
+  .cv-entry__heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cv-contact .contact-links {
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 22.5rem) {
@@ -758,6 +927,11 @@ a:hover {
   .button-link {
     min-width: 0;
     flex: 1 1 auto;
+  }
+
+  .skill-list > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 
   .research-area {

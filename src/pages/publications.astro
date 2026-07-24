@@ -1,0 +1,36 @@
+---
+import ContactLinks from "../components/ContactLinks.astro";
+import PublicationList from "../components/PublicationList.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { publications } from "../lib/content";
+
+const publicationsByYear = [...Map.groupBy(publications, ({ year }) => year)].sort(
+  ([yearA], [yearB]) => yearB - yearA,
+);
+---
+
+<BaseLayout
+  title="Publications"
+  description="Publications by Huifan Zhang in RF modeling, electronic design automation, and photonics."
+>
+  <header class="page-container page-intro">
+    <p class="eyebrow">Research record</p>
+    <h1>Publications</h1>
+    <p>
+      Peer-reviewed work spanning RF component modeling, physics-informed EDA, device optimization,
+      and photonic computing.
+    </p>
+    <ContactLinks />
+  </header>
+
+  <div class="page-container publication-years">
+    {
+      publicationsByYear.map(([year, items]) => (
+        <section class="publication-year" aria-labelledby={`year-${year}`}>
+          <h2 class="publication-year__heading" id={`year-${year}`}>{year}</h2>
+          <PublicationList items={items} />
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
