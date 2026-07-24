@@ -57,7 +57,10 @@ describe("GitHub Pages deployment", () => {
 
     const workflow = parse(readFileSync(workflowPath, "utf8"));
     expect(workflow.permissions).toBeUndefined();
-    expect(workflow.jobs.build.permissions).toEqual({ contents: "read" });
+    expect(workflow.jobs.build.permissions).toEqual({
+      contents: "read",
+      pages: "read",
+    });
     expect(workflow.jobs.deploy.permissions).toEqual({
       pages: "write",
       "id-token": "write",
