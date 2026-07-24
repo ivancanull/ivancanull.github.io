@@ -36,7 +36,7 @@ git diff --check
 # No output; exit 0.
 
 git status --short --branch
-# ## feat/astro-bauhaus
+# ## codex/update-phd-profile...origin/master [ahead 4]
 ```
 
 The portable production-browser verification command is:
