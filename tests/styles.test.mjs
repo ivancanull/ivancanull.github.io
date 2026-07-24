@@ -12,6 +12,20 @@ function standaloneRule(css, selector) {
   return matches[0][1];
 }
 
+function bodyBackgroundDeclarations(css) {
+  const bodyRule = standaloneRule(css, "body");
+
+  return [
+    ...bodyRule.matchAll(/(?:^|;)\s*(background(?:-image)?)\s*:\s*([^;]*?)\s*(?=;|$)/gi),
+  ].map(([, property, value]) =>
+    `${property.toLowerCase()}: ${value
+      .replace(/\s+/g, " ")
+      .replace(/\(\s+/g, "(")
+      .replace(/\s+\)/g, ")")
+      .trim()};`,
+  );
+}
+
 function relativeLuminance(hex) {
   const channels = hex
     .slice(1)
@@ -30,16 +44,26 @@ function colorToken(name) {
 
 describe("global styles", () => {
   it("uses a plain ivory background on the screen body", () => {
-    const bodyRule = standaloneRule(globalCss, "body");
-
-    expect(bodyRule).toMatch(/background:\s*var\(--color-ivory\)\s*;/i);
+    expect(bodyBackgroundDeclarations(globalCss)).toEqual([
+      "background: var(--color-ivory);",
+    ]);
   });
 
-  it("does not paint a repeated vertical-line texture on the screen body", () => {
-    const bodyRule = standaloneRule(globalCss, "body");
+  it("surfaces additional body background images for the plain-background contract", () => {
+    const texturedCss = `
+body {
+  background:
+    var(
+      --color-ivory
+    );
+  background-image: repeating-radial-gradient(circle, transparent 0 1rem, black 1rem 2rem);
+}
+`;
 
-    expect(bodyRule).not.toMatch(/linear-gradient/i);
-    expect(bodyRule).not.toMatch(/6\.25rem/i);
+    expect(bodyBackgroundDeclarations(texturedCss)).toEqual([
+      "background: var(--color-ivory);",
+      "background-image: repeating-radial-gradient(circle, transparent 0 1rem, black 1rem 2rem);",
+    ]);
   });
 
   it("keeps authored hex colors within the Bauhaus palette", () => {
