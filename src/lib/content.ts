@@ -89,34 +89,26 @@ const cvSchema = z
           .strict(),
       )
       .min(1),
-    researchInterests: z
-      .array(
-        z.object({ title: requiredString, description: requiredString }).strict(),
-      )
-      .min(1),
-    experience: z
-      .array(
-        z
-          .object({
-            title: requiredString,
-            organization: requiredString,
-            period: requiredString,
-            highlights: z.array(requiredString).min(1),
-          })
-          .strict(),
-      )
-      .min(1),
-    honors: z
-      .array(
-        z
-          .object({
-            title: requiredString,
-            organization: requiredString,
-            period: requiredString,
-          })
-          .strict(),
-      )
-      .min(1),
+    projects: z.array(
+      z
+        .object({
+          title: requiredString,
+          organization: requiredString,
+          period: requiredString,
+          highlights: z.array(requiredString).min(1),
+        })
+        .strict(),
+    ),
+    teaching: z.array(
+      z
+        .object({
+          role: requiredString,
+          course: requiredString,
+          institution: requiredString,
+          period: requiredString,
+        })
+        .strict(),
+    ),
     skills: z
       .object({
         Programming: z.array(requiredString).min(1),

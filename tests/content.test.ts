@@ -34,17 +34,13 @@ describe("portfolio content", () => {
 
   it("contains the complete CV section set", () => {
     expect(cv.education).toHaveLength(2);
-    expect(cv.researchInterests).toHaveLength(3);
-    expect(cv.experience).toHaveLength(6);
-    expect(cv.honors).toHaveLength(1);
+    expect(cv.projects).toHaveLength(2);
+    expect(cv.teaching.length).toBeGreaterThanOrEqual(4);
     expect(Object.keys(cv.skills)).toEqual(["Programming", "EDA / Simulation", "Languages"]);
   });
 
   it("rejects a CV without the education required by the homepage", () => {
-    const emptyEducation = cvSource.replace(
-      /education:\n[\s\S]*?\nresearchInterests:/,
-      "education: []\n\nresearchInterests:",
-    );
+    const emptyEducation = cvSource.replace(/education:\n[\s\S]*?\nprojects:/, "education: []\n\nprojects:");
 
     expect(() =>
       loadPortfolioContent({ siteSource, publicationSource, cvSource: emptyEducation }),
