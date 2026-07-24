@@ -76,9 +76,12 @@ describe("print stylesheet", () => {
     );
   });
 
-  it("keeps each section heading with the content that follows it", () => {
+  it("keeps each section heading with its body without deferring the complete grid row", () => {
     expect(printCss).toMatch(
-      /\.cv-section\s+h2\s*{[^}]*(?:break-after:\s*avoid|page-break-after:\s*avoid)/is,
+      /\.cv-section\s+h2\s*{[^}]*break-after:\s*auto[^}]*page-break-after:\s*auto/is,
+    );
+    expect(printCss).toMatch(
+      /\.cv-section__body\s*{[^}]*(?:break-before:\s*avoid|page-break-before:\s*avoid)/is,
     );
   });
 

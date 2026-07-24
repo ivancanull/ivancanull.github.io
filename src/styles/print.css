@@ -57,13 +57,18 @@ body {
 }
 
 .cv-section h2 {
-  break-after: avoid;
+  break-after: auto;
   font-size: 12pt;
-  page-break-after: avoid;
+  page-break-after: auto;
 }
 
 .cv-section h2 span {
   color: black !important;
+}
+
+.cv-section__body {
+  break-before: avoid;
+  page-break-before: avoid;
 }
 
 .cv-entry,
