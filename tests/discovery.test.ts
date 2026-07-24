@@ -40,14 +40,25 @@ describe("built discovery files", () => {
 });
 
 describe("GitHub Pages deployment", () => {
-  it("uses valid YAML with least-privilege Pages permissions", () => {
+  it("deploys pushes to master and supports manual dispatch", () => {
     const workflowPath = ".github/workflows/deploy.yml";
     expect(existsSync(workflowPath)).toBe(true);
     if (!existsSync(workflowPath)) return;
 
     const workflow = parse(readFileSync(workflowPath, "utf8"));
-    expect(workflow.permissions).toEqual({
-      contents: "read",
+    expect(workflow.on.push.branches).toEqual(["master"]);
+    expect(Object.hasOwn(workflow.on, "workflow_dispatch")).toBe(true);
+  });
+
+  it("scopes least-privilege permissions to each Pages job", () => {
+    const workflowPath = ".github/workflows/deploy.yml";
+    expect(existsSync(workflowPath)).toBe(true);
+    if (!existsSync(workflowPath)) return;
+
+    const workflow = parse(readFileSync(workflowPath, "utf8"));
+    expect(workflow.permissions).toBeUndefined();
+    expect(workflow.jobs.build.permissions).toEqual({ contents: "read" });
+    expect(workflow.jobs.deploy.permissions).toEqual({
       pages: "write",
       "id-token": "write",
     });
