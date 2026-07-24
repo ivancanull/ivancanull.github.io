@@ -28,14 +28,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background:
-    linear-gradient(
-        90deg,
-        transparent calc(100% - 1px),
-        color-mix(in srgb, var(--color-charcoal) 8%, transparent) 1px
-      )
-      0 0 / 6.25rem 100%,
-    var(--color-ivory);
+  background: var(--color-ivory);
   font-size: 1rem;
   line-height: 1.6;
 }

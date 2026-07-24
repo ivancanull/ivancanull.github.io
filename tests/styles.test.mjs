@@ -4,6 +4,14 @@ import { describe, expect, it } from "vitest";
 const globalCss = readFileSync(new URL("../src/styles/global.css", import.meta.url), "utf8");
 const printCss = readFileSync(new URL("../src/styles/print.css", import.meta.url), "utf8");
 
+function standaloneRule(css, selector) {
+  const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const matches = [...css.matchAll(new RegExp(`^${escapedSelector}\\s*\\{([^}]*)\\}`, "gm"))];
+
+  expect(matches).toHaveLength(1);
+  return matches[0][1];
+}
+
 function relativeLuminance(hex) {
   const channels = hex
     .slice(1)
@@ -21,6 +29,19 @@ function colorToken(name) {
 }
 
 describe("global styles", () => {
+  it("uses a plain ivory background on the screen body", () => {
+    const bodyRule = standaloneRule(globalCss, "body");
+
+    expect(bodyRule).toMatch(/background:\s*var\(--color-ivory\)\s*;/i);
+  });
+
+  it("does not paint a repeated vertical-line texture on the screen body", () => {
+    const bodyRule = standaloneRule(globalCss, "body");
+
+    expect(bodyRule).not.toMatch(/linear-gradient/i);
+    expect(bodyRule).not.toMatch(/6\.25rem/i);
+  });
+
   it("keeps authored hex colors within the Bauhaus palette", () => {
     const palette = new Set(["#f4f0e6", "#171713", "#d93a2f", "#1559a6", "#efc33d"]);
     const authoredColors = [...globalCss.matchAll(/#[\da-f]{3,8}\b/gi)].map((match) =>
