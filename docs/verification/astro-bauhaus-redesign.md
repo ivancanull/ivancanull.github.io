@@ -4,22 +4,22 @@ Verified on 2026-07-24 from base commit `6d10232dbe2609a166d3f00ba3278043d2b81d8
 
 ## Runtime and commands
 
-The shell did not expose a system Node executable. Verification used Codex's bundled primary runtime, which is compatible with the project's native Rolldown binding:
+Portable prerequisites are Node.js 22.13 or newer, pnpm 11, and an installed Chrome/Chromium-family browser. This verification run used Node.js 24.14.0, pnpm 11.9.0, and Google Chrome 147.0.7727.102 in headless Chromium mode with device scale factor 1.
 
 ```sh
-export PATH="/Users/huifan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Users/huifan/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:$PATH"
-export NODE_PATH="/Users/huifan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
 node --version
 # v24.14.0
 pnpm --version
 # 11.9.0
 ```
 
-The installed browser and bundled automation runtime were:
+Browser/PDF automation is provided by exact repository dev dependencies, so no global Node module path or Playwright browser download is required:
 
-- Google Chrome 147.0.7727.102 at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`.
-- Playwright 1.61.1 from the bundled primary runtime.
-- Headless Chromium mode, device scale factor 1.
+- `playwright-core` 1.61.1 drives an already installed browser.
+- `pdfjs-dist` 5.4.624 extracts per-page text and page geometry from the generated PDF.
+- The harness checks common Google Chrome, Chromium, Edge, and Chrome Canary paths on macOS and common Chrome/Chromium paths on Linux.
+- For another installation location, set `BROWSER_EXECUTABLE_PATH=/absolute/path/to/chrome`.
+- If no executable is available, the harness stops with installation and environment-variable guidance.
 
 The clean dependency and baseline repository checks were:
 
@@ -39,19 +39,17 @@ git status --short --branch
 # ## feat/astro-bauhaus
 ```
 
-An initial attempt that put `/Applications/Codex.app/Contents/Resources/cua_node/bin` first in `PATH` failed before tests because macOS rejected the Rolldown native binding: the OpenAI-signed app Node process and the native module did not have matching signing identities. Repeating the commands with the bundled primary runtime path above passed without changing dependencies or project code.
-
-The production build was served and inspected with:
+The portable production-browser verification command is:
 
 ```sh
-pnpm exec astro preview --host 127.0.0.1 --port 4321
-node docs/verification/browser-check.mjs
+pnpm install --frozen-lockfile
+pnpm run verify:browser
 # 6 page checks, 6 full-page screenshots, 6 exact-viewport screenshots,
 # 0 failed layouts, 3 keyboard routes, 0 failed keyboard routes,
-# reduced-motion checks passed, print assertions passed; exit 0.
+# reduced-motion, print-style, and PDF pagination assertions passed; exit 0.
 ```
 
-`docs/verification/browser-check.mjs` is dependency-free within this repository. It uses Playwright from `NODE_PATH` and the installed Chrome executable, and writes its machine-readable result to `docs/verification/assets/browser-results.json`.
+`pnpm run verify:browser` builds the site, starts and stops `astro preview` when the configured base URL is not already available, discovers the browser executable, and writes machine-readable evidence to `docs/verification/assets/browser-results.json`. `VERIFICATION_BASE_URL` can target an already running deployment.
 
 ## Responsive visual inspection
 
@@ -59,6 +57,8 @@ Home, Publications, and CV were captured in two distinct forms at both required 
 
 - Exact-viewport PNGs contain only the visible browser viewport and are exactly 1440 x 1000 or 390 x 844 pixels.
 - Full-page JPEGs preserve the complete document for end-to-end layout inspection and are taller than the configured viewport.
+
+Before either screenshot type is captured, the harness awaits every document animation's `finished` promise. The separate normal/reduced-motion contexts remain unchanged and still measure the authored animation behavior. Two consecutive browser runs produced identical SHA-256 hashes for all 12 screenshots.
 
 The harness reads each viewport PNG's IHDR width and height from the screenshot buffer and throws before writing a passing result if either dimension differs from the configured viewport. All six stored results report `viewportDimensionsMatch: true`. A separate `sips` check confirmed the same pixel dimensions on disk. Both artifact sets were directly inspected in addition to the browser assertions.
 
@@ -93,6 +93,18 @@ Full-page artifacts:
 - [CV desktop full page](assets/cv-desktop.jpg)
 - [CV mobile full page](assets/cv-mobile.jpg)
 
+## Route identity
+
+Every `page.goto` response is required to be HTTP 2xx before layout evidence is collected. The harness then checks a stable exact document title, exact `<h1>`, and route-specific content token:
+
+| Route | HTTP | Title | Heading | Stable content | Result |
+| --- | ---: | --- | --- | --- | --- |
+| Home | 200 | Huifan Zhang | Huifan Zhang | Machine learning for RF circuits | Pass |
+| Publications | 200 | Publications \| Huifan Zhang | Publications | Efficient RF Passive Components Modeling | Pass |
+| CV | 200 | CV \| Huifan Zhang | Huifan Zhang | Research Projects | Pass |
+
+These checks run at both viewport sizes and again before keyboard/print inspection. Unit fixtures prove that an HTTP 404 and a 200 fallback/Home document both fail the route validator, so a missing route cannot produce passing layout evidence.
+
 ## Keyboard and focus
 
 Playwright pressed `Tab` through every visible focusable element on each production route, waiting for smooth scrolling and the skip-link transition before sampling the focused rectangle and computed focus style. It then reloaded each route, focused the skip link with `Tab`, and activated it with `Enter`.
@@ -120,10 +132,17 @@ The CV was printed by Chrome through Playwright with print media, reduced motion
 
 Browser-level print assertions confirmed:
 
-- `.site-header`, `.site-footer`, `.skip-link`, `.cv-contact`, `.eyebrow`, and selected-work decorations all computed `display: none`.
+- `.site-header`, `.site-footer`, `.skip-link`, `.cv-contact`, and `.eyebrow` each had the expected non-zero count of 1; selected-work decorations had the expected count of 3; every matched node computed `display: none`.
 - The document background computed white and all visible text computed black; there were zero disallowed foreground or background colors.
-- All 16 CV entries/skill rows/publication entries computed `break-inside: avoid`.
-- All five section bodies computed `break-before: avoid`, keeping each heading with following content.
+- The protected entry set had the expected non-zero count of 16, and every entry/skill row/publication computed `break-inside: avoid`.
+- The section-body set had the expected non-zero count of 5, and every body computed `break-before: avoid`.
+
+The generated PDF is then parsed in-process by `pdfjs-dist`. Behavioral assertions confirmed:
+
+- Exactly four pages, each exactly US Letter at 612 x 792 points.
+- Education and its first entry appear on page 1. The original mostly blank page-1 regression would fail this check.
+- Education is on page 1; Research Projects, Teaching, and Skills headings share page 2 with their first content; Publications shares page 3 with its first entry.
+- Each of the 16 protected entries has a stable start token and a trailing-content token on the same PDF page: 2 on page 1, 7 on page 2, 5 on page 3, and 2 on page 4. Each selected token identifies exactly one page; when a final field is repeated elsewhere, the harness combines adjacent trailing fields into a unique suffix without dropping the entry's final content.
 
 The PDF was also rendered to four 144-DPI PNG pages with bundled Poppler and directly inspected. The final pagination is:
 
@@ -134,13 +153,12 @@ The PDF was also rendered to four 144-DPI PNG pages with bundled Poppler and dir
 
 The rendered pages are strict black on white with no site header/footer, action links, colored badges, or decorative geometry. No CV entry is split across pages, every section heading is followed by substantive content, and no text is clipped or overlapping. The email remains as substantive identity text in the CV intro; the separate contact-action block is hidden.
 
-The PDF inspection commands were:
+The optional Poppler commands used for the separate visual rendering were:
 
 ```sh
-POPPLER_BIN=/Users/huifan/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/poppler/bin
-"$POPPLER_BIN/pdfinfo" docs/verification/assets/cv-print.pdf
-"$POPPLER_BIN/pdftoppm" -png -r 144 docs/verification/assets/cv-print.pdf tmp/pdfs/cv-final
-"$POPPLER_BIN/pdftotext" -layout docs/verification/assets/cv-print.pdf tmp/pdfs/cv-final.txt
+pdfinfo docs/verification/assets/cv-print.pdf
+pdftoppm -png -r 144 docs/verification/assets/cv-print.pdf tmp/pdfs/cv-final
+pdftotext -layout docs/verification/assets/cv-print.pdf tmp/pdfs/cv-final.txt
 ```
 
 ## Correction made during verification
@@ -156,15 +174,43 @@ pnpm test -- tests/styles.test.mjs
 
 The minimal correction in `src/styles/print.css` restores normal breaking after the grid-cell heading and applies `break-before: avoid` to `.cv-section__body`, binding the body to its heading without treating the complete section row as unbreakable. The focused test then passed with all 53 tests green. The site was rebuilt, the full browser harness reran with exit 0, and the final PDF render confirmed Education now appears on page 1.
 
-The final post-correction gate was repeated with the same bundled runtime:
+## Verification harness regression coverage
+
+Focused helper tests were written before the new verification logic. The first run failed because `browser-helpers.mjs` did not exist:
+
+```sh
+pnpm exec vitest run tests/browser-verification-helpers.test.mjs
+# RED: 1 failed suite; missing browser-helpers.mjs.
+```
+
+After the minimal helper implementation, all ten focused tests passed. The fixtures cover valid/invalid PNG headers, explicit missing-browser guidance, HTTP 404 and fallback-route rejection, positive/exact count enforcement, the expected four-page PDF, the old Education-on-page-2 regression, orphaned section content, duplicated protected entries, and vacuous PDF expectations.
+
+```sh
+pnpm exec vitest run tests/browser-verification-helpers.test.mjs
+# GREEN: 1 file and 10 tests passed.
+```
+
+The protected-entry contract was then strengthened from checking a label alone to requiring unique start and trailing-content tokens on the same page. The revised fixtures initially produced three expected failures because the helper still accepted label strings and included an explicit entry split across pages. After the validator learned the new contract, all 11 focused tests passed and the split fixture failed with page-specific evidence when its start and end moved apart.
+
+The first full browser run under that stronger contract exposed a separate evidence defect: the first Teaching entry selected `2019` as its trailing token because it was unique among exact DOM fields, while normalized PDF text also contained a 2019 publication on page 4. A focused regression test was added first and failed because unique PDF-aware suffix selection did not exist. The minimal implementation now prefers the shortest trailing suffix that identifies exactly one PDF page, selecting `2019 ShanghaiTech University` for that entry while still including its final field.
+
+```sh
+pnpm exec vitest run tests/browser-verification-helpers.test.mjs
+# RED: 1 failed, 11 passed; selectUniquePdfEndToken was not implemented.
+# GREEN: 1 file and 12 tests passed.
+```
+
+The browser harness was then executed twice through the repository script. Both runs passed all route, layout, keyboard, motion, print-style, and parsed-PDF checks, and all 12 screenshot hashes were identical between runs.
+
+The final post-correction gate was repeated with the pinned repository dependencies:
 
 ```sh
 pnpm install --frozen-lockfile
 # Already up to date; exit 0.
 
 pnpm run verify
-# 7 test files and 53 tests passed.
-# Astro check: 27 files, 0 errors, 0 warnings, 0 hints.
+# 8 test files and 65 tests passed.
+# Astro check: 29 files, 0 errors, 0 warnings, 0 hints.
 # Astro build: 4 pages built; exit 0.
 
 git diff --check

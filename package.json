@@ -14,6 +14,7 @@
     "check": "astro check",
     "test": "vitest run",
     "test:output": "vitest run tests/output.test.ts",
+    "verify:browser": "pnpm run build && node docs/verification/browser-check.mjs",
     "verify": "pnpm run test && pnpm run check && pnpm run build"
   },
   "dependencies": {
@@ -27,6 +28,8 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "pdfjs-dist": "5.4.624",
+    "playwright-core": "1.61.1",
     "vitest": "^4.1.10"
   }
 }

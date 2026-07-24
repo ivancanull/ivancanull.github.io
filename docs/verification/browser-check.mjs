@@ -1,20 +1,54 @@
 import { createRequire } from "node:module";
+import { spawn } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
+import { setTimeout as delay } from "node:timers/promises";
+import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
+import { chromium } from "playwright-core";
+import {
+  readPngDimensions,
+  resolveBrowserExecutable,
+  selectUniquePdfEndToken,
+  validateExpectedCount,
+  validatePdfEvidence,
+  validateRouteEvidence,
+} from "./browser-helpers.mjs";
 
 const require = createRequire(import.meta.url);
-const { chromium } = require("playwright");
+const astroPackage = require("astro/package.json");
+const astroCliPath = resolve(dirname(require.resolve("astro/package.json")), astroPackage.bin.astro);
 
 const baseUrl = process.env.VERIFICATION_BASE_URL ?? "http://127.0.0.1:4321";
-const chromePath = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const baseUrlObject = new URL(baseUrl);
+const browserExecutablePath = resolveBrowserExecutable({
+  explicitPath: process.env.BROWSER_EXECUTABLE_PATH,
+});
 const assetsDirectory = resolve("docs/verification/assets");
 
 mkdirSync(assetsDirectory, { recursive: true });
 
 const routes = [
-  { name: "home", path: "/" },
-  { name: "publications", path: "/publications/" },
-  { name: "cv", path: "/cv/" },
+  {
+    name: "home",
+    path: "/",
+    title: "Huifan Zhang",
+    heading: "Huifan Zhang",
+    stableContent: "Machine learning for RF circuits",
+  },
+  {
+    name: "publications",
+    path: "/publications/",
+    title: "Publications | Huifan Zhang",
+    heading: "Publications",
+    stableContent: "Efficient RF Passive Components Modeling",
+  },
+  {
+    name: "cv",
+    path: "/cv/",
+    title: "CV | Huifan Zhang",
+    heading: "Huifan Zhang",
+    stableContent: "Research Projects",
+  },
 ];
 
 const viewports = [
@@ -22,20 +56,22 @@ const viewports = [
   { name: "mobile", width: 390, height: 844 },
 ];
 
-function readPngDimensions(buffer) {
-  const pngSignature = "89504e470d0a1a0a";
-  if (buffer.length < 24 || buffer.subarray(0, 8).toString("hex") !== pngSignature) {
-    throw new Error("Viewport screenshot is not a valid PNG file");
+const hiddenSelectorExpectations = [
+  { selector: ".site-header", expectedCount: 1 },
+  { selector: ".site-footer", expectedCount: 1 },
+  { selector: ".skip-link", expectedCount: 1 },
+  { selector: ".cv-contact", expectedCount: 1 },
+  { selector: ".eyebrow", expectedCount: 1 },
+  { selector: ".publication-item__selected", expectedCount: 3 },
+];
+const expectedProtectedEntryCount = 16;
+const expectedSectionBodyCount = 5;
+
+async function waitForPage(page, route) {
+  const response = await page.goto(new URL(route.path, baseUrlObject).href, { waitUntil: "networkidle" });
+  if (!response) {
+    throw new Error(`${route.path} did not produce an HTTP navigation response`);
   }
-
-  return {
-    width: buffer.readUInt32BE(16),
-    height: buffer.readUInt32BE(20),
-  };
-}
-
-async function waitForPage(page, path) {
-  await page.goto(`${baseUrl}${path}`, { waitUntil: "networkidle" });
   await page.evaluate(async () => {
     await document.fonts.ready;
     await Promise.all(
@@ -49,6 +85,97 @@ async function waitForPage(page, path) {
       ),
     );
   });
+
+  const identity = await page.evaluate(() => ({
+    title: document.title,
+    heading: document.querySelector("h1")?.textContent?.replace(/\s+/g, " ").trim() ?? "",
+    bodyText: document.body.textContent?.replace(/\s+/g, " ").trim() ?? "",
+  }));
+  const evidence = validateRouteEvidence({ status: response.status(), ...identity }, route);
+  return {
+    status: evidence.status,
+    title: evidence.title,
+    heading: evidence.heading,
+    stableContent: route.stableContent,
+    stableContentPresent: true,
+    passed: true,
+  };
+}
+
+async function waitForCaptureAnimations(page) {
+  await page.evaluate(async () => {
+    await Promise.all(document.getAnimations().map((animation) => animation.finished.catch(() => undefined)));
+  });
+}
+
+async function extractPdfPages(pdfBuffer) {
+  const document = await getDocument({
+    data: new Uint8Array(pdfBuffer),
+    disableFontFace: true,
+    useSystemFonts: true,
+  }).promise;
+  const pages = [];
+  try {
+    for (let pageNumber = 1; pageNumber <= document.numPages; pageNumber += 1) {
+      const page = await document.getPage(pageNumber);
+      const viewport = page.getViewport({ scale: 1 });
+      const textContent = await page.getTextContent();
+      pages.push({
+        page: pageNumber,
+        width: viewport.width,
+        height: viewport.height,
+        text: textContent.items.map((item) => "str" in item ? item.str : "").join(" "),
+      });
+    }
+  } finally {
+    await document.destroy();
+  }
+  return pages;
+}
+
+async function startPreviewIfNeeded() {
+  try {
+    await fetch(baseUrl, { signal: AbortSignal.timeout(1_000) });
+    return null;
+  } catch {
+    if (!['127.0.0.1', 'localhost', '::1'].includes(baseUrlObject.hostname)) {
+      throw new Error(`VERIFICATION_BASE_URL is unreachable and cannot be started locally: ${baseUrl}`);
+    }
+  }
+
+  const preview = spawn(
+    process.execPath,
+    [
+      astroCliPath,
+      "preview",
+      "--host",
+      baseUrlObject.hostname,
+      "--port",
+      baseUrlObject.port || "4321",
+    ],
+    { stdio: ["ignore", "pipe", "pipe"] },
+  );
+  let previewOutput = "";
+  preview.stdout.on("data", (chunk) => { previewOutput += chunk; });
+  preview.stderr.on("data", (chunk) => { previewOutput += chunk; });
+
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    if (preview.exitCode !== null) {
+      throw new Error(`Astro preview exited before it was ready:\n${previewOutput.trim()}`);
+    }
+    try {
+      const response = await fetch(baseUrl, { signal: AbortSignal.timeout(500) });
+      if (response.status >= 200) {
+        return preview;
+      }
+    } catch {
+      // Preview is still starting.
+    }
+    await delay(100);
+  }
+
+  preview.kill("SIGTERM");
+  throw new Error(`Timed out waiting for Astro preview at ${baseUrl}:\n${previewOutput.trim()}`);
 }
 
 async function collectLayout(page) {
@@ -286,24 +413,28 @@ async function animationStyles(page) {
   );
 }
 
-const browser = await chromium.launch({ executablePath: chromePath, headless: true });
+const previewProcess = await startPreviewIfNeeded();
+let browser;
 const results = {
   generatedAt: new Date().toISOString(),
   runtime: {
-    playwright: require("playwright/package.json").version,
-    browserType: "Chromium via installed Google Chrome",
-    chromePath,
+    playwrightCore: require("playwright-core/package.json").version,
+    pdfjs: require("pdfjs-dist/package.json").version,
+    browserType: "Chromium via an installed Chrome/Chromium executable",
+    browserExecutablePath,
   },
   screenshots: [],
   keyboard: [],
 };
 
 try {
+  browser = await chromium.launch({ executablePath: browserExecutablePath, headless: true });
   for (const viewport of viewports) {
     const context = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: "no-preference" });
     const page = await context.newPage();
     for (const route of routes) {
-      await waitForPage(page, route.path);
+      const routeEvidence = await waitForPage(page, route);
+      await waitForCaptureAnimations(page);
       const fullPageFilename = `${route.name}-${viewport.name}.jpg`;
       await page.screenshot({
         path: resolve(assetsDirectory, fullPageFilename),
@@ -336,6 +467,7 @@ try {
         viewportArtifact: `docs/verification/assets/${viewportFilename}`,
         viewportImageDimensions,
         viewportDimensionsMatch: true,
+        routeEvidence,
         layout: await collectLayout(page),
       });
     }
@@ -345,21 +477,21 @@ try {
   for (const route of routes) {
     const context = await browser.newContext({ viewport: viewports[0], reducedMotion: "no-preference" });
     const page = await context.newPage();
-    await waitForPage(page, route.path);
-    results.keyboard.push({ route: route.path, ...(await verifyKeyboard(page)) });
+    const routeEvidence = await waitForPage(page, route);
+    results.keyboard.push({ route: route.path, routeEvidence, ...(await verifyKeyboard(page)) });
     await context.close();
   }
 
   const normalContext = await browser.newContext({ viewport: viewports[0], reducedMotion: "no-preference" });
   const normalPage = await normalContext.newPage();
-  await waitForPage(normalPage, "/");
+  await waitForPage(normalPage, routes[0]);
   const normalAnimations = await animationStyles(normalPage);
   const normalScrollBehavior = await normalPage.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior);
   await normalContext.close();
 
   const reducedContext = await browser.newContext({ viewport: viewports[0], reducedMotion: "reduce" });
   const reducedPage = await reducedContext.newPage();
-  await waitForPage(reducedPage, "/");
+  await waitForPage(reducedPage, routes[0]);
   const reducedAnimations = await animationStyles(reducedPage);
   const reducedScrollBehavior = await reducedPage.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior);
   await reducedContext.close();
@@ -380,16 +512,8 @@ try {
   const printContext = await browser.newContext({ viewport: viewports[0] });
   const printPage = await printContext.newPage();
   await printPage.emulateMedia({ media: "print", reducedMotion: "reduce" });
-  await waitForPage(printPage, "/cv/");
-  const printState = await printPage.evaluate(() => {
-    const hiddenSelectors = [
-      ".site-header",
-      ".site-footer",
-      ".skip-link",
-      ".cv-contact",
-      ".eyebrow",
-      ".publication-item__selected",
-    ];
+  const printRouteEvidence = await waitForPage(printPage, routes[2]);
+  const printState = await printPage.evaluate((hiddenExpectations) => {
     const visibleElements = [...document.body.querySelectorAll("*")].filter((element) => {
       const style = getComputedStyle(element);
       const rect = element.getBoundingClientRect();
@@ -413,26 +537,56 @@ try {
         background !== "rgba(0, 0, 0, 0)" &&
         background !== "transparent",
       );
-    const protectedEntries = [...document.querySelectorAll(".cv-entry, .publication-item, .skill-list > div")].map(
-      (element) => ({
-        label: element.querySelector("h3, dt")?.textContent?.replace(/\s+/g, " ").trim() || "entry",
-        breakInside: getComputedStyle(element).breakInside,
-      }),
+    const protectedEntryDrafts = [...document.querySelectorAll(".cv-entry, .publication-item, .skill-list > div")].map(
+      (element) => {
+        const label = element.querySelector("h3, dt")?.textContent?.replace(/\s+/g, " ").trim() || "entry";
+        const textCandidates = [
+          ...element.querySelectorAll(
+            ".cv-entry__heading > p, .cv-entry > p, .cv-entry li, dd, .publication-item__authors, .publication-item__venue",
+          ),
+        ].map((candidate) => candidate.textContent?.replace(/\s+/g, " ").trim() ?? "");
+        const linkCandidates = [...element.querySelectorAll('a[href^="http://"], a[href^="https://"]')]
+          .map((link) => link.getAttribute("href") ?? "");
+        return {
+          label,
+          candidates: [label, ...textCandidates, ...linkCandidates].filter(Boolean),
+          breakInside: getComputedStyle(element).breakInside,
+        };
+      },
     );
+    const protectedEntries = protectedEntryDrafts.map(({ label, candidates, breakInside }) => {
+      const contentCandidates = candidates.filter((candidate) => candidate !== label);
+      return {
+        label,
+        startToken: label,
+        endTokenCandidates: contentCandidates
+          .map((_, index) => contentCandidates.slice(index).join(" "))
+          .reverse(),
+        breakInside,
+      };
+    });
     const protectedHeadings = [...document.querySelectorAll(".cv-section h2")].map((element) => ({
       label: element.textContent?.replace(/\s+/g, " ").trim(),
       breakAfter: getComputedStyle(element).breakAfter,
     }));
     const protectedSectionBodies = [...document.querySelectorAll(".cv-section__body")].map((element) => ({
       label: element.closest(".cv-section")?.querySelector("h2")?.textContent?.replace(/\s+/g, " ").trim(),
+      firstContent: element.querySelector("h3, dt")?.textContent?.replace(/\s+/g, " ").trim() ?? "",
       breakBefore: getComputedStyle(element).breakBefore,
     }));
     return {
       hidden: Object.fromEntries(
-        hiddenSelectors.map((selector) => [
-          selector,
-          [...document.querySelectorAll(selector)].every((element) => getComputedStyle(element).display === "none"),
-        ]),
+        hiddenExpectations.map(({ selector, expectedCount }) => {
+          const elements = [...document.querySelectorAll(selector)];
+          return [
+            selector,
+            {
+              actualCount: elements.length,
+              expectedCount,
+              allHidden: elements.every((element) => getComputedStyle(element).display === "none"),
+            },
+          ];
+        }),
       ),
       htmlBackground: getComputedStyle(document.documentElement).backgroundColor,
       bodyBackground: getComputedStyle(document.body).backgroundColor,
@@ -445,15 +599,84 @@ try {
       allEntriesAvoidBreaks: protectedEntries.every((entry) => entry.breakInside === "avoid"),
       allSectionBodiesAvoidOrphans: protectedSectionBodies.every((body) => body.breakBefore === "avoid"),
     };
-  });
+  }, hiddenSelectorExpectations);
+
+  for (const [selector, hidden] of Object.entries(printState.hidden)) {
+    validateExpectedCount(`Print-hidden selector ${selector}`, hidden.actualCount, hidden.expectedCount);
+    if (!hidden.allHidden) {
+      throw new Error(`Print-hidden selector ${selector} still has visible elements`);
+    }
+  }
+  validateExpectedCount(
+    "Protected CV entries",
+    printState.protectedEntries.length,
+    expectedProtectedEntryCount,
+  );
+  validateExpectedCount(
+    "CV section bodies",
+    printState.protectedSectionBodies.length,
+    expectedSectionBodyCount,
+  );
+  if (printState.protectedEntries.some(({ label, startToken, endTokenCandidates }) =>
+    !label || label === "entry" || !startToken || !endTokenCandidates.length
+  )) {
+    throw new Error("Every protected CV entry must expose stable start and trailing PDF token candidates");
+  }
+  if (printState.protectedSectionBodies.some(({ label, firstContent }) => !label || !firstContent)) {
+    throw new Error("Every CV section must expose a heading and following-content PDF token");
+  }
+
   const pdfPath = resolve(assetsDirectory, "cv-print.pdf");
-  await printPage.pdf({ path: pdfPath, printBackground: true, preferCSSPageSize: true });
-  results.print = { ...printState, artifact: "docs/verification/assets/cv-print.pdf" };
+  const pdfBuffer = await printPage.pdf({ printBackground: true, preferCSSPageSize: true });
+  const pdfPages = await extractPdfPages(pdfBuffer);
+  const pdfPageTexts = pdfPages.map(({ text }) => text);
+  const protectedEntries = printState.protectedEntries.map(({ endTokenCandidates, ...entry }) => ({
+    ...entry,
+    endToken: selectUniquePdfEndToken(pdfPageTexts, endTokenCandidates),
+  }));
+  const pdfPageSizes = pdfPages.map(({ page, width, height }) => ({ page, width, height }));
+  if (pdfPageSizes.some(({ width, height }) => Math.abs(width - 612) > 0.1 || Math.abs(height - 792) > 0.1)) {
+    throw new Error(`CV PDF must use US Letter pages (612x792 points): ${JSON.stringify(pdfPageSizes)}`);
+  }
+  const pdfBehavior = validatePdfEvidence(
+    pdfPageTexts,
+    {
+      expectedPageCount: 4,
+      educationHeading: printState.protectedSectionBodies[0].label,
+      sections: printState.protectedSectionBodies.map(({ label, firstContent }) => ({
+        heading: label,
+        firstContent,
+      })),
+      protectedEntries: protectedEntries.map(({ label, startToken, endToken }) => ({
+        label,
+        startToken,
+        endToken,
+      })),
+    },
+  );
+  writeFileSync(pdfPath, pdfBuffer);
+  results.print = {
+    ...printState,
+    protectedEntries,
+    routeEvidence: printRouteEvidence,
+    expectedProtectedEntryCount,
+    expectedSectionBodyCount,
+    pdfBehavior: {
+      ...pdfBehavior,
+      format: "US Letter",
+      expectedPageCount: 4,
+      pageSizes: pdfPageSizes,
+    },
+    artifact: "docs/verification/assets/cv-print.pdf",
+  };
   await printContext.close();
 
   writeFileSync(resolve(assetsDirectory, "browser-results.json"), `${JSON.stringify(results, null, 2)}\n`);
 } finally {
-  await browser.close();
+  await browser?.close();
+  if (previewProcess) {
+    previewProcess.kill("SIGTERM");
+  }
 }
 
 const failedLayouts = results.screenshots.filter(({ layout }) =>
@@ -478,12 +701,18 @@ const failedKeyboard = results.keyboard.filter(
     route.skipAfterActivation.hash !== "#main-content",
 );
 const failedPrint =
-  !Object.values(results.print.hidden).every(Boolean) ||
+  !Object.values(results.print.hidden).every(
+    ({ actualCount, expectedCount, allHidden }) => actualCount === expectedCount && allHidden,
+  ) ||
+  results.print.protectedEntries.length !== results.print.expectedProtectedEntryCount ||
+  results.print.protectedSectionBodies.length !== results.print.expectedSectionBodyCount ||
   results.print.bodyColor !== "rgb(0, 0, 0)" ||
   results.print.disallowedTextColors.length > 0 ||
   results.print.disallowedBackgrounds.length > 0 ||
   !results.print.allEntriesAvoidBreaks ||
-  !results.print.allSectionBodiesAvoidOrphans;
+  !results.print.allSectionBodiesAvoidOrphans ||
+  results.print.pdfBehavior.pageCount !== results.print.pdfBehavior.expectedPageCount ||
+  results.print.pdfBehavior.educationPage !== 1;
 
 console.log(
   JSON.stringify(
@@ -496,6 +725,7 @@ console.log(
       failedKeyboard: failedKeyboard.map(({ route }) => route),
       reducedMotion: results.reducedMotion,
       failedPrint,
+      pdfBehavior: results.print.pdfBehavior,
       printArtifact: results.print.artifact,
     },
     null,

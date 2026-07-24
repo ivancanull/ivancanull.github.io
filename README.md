@@ -45,6 +45,14 @@ pnpm run verify
 
 The static site is written to `dist/`.
 
+For production-browser, accessibility, screenshot, and PDF checks, install Google Chrome or Chromium and run:
+
+```sh
+pnpm run verify:browser
+```
+
+The command builds the site, starts a local preview, and uses the installed browser without downloading a Playwright browser bundle. Common macOS and Linux browser paths are detected automatically. Set `BROWSER_EXECUTABLE_PATH=/absolute/path/to/chrome` when the executable is elsewhere.
+
 ## GitHub Pages deployment
 
 The workflow in `.github/workflows/deploy.yml` verifies and deploys the site after a push to `master`. It can also be started manually from the Actions tab.
