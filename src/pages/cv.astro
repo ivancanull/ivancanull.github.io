@@ -1,0 +1,83 @@
+---
+import ContactLinks from "../components/ContactLinks.astro";
+import CVSection from "../components/CVSection.astro";
+import PublicationList from "../components/PublicationList.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { cv, publications, site } from "../lib/content";
+---
+
+<BaseLayout
+  title="CV"
+  description="Curriculum vitae for Huifan Zhang, an EDA and RF machine-learning researcher."
+  printable
+>
+  <header class="page-container cv-intro">
+    <div>
+      <p class="eyebrow">Curriculum vitae</p>
+      <h1>{site.name}</h1>
+      <p class="cv-intro__role">{site.role}</p>
+      <p>{site.institution} &middot; {site.location} &middot; {site.email}</p>
+    </div>
+    <div class="cv-contact">
+      <ContactLinks />
+    </div>
+  </header>
+
+  <div class="page-container cv-document">
+    <CVSection title="Education" index={1}>
+      <div class="cv-entries">
+        {cv.education.map((entry) => (
+          <article class="cv-entry">
+            <div class="cv-entry__heading">
+              <h3>{entry.degree}</h3>
+              <p>{entry.period}</p>
+            </div>
+            <p>{entry.institution}</p>
+            {entry.detail && <p>{entry.detail}</p>}
+          </article>
+        ))}
+      </div>
+    </CVSection>
+
+    <CVSection title="Research Projects" index={2}>
+      <div class="cv-entries">
+        {cv.projects.map((project) => (
+          <article class="cv-entry">
+            <div class="cv-entry__heading">
+              <h3>{project.title}</h3>
+              <p>{project.period}</p>
+            </div>
+            <p>{project.organization}</p>
+            <ul>{project.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </CVSection>
+
+    <CVSection title="Teaching" index={3}>
+      <div class="cv-entries">
+        {cv.teaching.map((entry) => (
+          <article class="cv-entry">
+            <div class="cv-entry__heading">
+              <h3>{entry.role} &middot; {entry.course}</h3>
+              <p>{entry.period}</p>
+            </div>
+            <p>{entry.institution}</p>
+          </article>
+        ))}
+      </div>
+    </CVSection>
+
+    <CVSection title="Skills" index={4}>
+      <dl class="skill-list">
+        {Object.entries(cv.skills).map(([category, values]) => (
+          <div><dt>{category}</dt><dd>{values.join(" · ")}</dd></div>
+        ))}
+      </dl>
+    </CVSection>
+
+    <CVSection title="Publications" index={5}>
+      <PublicationList items={publications} compact />
+    </CVSection>
+  </div>
+</BaseLayout>

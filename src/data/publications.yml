@@ -1,0 +1,59 @@
+- id: aspdac-2026
+  title: Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling
+  authors: Huifan Zhang and Pingqiang Zhou
+  venue: 2026 31st Asia and South Pacific Design Automation Conference (ASP-DAC)
+  year: 2026
+  type: conference
+  summary: This paper presents an uncertainty-aware Bayesian online learning framework that jointly models geometric and frequency domains of RF passive components, achieving accurate parametric modeling with only 2.86% of the EM simulation cost and a 35× speedup.
+  selected: true
+  links:
+    - label: DOI
+      url: https://doi.org/10.1109/asp-dac66049.2026.11420493
+
+- id: date-2025
+  title: Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework
+  authors: Huifan Zhang, Yun Hu, and Pingqiang Zhou
+  venue: 2025 Design, Automation & Test in Europe Conference (DATE)
+  year: 2025
+  type: conference
+  summary: This work presents a physics-informed deep learning framework for time-domain 3D electromagnetic field estimation that enforces Maxwell’s equations to achieve over 200× speedup and higher accuracy than data-driven and operator-learning baselines.
+  selected: true
+  links:
+    - label: DOI
+      url: https://doi.org/10.23919/date64628.2025.10992916
+
+- id: apccas-2024
+  title: Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation
+  authors: Yun Hu, Huifan Zhang, and Pingqiang Zhou
+  venue: 2024 IEEE Asia Pacific Conference on Circuits and Systems (APCCAS)
+  year: 2024
+  type: conference
+  summary: This paper proposes an on-chip modulated and tightly integrated microring resonator array with optimized bending and quantization-aware ONN design to enable scalable, low-loss, and error-resilient optical neural network computing.
+  selected: false
+  links:
+    - label: DOI
+      url: https://doi.org/10.1109/apccas62602.2024.10808888
+
+- id: tcasii-2023
+  title: Machine Learning-Based Device Modeling and Performance Optimization for FinFETs
+  authors: Huifan Zhang, Youliang Jing, and Pingqiang Zhou
+  venue: "IEEE Transactions on Circuits and Systems II: Express Briefs"
+  year: 2023
+  type: journal
+  summary: This brief presents a machine-learning-based FinFET modeling and optimization framework that accurately predicts I–V and C–V characteristics using ANN models and significantly accelerates DC/AC performance optimization with far fewer TCAD simulations.
+  selected: true
+  links:
+    - label: DOI
+      url: https://doi.org/10.1109/tcsii.2022.3224172
+
+- id: asicon-2019
+  title: A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays
+  authors: Yu Ma, Dingcheng Jia, Huifan Zhang, Ruoyu Wang, and Pingqiang Zhou
+  venue: 2019 IEEE 13th International Conference on ASIC (ASICON)
+  year: 2019
+  type: conference
+  summary: This work presents a compact 2T1R RRAM array architecture that mitigates heavy-ion-induced single-event upsets while eliminating read and reset performance penalties with only 1.9% area overhead.
+  selected: false
+  links:
+    - label: DOI
+      url: https://doi.org/10.1109/asicon47005.2019.8983491

@@ -1,0 +1,2798 @@
+{
+  "generatedAt": "2026-07-24T08:35:39.506Z",
+  "runtime": {
+    "playwrightCore": "1.61.1",
+    "pdfjs": "5.4.624",
+    "browserType": "Chromium via an installed Chrome/Chromium executable",
+    "browserExecutablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "layoutChecks": [
+    {
+      "route": "/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "captureArtifacts": true
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Machine learning for RF circuits",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "Huifan Zhang",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "dimensions": {
+          "htmlClientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyClientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "bodyScrollHeight": 3996
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": {
+          "src": "http://127.0.0.1:4321/images/profile.png",
+          "naturalWidth": 720,
+          "naturalHeight": 720,
+          "rect": {
+            "top": 380,
+            "right": 1308,
+            "bottom": 748,
+            "left": 940,
+            "width": 368,
+            "height": 368
+          }
+        },
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Huifan Zhang",
+            "top": 82,
+            "right": 1310,
+            "bottom": 1047,
+            "left": 130,
+            "width": 1180,
+            "height": 965
+          },
+          {
+            "domIndex": 1,
+            "label": "Research focus",
+            "top": 1047,
+            "right": 1310,
+            "bottom": 2063,
+            "left": 130,
+            "width": 1180,
+            "height": 1016
+          },
+          {
+            "domIndex": 2,
+            "label": "Selected work",
+            "top": 2063,
+            "right": 1310,
+            "bottom": 3196,
+            "left": 130,
+            "width": 1180,
+            "height": 1133
+          },
+          {
+            "domIndex": 3,
+            "label": "Current status and education",
+            "top": 3196,
+            "right": 1310,
+            "bottom": 3340,
+            "left": 130,
+            "width": 1180,
+            "height": 144
+          },
+          {
+            "domIndex": 4,
+            "label": "Contact",
+            "top": 3484,
+            "right": 1440,
+            "bottom": 3866,
+            "left": 0,
+            "width": 1440,
+            "height": 382
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/publications/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "captureArtifacts": true
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "Publications | Huifan Zhang",
+        "heading": "Publications",
+        "stableContent": "Efficient RF Passive Components Modeling",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "Publications | Huifan Zhang",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "dimensions": {
+          "htmlClientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyClientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "bodyScrollHeight": 3107
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": null,
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Publications",
+            "top": 82,
+            "right": 1310,
+            "bottom": 618,
+            "left": 130,
+            "width": 1180,
+            "height": 536
+          },
+          {
+            "domIndex": 1,
+            "label": "2026",
+            "top": 618,
+            "right": 1310,
+            "bottom": 2977,
+            "left": 130,
+            "width": 1180,
+            "height": 2359
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/cv/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "captureArtifacts": true
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "CV | Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Research Projects",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "CV | Huifan Zhang",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "dimensions": {
+          "htmlClientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyClientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "bodyScrollHeight": 3695
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": null,
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Huifan Zhang",
+            "top": 82,
+            "right": 1310,
+            "bottom": 574,
+            "left": 130,
+            "width": 1180,
+            "height": 492
+          },
+          {
+            "domIndex": 1,
+            "label": "01Education",
+            "top": 574,
+            "right": 1310,
+            "bottom": 3565,
+            "left": 130,
+            "width": 1180,
+            "height": 2991
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "captureArtifacts": true
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Machine learning for RF circuits",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "Huifan Zhang",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dimensions": {
+          "htmlClientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyClientWidth": 390,
+          "bodyScrollWidth": 390,
+          "bodyScrollHeight": 4307
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": {
+          "src": "http://127.0.0.1:4321/images/profile.png",
+          "naturalWidth": 720,
+          "naturalHeight": 720,
+          "rect": {
+            "top": 891,
+            "right": 372,
+            "bottom": 1191,
+            "left": 72,
+            "width": 300,
+            "height": 300
+          }
+        },
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Huifan Zhang",
+            "top": 139,
+            "right": 374,
+            "bottom": 1289,
+            "left": 16,
+            "width": 358,
+            "height": 1150
+          },
+          {
+            "domIndex": 1,
+            "label": "Research focus",
+            "top": 1289,
+            "right": 374,
+            "bottom": 2105,
+            "left": 16,
+            "width": 358,
+            "height": 816
+          },
+          {
+            "domIndex": 2,
+            "label": "Selected work",
+            "top": 2105,
+            "right": 374,
+            "bottom": 3335,
+            "left": 16,
+            "width": 358,
+            "height": 1230
+          },
+          {
+            "domIndex": 3,
+            "label": "Current status and education",
+            "top": 3335,
+            "right": 374,
+            "bottom": 3562,
+            "left": 16,
+            "width": 358,
+            "height": 227
+          },
+          {
+            "domIndex": 4,
+            "label": "Contact",
+            "top": 3642,
+            "right": 390,
+            "bottom": 4136,
+            "left": 0,
+            "width": 390,
+            "height": 493
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/publications/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "captureArtifacts": true
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "Publications | Huifan Zhang",
+        "heading": "Publications",
+        "stableContent": "Efficient RF Passive Components Modeling",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "Publications | Huifan Zhang",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dimensions": {
+          "htmlClientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyClientWidth": 390,
+          "bodyScrollWidth": 390,
+          "bodyScrollHeight": 3720
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": null,
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Publications",
+            "top": 139,
+            "right": 374,
+            "bottom": 532,
+            "left": 16,
+            "width": 358,
+            "height": 393
+          },
+          {
+            "domIndex": 1,
+            "label": "2026",
+            "top": 532,
+            "right": 374,
+            "bottom": 3549,
+            "left": 16,
+            "width": 358,
+            "height": 3017
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/cv/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "captureArtifacts": true
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "CV | Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Research Projects",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "CV | Huifan Zhang",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dimensions": {
+          "htmlClientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyClientWidth": 390,
+          "bodyScrollWidth": 390,
+          "bodyScrollHeight": 4788
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": null,
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Huifan Zhang",
+            "top": 139,
+            "right": 374,
+            "bottom": 670,
+            "left": 16,
+            "width": 358,
+            "height": 531
+          },
+          {
+            "domIndex": 1,
+            "label": "01Education",
+            "top": 670,
+            "right": 374,
+            "bottom": 4616,
+            "left": 16,
+            "width": 358,
+            "height": 3946
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "small",
+        "width": 320,
+        "height": 568,
+        "captureArtifacts": false
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Machine learning for RF circuits",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "Huifan Zhang",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "dimensions": {
+          "htmlClientWidth": 320,
+          "htmlScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyScrollHeight": 4523
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": {
+          "src": "http://127.0.0.1:4321/images/profile.png",
+          "naturalWidth": 720,
+          "naturalHeight": 720,
+          "rect": {
+            "top": 906,
+            "right": 308,
+            "bottom": 1152,
+            "left": 62,
+            "width": 246,
+            "height": 246
+          }
+        },
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Huifan Zhang",
+            "top": 139,
+            "right": 310,
+            "bottom": 1250,
+            "left": 10,
+            "width": 300,
+            "height": 1111
+          },
+          {
+            "domIndex": 1,
+            "label": "Research focus",
+            "top": 1250,
+            "right": 310,
+            "bottom": 2237,
+            "left": 10,
+            "width": 300,
+            "height": 987
+          },
+          {
+            "domIndex": 2,
+            "label": "Selected work",
+            "top": 2237,
+            "right": 310,
+            "bottom": 3531,
+            "left": 10,
+            "width": 300,
+            "height": 1294
+          },
+          {
+            "domIndex": 3,
+            "label": "Current status and education",
+            "top": 3531,
+            "right": 310,
+            "bottom": 3778,
+            "left": 10,
+            "width": 300,
+            "height": 247
+          },
+          {
+            "domIndex": 4,
+            "label": "Contact",
+            "top": 3858,
+            "right": 320,
+            "bottom": 4352,
+            "left": 0,
+            "width": 320,
+            "height": 493
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/publications/",
+      "viewport": {
+        "name": "small",
+        "width": 320,
+        "height": 568,
+        "captureArtifacts": false
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "Publications | Huifan Zhang",
+        "heading": "Publications",
+        "stableContent": "Efficient RF Passive Components Modeling",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "Publications | Huifan Zhang",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "dimensions": {
+          "htmlClientWidth": 320,
+          "htmlScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyScrollHeight": 4047
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": null,
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Publications",
+            "top": 139,
+            "right": 310,
+            "bottom": 556,
+            "left": 10,
+            "width": 300,
+            "height": 417
+          },
+          {
+            "domIndex": 1,
+            "label": "2026",
+            "top": 556,
+            "right": 310,
+            "bottom": 3876,
+            "left": 10,
+            "width": 300,
+            "height": 3319
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/cv/",
+      "viewport": {
+        "name": "small",
+        "width": 320,
+        "height": 568,
+        "captureArtifacts": false
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "CV | Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Research Projects",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "CV | Huifan Zhang",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "dimensions": {
+          "htmlClientWidth": 320,
+          "htmlScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyScrollHeight": 5065
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": null,
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Huifan Zhang",
+            "top": 139,
+            "right": 310,
+            "bottom": 722,
+            "left": 10,
+            "width": 300,
+            "height": 583
+          },
+          {
+            "domIndex": 1,
+            "label": "01Education",
+            "top": 722,
+            "right": 310,
+            "bottom": 4893,
+            "left": 10,
+            "width": 300,
+            "height": 4171
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024,
+        "captureArtifacts": false
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Machine learning for RF circuits",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "Huifan Zhang",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "dimensions": {
+          "htmlClientWidth": 768,
+          "htmlScrollWidth": 768,
+          "bodyClientWidth": 768,
+          "bodyScrollWidth": 768,
+          "bodyScrollHeight": 3091
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": {
+          "src": "http://127.0.0.1:4321/images/profile.png",
+          "naturalWidth": 720,
+          "naturalHeight": 720,
+          "rect": {
+            "top": 375,
+            "right": 750,
+            "bottom": 605,
+            "left": 520,
+            "width": 230,
+            "height": 230
+          }
+        },
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Huifan Zhang",
+            "top": 82,
+            "right": 752,
+            "bottom": 898,
+            "left": 16,
+            "width": 736,
+            "height": 816
+          },
+          {
+            "domIndex": 1,
+            "label": "Research focus",
+            "top": 898,
+            "right": 752,
+            "bottom": 1581,
+            "left": 16,
+            "width": 736,
+            "height": 683
+          },
+          {
+            "domIndex": 2,
+            "label": "Selected work",
+            "top": 1581,
+            "right": 752,
+            "bottom": 2479,
+            "left": 16,
+            "width": 736,
+            "height": 898
+          },
+          {
+            "domIndex": 3,
+            "label": "Current status and education",
+            "top": 2479,
+            "right": 752,
+            "bottom": 2611,
+            "left": 16,
+            "width": 736,
+            "height": 132
+          },
+          {
+            "domIndex": 4,
+            "label": "Contact",
+            "top": 2691,
+            "right": 768,
+            "bottom": 2961,
+            "left": 0,
+            "width": 768,
+            "height": 270
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/publications/",
+      "viewport": {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024,
+        "captureArtifacts": false
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "Publications | Huifan Zhang",
+        "heading": "Publications",
+        "stableContent": "Efficient RF Passive Components Modeling",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "Publications | Huifan Zhang",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "dimensions": {
+          "htmlClientWidth": 768,
+          "htmlScrollWidth": 768,
+          "bodyClientWidth": 768,
+          "bodyScrollWidth": 768,
+          "bodyScrollHeight": 2701
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": null,
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Publications",
+            "top": 82,
+            "right": 752,
+            "bottom": 465,
+            "left": 16,
+            "width": 736,
+            "height": 383
+          },
+          {
+            "domIndex": 1,
+            "label": "2026",
+            "top": 465,
+            "right": 752,
+            "bottom": 2571,
+            "left": 16,
+            "width": 736,
+            "height": 2106
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    },
+    {
+      "route": "/cv/",
+      "viewport": {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024,
+        "captureArtifacts": false
+      },
+      "routeEvidence": {
+        "status": 200,
+        "title": "CV | Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Research Projects",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "layout": {
+        "title": "CV | Huifan Zhang",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "dimensions": {
+          "htmlClientWidth": 768,
+          "htmlScrollWidth": 768,
+          "bodyClientWidth": 768,
+          "bodyScrollWidth": 768,
+          "bodyScrollHeight": 3537
+        },
+        "overflowingElements": [],
+        "clippedText": [],
+        "tooSmallText": [],
+        "brokenImages": [],
+        "portrait": null,
+        "flowElements": [
+          {
+            "domIndex": 0,
+            "label": "Huifan Zhang",
+            "top": 82,
+            "right": 752,
+            "bottom": 416,
+            "left": 16,
+            "width": 736,
+            "height": 334
+          },
+          {
+            "domIndex": 1,
+            "label": "01Education",
+            "top": 416,
+            "right": 752,
+            "bottom": 3407,
+            "left": 16,
+            "width": 736,
+            "height": 2990
+          }
+        ],
+        "flowOverlaps": [],
+        "visualOrderMatchesDom": true
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "route": "/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "captureArtifacts": true
+      },
+      "fullPageArtifact": "docs/verification/assets/home-desktop.jpg",
+      "viewportArtifact": "docs/verification/assets/home-desktop-viewport.png",
+      "viewportImageDimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "viewportDimensionsMatch": true
+    },
+    {
+      "route": "/publications/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "captureArtifacts": true
+      },
+      "fullPageArtifact": "docs/verification/assets/publications-desktop.jpg",
+      "viewportArtifact": "docs/verification/assets/publications-desktop-viewport.png",
+      "viewportImageDimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "viewportDimensionsMatch": true
+    },
+    {
+      "route": "/cv/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "captureArtifacts": true
+      },
+      "fullPageArtifact": "docs/verification/assets/cv-desktop.jpg",
+      "viewportArtifact": "docs/verification/assets/cv-desktop-viewport.png",
+      "viewportImageDimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "viewportDimensionsMatch": true
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "captureArtifacts": true
+      },
+      "fullPageArtifact": "docs/verification/assets/home-mobile.jpg",
+      "viewportArtifact": "docs/verification/assets/home-mobile-viewport.png",
+      "viewportImageDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "viewportDimensionsMatch": true
+    },
+    {
+      "route": "/publications/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "captureArtifacts": true
+      },
+      "fullPageArtifact": "docs/verification/assets/publications-mobile.jpg",
+      "viewportArtifact": "docs/verification/assets/publications-mobile-viewport.png",
+      "viewportImageDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "viewportDimensionsMatch": true
+    },
+    {
+      "route": "/cv/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "captureArtifacts": true
+      },
+      "fullPageArtifact": "docs/verification/assets/cv-mobile.jpg",
+      "viewportArtifact": "docs/verification/assets/cv-mobile-viewport.png",
+      "viewportImageDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "viewportDimensionsMatch": true
+    }
+  ],
+  "keyboard": [
+    {
+      "route": "/",
+      "routeEvidence": {
+        "status": 200,
+        "title": "Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Machine learning for RF circuits",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "expected": [
+        {
+          "index": 0,
+          "category": "skip",
+          "label": "Skip to main content",
+          "href": "#main-content"
+        },
+        {
+          "index": 1,
+          "category": "brand",
+          "label": "Huifan Zhang, home",
+          "href": "/"
+        },
+        {
+          "index": 2,
+          "category": "navigation",
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "index": 3,
+          "category": "navigation",
+          "label": "Publications",
+          "href": "/publications/"
+        },
+        {
+          "index": 4,
+          "category": "navigation",
+          "label": "CV",
+          "href": "/cv/"
+        },
+        {
+          "index": 5,
+          "category": "other",
+          "label": "Publications",
+          "href": "/publications/"
+        },
+        {
+          "index": 6,
+          "category": "other",
+          "label": "CV",
+          "href": "/cv/"
+        },
+        {
+          "index": 7,
+          "category": "other",
+          "label": "View all publications",
+          "href": "/publications/"
+        },
+        {
+          "index": 8,
+          "category": "publication",
+          "label": "DOI for Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493"
+        },
+        {
+          "index": 9,
+          "category": "publication",
+          "label": "DOI for Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework (opens in a new tab)",
+          "href": "https://doi.org/10.23919/date64628.2025.10992916"
+        },
+        {
+          "index": 10,
+          "category": "publication",
+          "label": "DOI for Machine Learning-Based Device Modeling and Performance Optimization for FinFETs (opens in a new tab)",
+          "href": "https://doi.org/10.1109/tcsii.2022.3224172"
+        },
+        {
+          "index": 11,
+          "category": "contact",
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn"
+        },
+        {
+          "index": 12,
+          "category": "contact",
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull"
+        },
+        {
+          "index": 13,
+          "category": "contact",
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
+        },
+        {
+          "index": 14,
+          "category": "contact",
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X"
+        },
+        {
+          "index": 15,
+          "category": "contact",
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn"
+        },
+        {
+          "index": 16,
+          "category": "contact",
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull"
+        },
+        {
+          "index": 17,
+          "category": "contact",
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
+        },
+        {
+          "index": 18,
+          "category": "contact",
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X"
+        }
+      ],
+      "sequence": [
+        {
+          "index": 0,
+          "label": "Skip to main content",
+          "href": "#main-content",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 1,
+            "right": 240,
+            "bottom": 52,
+            "left": 12
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 1,
+          "label": "Huifan Zhang, home",
+          "href": "/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 210,
+            "bottom": 80,
+            "left": 130
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 2,
+          "label": "Home",
+          "href": "/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1116,
+            "bottom": 80,
+            "left": 1044
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 3,
+          "label": "Publications",
+          "href": "/publications/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1255,
+            "bottom": 80,
+            "left": 1116
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 4,
+          "label": "CV",
+          "href": "/cv/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1310,
+            "bottom": 80,
+            "left": 1255
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 5,
+          "label": "Publications",
+          "href": "/publications/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 869,
+            "right": 293,
+            "bottom": 917,
+            "left": 130
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 6,
+          "label": "CV",
+          "href": "/cv/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 869,
+            "right": 441,
+            "bottom": 917,
+            "left": 305
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 7,
+          "label": "View all publications",
+          "href": "/publications/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 924,
+            "right": 1310,
+            "bottom": 944,
+            "left": 1149
+          },
+          "scrollY": 1376
+        },
+        {
+          "index": 8,
+          "label": "DOI for Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 928,
+            "right": 455,
+            "bottom": 944,
+            "left": 433
+          },
+          "scrollY": 1650
+        },
+        {
+          "index": 9,
+          "label": "DOI for Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework (opens in a new tab)",
+          "href": "https://doi.org/10.23919/date64628.2025.10992916",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 972,
+            "right": 455,
+            "bottom": 988,
+            "left": 433
+          },
+          "scrollY": 1820
+        },
+        {
+          "index": 10,
+          "label": "DOI for Machine Learning-Based Device Modeling and Performance Optimization for FinFETs (opens in a new tab)",
+          "href": "https://doi.org/10.1109/tcsii.2022.3224172",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 885,
+            "right": 455,
+            "bottom": 901,
+            "left": 433
+          },
+          "scrollY": 2122
+        },
+        {
+          "index": 11,
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn",
+          "focusVisible": true,
+          "outline": "3px solid rgb(239, 195, 61)",
+          "inViewport": true,
+          "rect": {
+            "top": 983,
+            "right": 1088,
+            "bottom": 999,
+            "left": 1051
+          },
+          "scrollY": 2634
+        },
+        {
+          "index": 12,
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull",
+          "focusVisible": true,
+          "outline": "3px solid rgb(239, 195, 61)",
+          "inViewport": true,
+          "rect": {
+            "top": 944,
+            "right": 1096,
+            "bottom": 960,
+            "left": 1051
+          },
+          "scrollY": 2706
+        },
+        {
+          "index": 13,
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
+          "focusVisible": true,
+          "outline": "3px solid rgb(239, 195, 61)",
+          "inViewport": true,
+          "rect": {
+            "top": 925,
+            "right": 1156,
+            "bottom": 941,
+            "left": 1051
+          },
+          "scrollY": 2759
+        },
+        {
+          "index": 14,
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X",
+          "focusVisible": true,
+          "outline": "3px solid rgb(239, 195, 61)",
+          "inViewport": true,
+          "rect": {
+            "top": 958,
+            "right": 1088,
+            "bottom": 974,
+            "left": 1051
+          },
+          "scrollY": 2759
+        },
+        {
+          "index": 15,
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 973,
+            "right": 1063,
+            "bottom": 989,
+            "left": 1025
+          },
+          "scrollY": 2951
+        },
+        {
+          "index": 16,
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 973,
+            "right": 1128,
+            "bottom": 989,
+            "left": 1083
+          },
+          "scrollY": 2951
+        },
+        {
+          "index": 17,
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 963,
+            "right": 1253,
+            "bottom": 979,
+            "left": 1148
+          },
+          "scrollY": 2961
+        },
+        {
+          "index": 18,
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 955,
+            "right": 1310,
+            "bottom": 971,
+            "left": 1273
+          },
+          "scrollY": 2969
+        }
+      ],
+      "logicalOrder": true,
+      "everyTargetFocusVisible": true,
+      "everyTargetScrolledIntoView": true,
+      "categories": {
+        "skip": {
+          "count": 1,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "brand": {
+          "count": 1,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "navigation": {
+          "count": 3,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "publication": {
+          "count": 3,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "contact": {
+          "count": 8,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "other": {
+          "count": 3,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        }
+      },
+      "skipBeforeActivation": {
+        "isSkipLink": true,
+        "focusVisible": true,
+        "top": 1
+      },
+      "skipAfterActivation": {
+        "activeId": "main-content",
+        "hash": "#main-content",
+        "mainTop": -2460
+      }
+    },
+    {
+      "route": "/publications/",
+      "routeEvidence": {
+        "status": 200,
+        "title": "Publications | Huifan Zhang",
+        "heading": "Publications",
+        "stableContent": "Efficient RF Passive Components Modeling",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "expected": [
+        {
+          "index": 0,
+          "category": "skip",
+          "label": "Skip to main content",
+          "href": "#main-content"
+        },
+        {
+          "index": 1,
+          "category": "brand",
+          "label": "Huifan Zhang, home",
+          "href": "/"
+        },
+        {
+          "index": 2,
+          "category": "navigation",
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "index": 3,
+          "category": "navigation",
+          "label": "Publications",
+          "href": "/publications/"
+        },
+        {
+          "index": 4,
+          "category": "navigation",
+          "label": "CV",
+          "href": "/cv/"
+        },
+        {
+          "index": 5,
+          "category": "contact",
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn"
+        },
+        {
+          "index": 6,
+          "category": "contact",
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull"
+        },
+        {
+          "index": 7,
+          "category": "contact",
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
+        },
+        {
+          "index": 8,
+          "category": "contact",
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X"
+        },
+        {
+          "index": 9,
+          "category": "publication",
+          "label": "DOI for Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493"
+        },
+        {
+          "index": 10,
+          "category": "publication",
+          "label": "DOI for Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework (opens in a new tab)",
+          "href": "https://doi.org/10.23919/date64628.2025.10992916"
+        },
+        {
+          "index": 11,
+          "category": "publication",
+          "label": "DOI for Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation (opens in a new tab)",
+          "href": "https://doi.org/10.1109/apccas62602.2024.10808888"
+        },
+        {
+          "index": 12,
+          "category": "publication",
+          "label": "DOI for Machine Learning-Based Device Modeling and Performance Optimization for FinFETs (opens in a new tab)",
+          "href": "https://doi.org/10.1109/tcsii.2022.3224172"
+        },
+        {
+          "index": 13,
+          "category": "publication",
+          "label": "DOI for A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asicon47005.2019.8983491"
+        },
+        {
+          "index": 14,
+          "category": "contact",
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn"
+        },
+        {
+          "index": 15,
+          "category": "contact",
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull"
+        },
+        {
+          "index": 16,
+          "category": "contact",
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
+        },
+        {
+          "index": 17,
+          "category": "contact",
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X"
+        }
+      ],
+      "sequence": [
+        {
+          "index": 0,
+          "label": "Skip to main content",
+          "href": "#main-content",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 1,
+            "right": 240,
+            "bottom": 52,
+            "left": 12
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 1,
+          "label": "Huifan Zhang, home",
+          "href": "/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 210,
+            "bottom": 80,
+            "left": 130
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 2,
+          "label": "Home",
+          "href": "/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1116,
+            "bottom": 80,
+            "left": 1044
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 3,
+          "label": "Publications",
+          "href": "/publications/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1255,
+            "bottom": 80,
+            "left": 1116
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 4,
+          "label": "CV",
+          "href": "/cv/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1310,
+            "bottom": 80,
+            "left": 1255
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 5,
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 483,
+            "right": 167,
+            "bottom": 499,
+            "left": 130
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 6,
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 483,
+            "right": 232,
+            "bottom": 499,
+            "left": 187
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 7,
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 483,
+            "right": 357,
+            "bottom": 499,
+            "left": 252
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 8,
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 483,
+            "right": 415,
+            "bottom": 499,
+            "left": 377
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 9,
+          "label": "DOI for Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 985,
+            "right": 623,
+            "bottom": 1001,
+            "left": 600
+          },
+          "scrollY": 3
+        },
+        {
+          "index": 10,
+          "label": "DOI for Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework (opens in a new tab)",
+          "href": "https://doi.org/10.23919/date64628.2025.10992916",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 904,
+            "right": 623,
+            "bottom": 920,
+            "left": 600
+          },
+          "scrollY": 527
+        },
+        {
+          "index": 11,
+          "label": "DOI for Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation (opens in a new tab)",
+          "href": "https://doi.org/10.1109/apccas62602.2024.10808888",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 952,
+            "right": 623,
+            "bottom": 968,
+            "left": 600
+          },
+          "scrollY": 922
+        },
+        {
+          "index": 12,
+          "label": "DOI for Machine Learning-Based Device Modeling and Performance Optimization for FinFETs (opens in a new tab)",
+          "href": "https://doi.org/10.1109/tcsii.2022.3224172",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 980,
+            "right": 623,
+            "bottom": 996,
+            "left": 600
+          },
+          "scrollY": 1337
+        },
+        {
+          "index": 13,
+          "label": "DOI for A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asicon47005.2019.8983491",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 919,
+            "right": 623,
+            "bottom": 935,
+            "left": 600
+          },
+          "scrollY": 1841
+        },
+        {
+          "index": 14,
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 973,
+            "right": 1063,
+            "bottom": 989,
+            "left": 1025
+          },
+          "scrollY": 2062
+        },
+        {
+          "index": 15,
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 973,
+            "right": 1128,
+            "bottom": 989,
+            "left": 1083
+          },
+          "scrollY": 2062
+        },
+        {
+          "index": 16,
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 973,
+            "right": 1253,
+            "bottom": 989,
+            "left": 1148
+          },
+          "scrollY": 2062
+        },
+        {
+          "index": 17,
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 963,
+            "right": 1310,
+            "bottom": 979,
+            "left": 1273
+          },
+          "scrollY": 2072
+        }
+      ],
+      "logicalOrder": true,
+      "everyTargetFocusVisible": true,
+      "everyTargetScrolledIntoView": true,
+      "categories": {
+        "skip": {
+          "count": 1,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "brand": {
+          "count": 1,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "navigation": {
+          "count": 3,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "publication": {
+          "count": 5,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "contact": {
+          "count": 8,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "other": {
+          "count": 0,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        }
+      },
+      "skipBeforeActivation": {
+        "isSkipLink": true,
+        "focusVisible": true,
+        "top": 1
+      },
+      "skipAfterActivation": {
+        "activeId": "main-content",
+        "hash": "#main-content",
+        "mainTop": -1418
+      }
+    },
+    {
+      "route": "/cv/",
+      "routeEvidence": {
+        "status": 200,
+        "title": "CV | Huifan Zhang",
+        "heading": "Huifan Zhang",
+        "stableContent": "Research Projects",
+        "stableContentPresent": true,
+        "passed": true
+      },
+      "expected": [
+        {
+          "index": 0,
+          "category": "skip",
+          "label": "Skip to main content",
+          "href": "#main-content"
+        },
+        {
+          "index": 1,
+          "category": "brand",
+          "label": "Huifan Zhang, home",
+          "href": "/"
+        },
+        {
+          "index": 2,
+          "category": "navigation",
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "index": 3,
+          "category": "navigation",
+          "label": "Publications",
+          "href": "/publications/"
+        },
+        {
+          "index": 4,
+          "category": "navigation",
+          "label": "CV",
+          "href": "/cv/"
+        },
+        {
+          "index": 5,
+          "category": "contact",
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn"
+        },
+        {
+          "index": 6,
+          "category": "contact",
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull"
+        },
+        {
+          "index": 7,
+          "category": "contact",
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
+        },
+        {
+          "index": 8,
+          "category": "contact",
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X"
+        },
+        {
+          "index": 9,
+          "category": "publication",
+          "label": "DOI for Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493"
+        },
+        {
+          "index": 10,
+          "category": "publication",
+          "label": "DOI for Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework (opens in a new tab)",
+          "href": "https://doi.org/10.23919/date64628.2025.10992916"
+        },
+        {
+          "index": 11,
+          "category": "publication",
+          "label": "DOI for Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation (opens in a new tab)",
+          "href": "https://doi.org/10.1109/apccas62602.2024.10808888"
+        },
+        {
+          "index": 12,
+          "category": "publication",
+          "label": "DOI for Machine Learning-Based Device Modeling and Performance Optimization for FinFETs (opens in a new tab)",
+          "href": "https://doi.org/10.1109/tcsii.2022.3224172"
+        },
+        {
+          "index": 13,
+          "category": "publication",
+          "label": "DOI for A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asicon47005.2019.8983491"
+        },
+        {
+          "index": 14,
+          "category": "contact",
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn"
+        },
+        {
+          "index": 15,
+          "category": "contact",
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull"
+        },
+        {
+          "index": 16,
+          "category": "contact",
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
+        },
+        {
+          "index": 17,
+          "category": "contact",
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X"
+        }
+      ],
+      "sequence": [
+        {
+          "index": 0,
+          "label": "Skip to main content",
+          "href": "#main-content",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 1,
+            "right": 240,
+            "bottom": 52,
+            "left": 12
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 1,
+          "label": "Huifan Zhang, home",
+          "href": "/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 210,
+            "bottom": 80,
+            "left": 130
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 2,
+          "label": "Home",
+          "href": "/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1116,
+            "bottom": 80,
+            "left": 1044
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 3,
+          "label": "Publications",
+          "href": "/publications/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1255,
+            "bottom": 80,
+            "left": 1116
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 4,
+          "label": "CV",
+          "href": "/cv/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1310,
+            "bottom": 80,
+            "left": 1255
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 5,
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 339,
+            "right": 1310,
+            "bottom": 355,
+            "left": 1273
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 6,
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 373,
+            "right": 1310,
+            "bottom": 389,
+            "left": 1265
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 7,
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 406,
+            "right": 1310,
+            "bottom": 422,
+            "left": 1205
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 8,
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 440,
+            "right": 1310,
+            "bottom": 456,
+            "left": 1273
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 9,
+          "label": "DOI for Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 934,
+            "right": 709,
+            "bottom": 950,
+            "left": 687
+          },
+          "scrollY": 1503
+        },
+        {
+          "index": 10,
+          "label": "DOI for Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework (opens in a new tab)",
+          "href": "https://doi.org/10.23919/date64628.2025.10992916",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 968,
+            "right": 709,
+            "bottom": 984,
+            "left": 687
+          },
+          "scrollY": 1683
+        },
+        {
+          "index": 11,
+          "label": "DOI for Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation (opens in a new tab)",
+          "href": "https://doi.org/10.1109/apccas62602.2024.10808888",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 944,
+            "right": 709,
+            "bottom": 960,
+            "left": 687
+          },
+          "scrollY": 1921
+        },
+        {
+          "index": 12,
+          "label": "DOI for Machine Learning-Based Device Modeling and Performance Optimization for FinFETs (opens in a new tab)",
+          "href": "https://doi.org/10.1109/tcsii.2022.3224172",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 929,
+            "right": 709,
+            "bottom": 945,
+            "left": 687
+          },
+          "scrollY": 2151
+        },
+        {
+          "index": 13,
+          "label": "DOI for A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asicon47005.2019.8983491",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 962,
+            "right": 709,
+            "bottom": 978,
+            "left": 687
+          },
+          "scrollY": 2332
+        },
+        {
+          "index": 14,
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 981,
+            "right": 1063,
+            "bottom": 997,
+            "left": 1025
+          },
+          "scrollY": 2642
+        },
+        {
+          "index": 15,
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 981,
+            "right": 1128,
+            "bottom": 997,
+            "left": 1083
+          },
+          "scrollY": 2642
+        },
+        {
+          "index": 16,
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 968,
+            "right": 1253,
+            "bottom": 984,
+            "left": 1148
+          },
+          "scrollY": 2655
+        },
+        {
+          "index": 17,
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 968,
+            "right": 1310,
+            "bottom": 984,
+            "left": 1273
+          },
+          "scrollY": 2655
+        }
+      ],
+      "logicalOrder": true,
+      "everyTargetFocusVisible": true,
+      "everyTargetScrolledIntoView": true,
+      "categories": {
+        "skip": {
+          "count": 1,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "brand": {
+          "count": 1,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "navigation": {
+          "count": 3,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "publication": {
+          "count": 5,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "contact": {
+          "count": 8,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "other": {
+          "count": 0,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        }
+      },
+      "skipBeforeActivation": {
+        "isSkipLink": true,
+        "focusVisible": true,
+        "top": 1
+      },
+      "skipAfterActivation": {
+        "activeId": "main-content",
+        "hash": "#main-content",
+        "mainTop": -2106
+      }
+    }
+  ],
+  "reducedMotion": {
+    "normalAnimations": [
+      {
+        "label": "eyebrow hero__availability",
+        "animationName": "rise-in",
+        "animationDuration": "0.42s",
+        "animationDelay": "0s"
+      },
+      {
+        "label": "h1",
+        "animationName": "rise-in",
+        "animationDuration": "0.42s",
+        "animationDelay": "0.06s"
+      },
+      {
+        "label": "hero__identity",
+        "animationName": "rise-in",
+        "animationDuration": "0.42s",
+        "animationDelay": "0.12s"
+      },
+      {
+        "label": "hero__tagline",
+        "animationName": "rise-in",
+        "animationDuration": "0.42s",
+        "animationDelay": "0.18s"
+      },
+      {
+        "label": "hero__summary",
+        "animationName": "rise-in",
+        "animationDuration": "0.42s",
+        "animationDelay": "0.18s"
+      },
+      {
+        "label": "hero__actions",
+        "animationName": "rise-in",
+        "animationDuration": "0.42s",
+        "animationDelay": "0.18s"
+      },
+      {
+        "label": "hero__portrait",
+        "animationName": "rise-in",
+        "animationDuration": "0.42s",
+        "animationDelay": "0.12s"
+      }
+    ],
+    "normalScrollBehavior": "smooth",
+    "reducedAnimations": [
+      {
+        "label": "eyebrow hero__availability",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationDelay": "0s"
+      },
+      {
+        "label": "h1",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationDelay": "0s"
+      },
+      {
+        "label": "hero__identity",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationDelay": "0s"
+      },
+      {
+        "label": "hero__tagline",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationDelay": "0s"
+      },
+      {
+        "label": "hero__summary",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationDelay": "0s"
+      },
+      {
+        "label": "hero__actions",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationDelay": "0s"
+      },
+      {
+        "label": "hero__portrait",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "animationDelay": "0s"
+      }
+    ],
+    "reducedScrollBehavior": "auto",
+    "revealExistsWithoutPreference": true,
+    "revealSuppressedWithReduction": true
+  },
+  "print": {
+    "hidden": {
+      ".site-header": {
+        "actualCount": 1,
+        "expectedCount": 1,
+        "allHidden": true
+      },
+      ".site-footer": {
+        "actualCount": 1,
+        "expectedCount": 1,
+        "allHidden": true
+      },
+      ".skip-link": {
+        "actualCount": 1,
+        "expectedCount": 1,
+        "allHidden": true
+      },
+      ".cv-contact": {
+        "actualCount": 1,
+        "expectedCount": 1,
+        "allHidden": true
+      },
+      ".eyebrow": {
+        "actualCount": 1,
+        "expectedCount": 1,
+        "allHidden": true
+      },
+      ".publication-item__selected": {
+        "actualCount": 3,
+        "expectedCount": 3,
+        "allHidden": true
+      }
+    },
+    "htmlBackground": "rgb(255, 255, 255)",
+    "bodyBackground": "rgb(255, 255, 255)",
+    "bodyColor": "rgb(0, 0, 0)",
+    "disallowedTextColors": [],
+    "disallowedBackgrounds": [],
+    "protectedEntries": [
+      {
+        "label": "Ph.D. Candidate in Electronic Science and Technology",
+        "startToken": "Ph.D. Candidate in Electronic Science and Technology",
+        "breakInside": "avoid",
+        "endToken": "Advisor: Prof. Pingqiang Zhou"
+      },
+      {
+        "label": "B.Eng. in Electronic Engineering",
+        "startToken": "B.Eng. in Electronic Engineering",
+        "breakInside": "avoid",
+        "endToken": "ShanghaiTech University, Shanghai, China"
+      },
+      {
+        "label": "AI-Driven Electromagnetic Simulation Acceleration Technology",
+        "startToken": "AI-Driven Electromagnetic Simulation Acceleration Technology",
+        "breakInside": "avoid",
+        "endToken": "Delivered over 200× speedup compared with conventional EM simulation workflows."
+      },
+      {
+        "label": "Towards Real-Time Drone Detection on Embedded Platforms",
+        "startToken": "Towards Real-Time Drone Detection on Embedded Platforms",
+        "breakInside": "avoid",
+        "endToken": "Deployed on NVIDIA Jetson TX2 with TensorRT, improving inference speed from 25 FPS to 47 FPS."
+      },
+      {
+        "label": "Teaching Assistant · UPenn–ShanghaiTech Joint Summer Camp",
+        "startToken": "Teaching Assistant · UPenn–ShanghaiTech Joint Summer Camp",
+        "breakInside": "avoid",
+        "endToken": "2019 ShanghaiTech University"
+      },
+      {
+        "label": "Teaching Assistant · EE111L Electric Circuits Lab",
+        "startToken": "Teaching Assistant · EE111L Electric Circuits Lab",
+        "breakInside": "avoid",
+        "endToken": "Spring 2019 ShanghaiTech University"
+      },
+      {
+        "label": "Teaching Assistant · EE213 Digital Integrated Circuits II",
+        "startToken": "Teaching Assistant · EE213 Digital Integrated Circuits II",
+        "breakInside": "avoid",
+        "endToken": "Fall 2021 ShanghaiTech University"
+      },
+      {
+        "label": "Teaching Assistant · SI200 Academic Paper Writing",
+        "startToken": "Teaching Assistant · SI200 Academic Paper Writing",
+        "breakInside": "avoid",
+        "endToken": "Spring 2022 ShanghaiTech University"
+      },
+      {
+        "label": "Programming",
+        "startToken": "Programming",
+        "breakInside": "avoid",
+        "endToken": "Python · C/C++ · MATLAB · Verilog"
+      },
+      {
+        "label": "EDA / Simulation",
+        "startToken": "EDA / Simulation",
+        "breakInside": "avoid",
+        "endToken": "Cadence Virtuoso · ADS · COMSOL · Ansys HFSS · PyTorch"
+      },
+      {
+        "label": "Languages",
+        "startToken": "Languages",
+        "breakInside": "avoid",
+        "endToken": "Chinese (native) · English"
+      },
+      {
+        "label": "Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling",
+        "startToken": "Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling",
+        "breakInside": "avoid",
+        "endToken": "https://doi.org/10.1109/asp-dac66049.2026.11420493"
+      },
+      {
+        "label": "Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework",
+        "startToken": "Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework",
+        "breakInside": "avoid",
+        "endToken": "https://doi.org/10.23919/date64628.2025.10992916"
+      },
+      {
+        "label": "Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation",
+        "startToken": "Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation",
+        "breakInside": "avoid",
+        "endToken": "https://doi.org/10.1109/apccas62602.2024.10808888"
+      },
+      {
+        "label": "Machine Learning-Based Device Modeling and Performance Optimization for FinFETs",
+        "startToken": "Machine Learning-Based Device Modeling and Performance Optimization for FinFETs",
+        "breakInside": "avoid",
+        "endToken": "https://doi.org/10.1109/tcsii.2022.3224172"
+      },
+      {
+        "label": "A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays",
+        "startToken": "A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays",
+        "breakInside": "avoid",
+        "endToken": "https://doi.org/10.1109/asicon47005.2019.8983491"
+      }
+    ],
+    "protectedHeadings": [
+      {
+        "label": "01Education",
+        "breakAfter": "auto"
+      },
+      {
+        "label": "02Research Projects",
+        "breakAfter": "auto"
+      },
+      {
+        "label": "03Teaching",
+        "breakAfter": "auto"
+      },
+      {
+        "label": "04Skills",
+        "breakAfter": "auto"
+      },
+      {
+        "label": "05Publications",
+        "breakAfter": "auto"
+      }
+    ],
+    "protectedSectionBodies": [
+      {
+        "label": "01Education",
+        "firstContent": "Ph.D. Candidate in Electronic Science and Technology",
+        "breakBefore": "avoid"
+      },
+      {
+        "label": "02Research Projects",
+        "firstContent": "AI-Driven Electromagnetic Simulation Acceleration Technology",
+        "breakBefore": "avoid"
+      },
+      {
+        "label": "03Teaching",
+        "firstContent": "Teaching Assistant · UPenn–ShanghaiTech Joint Summer Camp",
+        "breakBefore": "avoid"
+      },
+      {
+        "label": "04Skills",
+        "firstContent": "Programming",
+        "breakBefore": "avoid"
+      },
+      {
+        "label": "05Publications",
+        "firstContent": "Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling",
+        "breakBefore": "avoid"
+      }
+    ],
+    "allEntriesAvoidBreaks": true,
+    "allSectionBodiesAvoidOrphans": true,
+    "routeEvidence": {
+      "status": 200,
+      "title": "CV | Huifan Zhang",
+      "heading": "Huifan Zhang",
+      "stableContent": "Research Projects",
+      "stableContentPresent": true,
+      "passed": true
+    },
+    "expectedProtectedEntryCount": 16,
+    "expectedSectionBodyCount": 5,
+    "pdfBehavior": {
+      "pageCount": 4,
+      "educationPage": 1,
+      "sections": [
+        {
+          "heading": "01Education",
+          "firstContent": "Ph.D. Candidate in Electronic Science and Technology",
+          "page": 1
+        },
+        {
+          "heading": "02Research Projects",
+          "firstContent": "AI-Driven Electromagnetic Simulation Acceleration Technology",
+          "page": 2
+        },
+        {
+          "heading": "03Teaching",
+          "firstContent": "Teaching Assistant · UPenn–ShanghaiTech Joint Summer Camp",
+          "page": 2
+        },
+        {
+          "heading": "04Skills",
+          "firstContent": "Programming",
+          "page": 2
+        },
+        {
+          "heading": "05Publications",
+          "firstContent": "Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling",
+          "page": 3
+        }
+      ],
+      "protectedEntries": [
+        {
+          "label": "Ph.D. Candidate in Electronic Science and Technology",
+          "startToken": "Ph.D. Candidate in Electronic Science and Technology",
+          "endToken": "Advisor: Prof. Pingqiang Zhou",
+          "page": 1
+        },
+        {
+          "label": "B.Eng. in Electronic Engineering",
+          "startToken": "B.Eng. in Electronic Engineering",
+          "endToken": "ShanghaiTech University, Shanghai, China",
+          "page": 1
+        },
+        {
+          "label": "AI-Driven Electromagnetic Simulation Acceleration Technology",
+          "startToken": "AI-Driven Electromagnetic Simulation Acceleration Technology",
+          "endToken": "Delivered over 200× speedup compared with conventional EM simulation workflows.",
+          "page": 2
+        },
+        {
+          "label": "Towards Real-Time Drone Detection on Embedded Platforms",
+          "startToken": "Towards Real-Time Drone Detection on Embedded Platforms",
+          "endToken": "Deployed on NVIDIA Jetson TX2 with TensorRT, improving inference speed from 25 FPS to 47 FPS.",
+          "page": 2
+        },
+        {
+          "label": "Teaching Assistant · UPenn–ShanghaiTech Joint Summer Camp",
+          "startToken": "Teaching Assistant · UPenn–ShanghaiTech Joint Summer Camp",
+          "endToken": "2019 ShanghaiTech University",
+          "page": 2
+        },
+        {
+          "label": "Teaching Assistant · EE111L Electric Circuits Lab",
+          "startToken": "Teaching Assistant · EE111L Electric Circuits Lab",
+          "endToken": "Spring 2019 ShanghaiTech University",
+          "page": 2
+        },
+        {
+          "label": "Teaching Assistant · EE213 Digital Integrated Circuits II",
+          "startToken": "Teaching Assistant · EE213 Digital Integrated Circuits II",
+          "endToken": "Fall 2021 ShanghaiTech University",
+          "page": 2
+        },
+        {
+          "label": "Teaching Assistant · SI200 Academic Paper Writing",
+          "startToken": "Teaching Assistant · SI200 Academic Paper Writing",
+          "endToken": "Spring 2022 ShanghaiTech University",
+          "page": 2
+        },
+        {
+          "label": "Programming",
+          "startToken": "Programming",
+          "endToken": "Python · C/C++ · MATLAB · Verilog",
+          "page": 2
+        },
+        {
+          "label": "EDA / Simulation",
+          "startToken": "EDA / Simulation",
+          "endToken": "Cadence Virtuoso · ADS · COMSOL · Ansys HFSS · PyTorch",
+          "page": 3
+        },
+        {
+          "label": "Languages",
+          "startToken": "Languages",
+          "endToken": "Chinese (native) · English",
+          "page": 3
+        },
+        {
+          "label": "Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling",
+          "startToken": "Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling",
+          "endToken": "https://doi.org/10.1109/asp-dac66049.2026.11420493",
+          "page": 3
+        },
+        {
+          "label": "Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework",
+          "startToken": "Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework",
+          "endToken": "https://doi.org/10.23919/date64628.2025.10992916",
+          "page": 3
+        },
+        {
+          "label": "Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation",
+          "startToken": "Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation",
+          "endToken": "https://doi.org/10.1109/apccas62602.2024.10808888",
+          "page": 3
+        },
+        {
+          "label": "Machine Learning-Based Device Modeling and Performance Optimization for FinFETs",
+          "startToken": "Machine Learning-Based Device Modeling and Performance Optimization for FinFETs",
+          "endToken": "https://doi.org/10.1109/tcsii.2022.3224172",
+          "page": 4
+        },
+        {
+          "label": "A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays",
+          "startToken": "A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays",
+          "endToken": "https://doi.org/10.1109/asicon47005.2019.8983491",
+          "page": 4
+        }
+      ],
+      "format": "US Letter",
+      "expectedPageCount": 4,
+      "pageSizes": [
+        {
+          "page": 1,
+          "width": 612,
+          "height": 792
+        },
+        {
+          "page": 2,
+          "width": 612,
+          "height": 792
+        },
+        {
+          "page": 3,
+          "width": 612,
+          "height": 792
+        },
+        {
+          "page": 4,
+          "width": 612,
+          "height": 792
+        }
+      ]
+    },
+    "artifact": "docs/verification/assets/cv-print.pdf"
+  }
+}

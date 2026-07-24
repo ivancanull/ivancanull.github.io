@@ -1,0 +1,57 @@
+education:
+  - degree: Ph.D. Candidate in Electronic Science and Technology
+    institution: ShanghaiTech University, Shanghai, China
+    period: 2020 – Expected Jul. 2026
+    detail: "Advisor: Prof. Pingqiang Zhou"
+  - degree: B.Eng. in Electronic Engineering
+    institution: ShanghaiTech University, Shanghai, China
+    period: 2016 – 2020
+
+projects:
+  - title: AI-Driven Electromagnetic Simulation Acceleration Technology
+    organization: EDA Challenge-Based R&D Project, Shanghai Municipal Science and Technology Commission
+    period: Nov. 2022 – Nov. 2023
+    highlights:
+      - Led development of ML-enhanced EM simulation methods.
+      - Achieved sub-1% modeling error for broadband multiport RF systems up to 100 GHz.
+      - Delivered over 200× speedup compared with conventional EM simulation workflows.
+  - title: Towards Real-Time Drone Detection on Embedded Platforms
+    organization: 3rd Place, DAC System Design Contest
+    period: Nov. 2018 – Sept. 2019
+    highlights:
+      - Optimized Tiny-YOLOv3 by reducing label-predicting channels.
+      - Deployed on NVIDIA Jetson TX2 with TensorRT, improving inference speed from 25 FPS to 47 FPS.
+
+teaching:
+  - role: Teaching Assistant
+    course: UPenn–ShanghaiTech Joint Summer Camp
+    institution: ShanghaiTech University
+    period: "2019"
+  - role: Teaching Assistant
+    course: EE111L Electric Circuits Lab
+    institution: ShanghaiTech University
+    period: Spring 2019
+  - role: Teaching Assistant
+    course: EE213 Digital Integrated Circuits II
+    institution: ShanghaiTech University
+    period: Fall 2021
+  - role: Teaching Assistant
+    course: SI200 Academic Paper Writing
+    institution: ShanghaiTech University
+    period: Spring 2022
+
+skills:
+  Programming:
+    - Python
+    - C/C++
+    - MATLAB
+    - Verilog
+  EDA / Simulation:
+    - Cadence Virtuoso
+    - ADS
+    - COMSOL
+    - Ansys HFSS
+    - PyTorch
+  Languages:
+    - Chinese (native)
+    - English

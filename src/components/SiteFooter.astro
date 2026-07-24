@@ -1,0 +1,17 @@
+---
+import { site } from "../lib/content";
+import BauhausMark from "./BauhausMark.astro";
+import ContactLinks from "./ContactLinks.astro";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="page-container site-footer__inner">
+    <div class="site-footer__identity">
+      <BauhausMark />
+      <p>&copy; {currentYear} {site.name}</p>
+    </div>
+    <ContactLinks />
+  </div>
+</footer>
