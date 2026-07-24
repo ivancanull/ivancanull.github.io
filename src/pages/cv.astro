@@ -39,41 +39,50 @@ import { cv, publications, site } from "../lib/content";
       </div>
     </CVSection>
 
-    <CVSection title="Research Projects" index={2}>
+    <CVSection title="Research Interests" index={2}>
       <div class="cv-entries">
-        {cv.projects.map((project) => (
+        {cv.researchInterests.map((interest) => (
           <article class="cv-entry">
-            <div class="cv-entry__heading">
-              <h3>{project.title}</h3>
-              <p>{project.period}</p>
-            </div>
-            <p>{project.organization}</p>
-            <ul>{project.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+            <h3>{interest.title}</h3>
+            <p>{interest.description}</p>
           </article>
         ))}
       </div>
-    </CVSection>
-
-    <CVSection title="Teaching" index={3}>
-      <div class="cv-entries">
-        {cv.teaching.map((entry) => (
-          <article class="cv-entry">
-            <div class="cv-entry__heading">
-              <h3>{entry.role} &middot; {entry.course}</h3>
-              <p>{entry.period}</p>
-            </div>
-            <p>{entry.institution}</p>
-          </article>
-        ))}
-      </div>
-    </CVSection>
-
-    <CVSection title="Skills" index={4}>
+      <h3 class="cv-subheading">Technical skills</h3>
       <dl class="skill-list">
         {Object.entries(cv.skills).map(([category, values]) => (
           <div><dt>{category}</dt><dd>{values.join(" · ")}</dd></div>
         ))}
       </dl>
+    </CVSection>
+
+    <CVSection title="Experience" index={3}>
+      <div class="cv-entries">
+        {cv.experience.map((entry) => (
+          <article class="cv-entry">
+            <div class="cv-entry__heading">
+              <h3>{entry.title}</h3>
+              <p>{entry.period}</p>
+            </div>
+            <p>{entry.organization}</p>
+            <ul>{entry.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </CVSection>
+
+    <CVSection title="Honors" index={4}>
+      <div class="cv-entries">
+        {cv.honors.map((honor) => (
+          <article class="cv-entry">
+            <div class="cv-entry__heading">
+              <h3>{honor.title}</h3>
+              <p>{honor.period}</p>
+            </div>
+            <p>{honor.organization}</p>
+          </article>
+        ))}
+      </div>
     </CVSection>
 
     <CVSection title="Publications" index={5}>

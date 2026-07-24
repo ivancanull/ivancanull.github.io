@@ -71,6 +71,15 @@ describe("print stylesheet", () => {
     expect(printCss).toMatch(/font-size:\s*(?:10|11)pt\b/i);
     expect(printCss).toMatch(/animation(?:-duration)?:\s*(?:none|0s)\b/i);
     expect(printCss).toMatch(/transition(?:-duration)?:\s*(?:none|0s)\b/i);
+    expect(printCss).toMatch(
+      /\.cv-section\s+h2\s+span\s*{[^}]*color:\s*(?:#000(?:000)?|black)\s*!important/is,
+    );
+  });
+
+  it("keeps each section heading with the content that follows it", () => {
+    expect(printCss).toMatch(
+      /\.cv-section\s+h2\s*{[^}]*(?:break-after:\s*avoid|page-break-after:\s*avoid)/is,
+    );
   });
 
   it("hides chrome and decorations while preserving substantive CV content", () => {

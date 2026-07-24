@@ -249,7 +249,13 @@ describe("built CV page", () => {
       (match) => match[1].trim(),
     );
 
-    expect(headings).toEqual(["Education", "Research Projects", "Teaching", "Skills", "Publications"]);
+    expect(headings).toEqual([
+      "Education",
+      "Research Interests",
+      "Experience",
+      "Honors",
+      "Publications",
+    ]);
 
     const sections = [...cvHtml.matchAll(/<section\b[^>]*class=["'][^"']*\bcv-section\b[^"']*["'][^>]*>/gi)].map(
       (match) => match[0],
@@ -257,9 +263,9 @@ describe("built CV page", () => {
     expect(sections).toHaveLength(5);
     expect(sections.map((section) => getAttribute(section, "aria-labelledby"))).toEqual([
       "education",
-      "research-projects",
-      "teaching",
-      "skills",
+      "research-interests",
+      "experience",
+      "honors",
       "publications",
     ]);
     for (const headingId of sections.map((section) => getAttribute(section, "aria-labelledby"))) {
@@ -274,18 +280,22 @@ describe("built CV page", () => {
       expect(cvHtml).toContain(entry.period);
       if (entry.detail) expect(cvHtml).toContain(entry.detail);
     }
-    for (const project of cv.projects) {
-      expect(cvHtml).toContain(project.title);
-      expect(cvHtml).toContain(asHtmlText(project.organization));
-      expect(cvHtml).toContain(project.period);
-      for (const highlight of project.highlights) expect(cvHtml).toContain(highlight);
-    }
-    for (const teaching of cv.teaching) {
-      for (const value of Object.values(teaching)) expect(cvHtml).toContain(value);
+    for (const interest of cv.researchInterests) {
+      expect(cvHtml).toContain(interest.title);
+      expect(cvHtml).toContain(interest.description);
     }
     for (const [category, values] of Object.entries(cv.skills)) {
       expect(cvHtml).toContain(category);
       for (const value of values) expect(cvHtml).toContain(value);
+    }
+    for (const experience of cv.experience) {
+      expect(cvHtml).toContain(experience.title);
+      expect(cvHtml).toContain(asHtmlText(experience.organization));
+      expect(cvHtml).toContain(experience.period);
+      for (const highlight of experience.highlights) expect(cvHtml).toContain(highlight);
+    }
+    for (const honor of cv.honors) {
+      for (const value of Object.values(honor)) expect(cvHtml).toContain(value);
     }
 
     const items = elementsWithClassIn(cvHtml, "publication-item");

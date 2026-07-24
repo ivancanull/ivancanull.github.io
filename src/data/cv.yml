@@ -7,7 +7,15 @@ education:
     institution: ShanghaiTech University, Shanghai, China
     period: 2016 – 2020
 
-projects:
+researchInterests:
+  - title: AI-assisted RF circuit synthesis
+    description: Data-efficient modeling and optimization for RF passive components and integrated circuits.
+  - title: Machine learning for EDA
+    description: Physics-informed learning for electromagnetic simulation, device modeling, and design-space exploration.
+  - title: Optical neural networks
+    description: Integrated photonic architectures and quantization-aware optical computing.
+
+experience:
   - title: AI-Driven Electromagnetic Simulation Acceleration Technology
     organization: EDA Challenge-Based R&D Project, Shanghai Municipal Science and Technology Commission
     period: Nov. 2022 – Nov. 2023
@@ -16,29 +24,36 @@ projects:
       - Achieved sub-1% modeling error for broadband multiport RF systems up to 100 GHz.
       - Delivered over 200× speedup compared with conventional EM simulation workflows.
   - title: Towards Real-Time Drone Detection on Embedded Platforms
-    organization: 3rd Place, DAC System Design Contest
+    organization: DAC System Design Contest
     period: Nov. 2018 – Sept. 2019
     highlights:
       - Optimized Tiny-YOLOv3 by reducing label-predicting channels.
       - Deployed on NVIDIA Jetson TX2 with TensorRT, improving inference speed from 25 FPS to 47 FPS.
-
-teaching:
-  - role: Teaching Assistant
-    course: UPenn–ShanghaiTech Joint Summer Camp
-    institution: ShanghaiTech University
+  - title: Teaching Assistant
+    organization: ShanghaiTech University
     period: "2019"
-  - role: Teaching Assistant
-    course: EE111L Electric Circuits Lab
-    institution: ShanghaiTech University
+    highlights:
+      - UPenn–ShanghaiTech Joint Summer Camp
+  - title: Teaching Assistant
+    organization: ShanghaiTech University
     period: Spring 2019
-  - role: Teaching Assistant
-    course: EE213 Digital Integrated Circuits II
-    institution: ShanghaiTech University
+    highlights:
+      - EE111L Electric Circuits Lab
+  - title: Teaching Assistant
+    organization: ShanghaiTech University
     period: Fall 2021
-  - role: Teaching Assistant
-    course: SI200 Academic Paper Writing
-    institution: ShanghaiTech University
+    highlights:
+      - EE213 Digital Integrated Circuits II
+  - title: Teaching Assistant
+    organization: ShanghaiTech University
     period: Spring 2022
+    highlights:
+      - SI200 Academic Paper Writing
+
+honors:
+  - title: 3rd Place
+    organization: DAC System Design Contest
+    period: Nov. 2018 – Sept. 2019
 
 skills:
   Programming:

@@ -6,6 +6,8 @@
 *::before,
 *::after {
   animation: none !important;
+  background-color: transparent !important;
+  color: black !important;
   transition: none !important;
 }
 
@@ -55,7 +57,13 @@ body {
 }
 
 .cv-section h2 {
+  break-after: avoid;
   font-size: 12pt;
+  page-break-after: avoid;
+}
+
+.cv-section h2 span {
+  color: black !important;
 }
 
 .cv-entry,
