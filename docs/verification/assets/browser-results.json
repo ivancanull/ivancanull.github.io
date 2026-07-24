@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T07:05:44.938Z",
+  "generatedAt": "2026-07-24T07:19:43.862Z",
   "runtime": {
     "playwright": "1.61.1",
     "browserType": "Chromium via installed Google Chrome",
@@ -13,7 +13,13 @@
         "width": 1440,
         "height": 1000
       },
-      "artifact": "docs/verification/assets/home-desktop.jpg",
+      "fullPageArtifact": "docs/verification/assets/home-desktop.jpg",
+      "viewportArtifact": "docs/verification/assets/home-desktop-viewport.png",
+      "viewportImageDimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "viewportDimensionsMatch": true,
       "layout": {
         "title": "Huifan Zhang",
         "viewport": {
@@ -107,7 +113,13 @@
         "width": 1440,
         "height": 1000
       },
-      "artifact": "docs/verification/assets/publications-desktop.jpg",
+      "fullPageArtifact": "docs/verification/assets/publications-desktop.jpg",
+      "viewportArtifact": "docs/verification/assets/publications-desktop-viewport.png",
+      "viewportImageDimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "viewportDimensionsMatch": true,
       "layout": {
         "title": "Publications | Huifan Zhang",
         "viewport": {
@@ -159,7 +171,13 @@
         "width": 1440,
         "height": 1000
       },
-      "artifact": "docs/verification/assets/cv-desktop.jpg",
+      "fullPageArtifact": "docs/verification/assets/cv-desktop.jpg",
+      "viewportArtifact": "docs/verification/assets/cv-desktop-viewport.png",
+      "viewportImageDimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "viewportDimensionsMatch": true,
       "layout": {
         "title": "CV | Huifan Zhang",
         "viewport": {
@@ -211,7 +229,13 @@
         "width": 390,
         "height": 844
       },
-      "artifact": "docs/verification/assets/home-mobile.jpg",
+      "fullPageArtifact": "docs/verification/assets/home-mobile.jpg",
+      "viewportArtifact": "docs/verification/assets/home-mobile-viewport.png",
+      "viewportImageDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "viewportDimensionsMatch": true,
       "layout": {
         "title": "Huifan Zhang",
         "viewport": {
@@ -305,7 +329,13 @@
         "width": 390,
         "height": 844
       },
-      "artifact": "docs/verification/assets/publications-mobile.jpg",
+      "fullPageArtifact": "docs/verification/assets/publications-mobile.jpg",
+      "viewportArtifact": "docs/verification/assets/publications-mobile-viewport.png",
+      "viewportImageDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "viewportDimensionsMatch": true,
       "layout": {
         "title": "Publications | Huifan Zhang",
         "viewport": {
@@ -357,7 +387,13 @@
         "width": 390,
         "height": 844
       },
-      "artifact": "docs/verification/assets/cv-mobile.jpg",
+      "fullPageArtifact": "docs/verification/assets/cv-mobile.jpg",
+      "viewportArtifact": "docs/verification/assets/cv-mobile-viewport.png",
+      "viewportImageDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "viewportDimensionsMatch": true,
       "layout": {
         "title": "CV | Huifan Zhang",
         "viewport": {
@@ -681,12 +717,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 885,
+            "top": 886,
             "right": 455,
-            "bottom": 901,
+            "bottom": 902,
             "left": 433
           },
-          "scrollY": 2122
+          "scrollY": 2121
         },
         {
           "index": 11,
@@ -696,12 +732,12 @@
           "outline": "3px solid rgb(239, 195, 61)",
           "inViewport": true,
           "rect": {
-            "top": 983,
+            "top": 984,
             "right": 1088,
-            "bottom": 999,
+            "bottom": 1000,
             "left": 1051
           },
-          "scrollY": 2634
+          "scrollY": 2633
         },
         {
           "index": 12,
@@ -711,12 +747,12 @@
           "outline": "3px solid rgb(239, 195, 61)",
           "inViewport": true,
           "rect": {
-            "top": 944,
+            "top": 945,
             "right": 1096,
-            "bottom": 960,
+            "bottom": 961,
             "left": 1051
           },
-          "scrollY": 2706
+          "scrollY": 2705
         },
         {
           "index": 13,
@@ -726,12 +762,12 @@
           "outline": "3px solid rgb(239, 195, 61)",
           "inViewport": true,
           "rect": {
-            "top": 978,
+            "top": 979,
             "right": 1156,
-            "bottom": 994,
+            "bottom": 995,
             "left": 1051
           },
-          "scrollY": 2706
+          "scrollY": 2705
         },
         {
           "index": 14,
@@ -801,12 +837,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 955,
+            "top": 963,
             "right": 1310,
-            "bottom": 971,
+            "bottom": 979,
             "left": 1273
           },
-          "scrollY": 2969
+          "scrollY": 2961
         }
       ],
       "logicalOrder": true,
@@ -858,447 +894,11 @@
       "skipAfterActivation": {
         "activeId": "main-content",
         "hash": "#main-content",
-        "mainTop": -2448
+        "mainTop": -2445
       }
     },
     {
       "route": "/publications/",
-      "expected": [
-        {
-          "index": 0,
-          "category": "skip",
-          "label": "Skip to main content",
-          "href": "#main-content"
-        },
-        {
-          "index": 1,
-          "category": "brand",
-          "label": "Huifan Zhang, home",
-          "href": "/"
-        },
-        {
-          "index": 2,
-          "category": "navigation",
-          "label": "Home",
-          "href": "/"
-        },
-        {
-          "index": 3,
-          "category": "navigation",
-          "label": "Publications",
-          "href": "/publications/"
-        },
-        {
-          "index": 4,
-          "category": "navigation",
-          "label": "CV",
-          "href": "/cv/"
-        },
-        {
-          "index": 5,
-          "category": "contact",
-          "label": "Email Huifan Zhang",
-          "href": "mailto:zhanghf@shanghaitech.edu.cn"
-        },
-        {
-          "index": 6,
-          "category": "contact",
-          "label": "GitHub profile (opens in a new tab)",
-          "href": "https://github.com/ivancanull"
-        },
-        {
-          "index": 7,
-          "category": "contact",
-          "label": "Google Scholar profile (opens in a new tab)",
-          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
-        },
-        {
-          "index": 8,
-          "category": "contact",
-          "label": "ORCID profile (opens in a new tab)",
-          "href": "https://orcid.org/0000-0002-5892-931X"
-        },
-        {
-          "index": 9,
-          "category": "publication",
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493"
-        },
-        {
-          "index": 10,
-          "category": "publication",
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.23919/date64628.2025.10992916"
-        },
-        {
-          "index": 11,
-          "category": "publication",
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.1109/apccas62602.2024.10808888"
-        },
-        {
-          "index": 12,
-          "category": "publication",
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.1109/tcsii.2022.3224172"
-        },
-        {
-          "index": 13,
-          "category": "publication",
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.1109/asicon47005.2019.8983491"
-        },
-        {
-          "index": 14,
-          "category": "contact",
-          "label": "Email Huifan Zhang",
-          "href": "mailto:zhanghf@shanghaitech.edu.cn"
-        },
-        {
-          "index": 15,
-          "category": "contact",
-          "label": "GitHub profile (opens in a new tab)",
-          "href": "https://github.com/ivancanull"
-        },
-        {
-          "index": 16,
-          "category": "contact",
-          "label": "Google Scholar profile (opens in a new tab)",
-          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
-        },
-        {
-          "index": 17,
-          "category": "contact",
-          "label": "ORCID profile (opens in a new tab)",
-          "href": "https://orcid.org/0000-0002-5892-931X"
-        }
-      ],
-      "sequence": [
-        {
-          "index": 0,
-          "label": "Skip to main content",
-          "href": "#main-content",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 1,
-            "right": 240,
-            "bottom": 51,
-            "left": 12
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 1,
-          "label": "Huifan Zhang, home",
-          "href": "/",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 0,
-            "right": 210,
-            "bottom": 80,
-            "left": 130
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 2,
-          "label": "Home",
-          "href": "/",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 0,
-            "right": 1116,
-            "bottom": 80,
-            "left": 1044
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 3,
-          "label": "Publications",
-          "href": "/publications/",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 0,
-            "right": 1255,
-            "bottom": 80,
-            "left": 1116
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 4,
-          "label": "CV",
-          "href": "/cv/",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 0,
-            "right": 1310,
-            "bottom": 80,
-            "left": 1255
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 5,
-          "label": "Email Huifan Zhang",
-          "href": "mailto:zhanghf@shanghaitech.edu.cn",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 483,
-            "right": 167,
-            "bottom": 499,
-            "left": 130
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 6,
-          "label": "GitHub profile (opens in a new tab)",
-          "href": "https://github.com/ivancanull",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 483,
-            "right": 232,
-            "bottom": 499,
-            "left": 187
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 7,
-          "label": "Google Scholar profile (opens in a new tab)",
-          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 483,
-            "right": 357,
-            "bottom": 499,
-            "left": 252
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 8,
-          "label": "ORCID profile (opens in a new tab)",
-          "href": "https://orcid.org/0000-0002-5892-931X",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 483,
-            "right": 415,
-            "bottom": 499,
-            "left": 377
-          },
-          "scrollY": 0
-        },
-        {
-          "index": 9,
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 985,
-            "right": 623,
-            "bottom": 1001,
-            "left": 600
-          },
-          "scrollY": 3
-        },
-        {
-          "index": 10,
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.23919/date64628.2025.10992916",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 904,
-            "right": 623,
-            "bottom": 920,
-            "left": 600
-          },
-          "scrollY": 527
-        },
-        {
-          "index": 11,
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.1109/apccas62602.2024.10808888",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 952,
-            "right": 623,
-            "bottom": 968,
-            "left": 600
-          },
-          "scrollY": 922
-        },
-        {
-          "index": 12,
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.1109/tcsii.2022.3224172",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 980,
-            "right": 623,
-            "bottom": 996,
-            "left": 600
-          },
-          "scrollY": 1337
-        },
-        {
-          "index": 13,
-          "label": "DOI (opens in a new tab)",
-          "href": "https://doi.org/10.1109/asicon47005.2019.8983491",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 868,
-            "right": 623,
-            "bottom": 884,
-            "left": 600
-          },
-          "scrollY": 1892
-        },
-        {
-          "index": 14,
-          "label": "Email Huifan Zhang",
-          "href": "mailto:zhanghf@shanghaitech.edu.cn",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 974,
-            "right": 1063,
-            "bottom": 990,
-            "left": 1025
-          },
-          "scrollY": 2061
-        },
-        {
-          "index": 15,
-          "label": "GitHub profile (opens in a new tab)",
-          "href": "https://github.com/ivancanull",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 974,
-            "right": 1128,
-            "bottom": 990,
-            "left": 1083
-          },
-          "scrollY": 2061
-        },
-        {
-          "index": 16,
-          "label": "Google Scholar profile (opens in a new tab)",
-          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 963,
-            "right": 1253,
-            "bottom": 979,
-            "left": 1148
-          },
-          "scrollY": 2072
-        },
-        {
-          "index": 17,
-          "label": "ORCID profile (opens in a new tab)",
-          "href": "https://orcid.org/0000-0002-5892-931X",
-          "focusVisible": true,
-          "outline": "3px solid rgb(21, 89, 166)",
-          "inViewport": true,
-          "rect": {
-            "top": 955,
-            "right": 1310,
-            "bottom": 971,
-            "left": 1273
-          },
-          "scrollY": 2080
-        }
-      ],
-      "logicalOrder": true,
-      "everyTargetFocusVisible": true,
-      "everyTargetScrolledIntoView": true,
-      "categories": {
-        "skip": {
-          "count": 1,
-          "allReachedInOrder": true,
-          "allFocusVisible": true,
-          "allOutlined": true
-        },
-        "brand": {
-          "count": 1,
-          "allReachedInOrder": true,
-          "allFocusVisible": true,
-          "allOutlined": true
-        },
-        "navigation": {
-          "count": 3,
-          "allReachedInOrder": true,
-          "allFocusVisible": true,
-          "allOutlined": true
-        },
-        "publication": {
-          "count": 5,
-          "allReachedInOrder": true,
-          "allFocusVisible": true,
-          "allOutlined": true
-        },
-        "contact": {
-          "count": 8,
-          "allReachedInOrder": true,
-          "allFocusVisible": true,
-          "allOutlined": true
-        },
-        "other": {
-          "count": 0,
-          "allReachedInOrder": true,
-          "allFocusVisible": true,
-          "allOutlined": true
-        }
-      },
-      "skipBeforeActivation": {
-        "isSkipLink": true,
-        "focusVisible": true,
-        "top": 1
-      },
-      "skipAfterActivation": {
-        "activeId": "main-content",
-        "hash": "#main-content",
-        "mainTop": -1435
-      }
-    },
-    {
-      "route": "/cv/",
       "expected": [
         {
           "index": 0,
@@ -1493,6 +1093,442 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
+            "top": 483,
+            "right": 167,
+            "bottom": 499,
+            "left": 130
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 6,
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 483,
+            "right": 232,
+            "bottom": 499,
+            "left": 187
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 7,
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 483,
+            "right": 357,
+            "bottom": 499,
+            "left": 252
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 8,
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 483,
+            "right": 415,
+            "bottom": 499,
+            "left": 377
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 9,
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 985,
+            "right": 623,
+            "bottom": 1001,
+            "left": 600
+          },
+          "scrollY": 3
+        },
+        {
+          "index": 10,
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.23919/date64628.2025.10992916",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 904,
+            "right": 623,
+            "bottom": 920,
+            "left": 600
+          },
+          "scrollY": 527
+        },
+        {
+          "index": 11,
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.1109/apccas62602.2024.10808888",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 957,
+            "right": 623,
+            "bottom": 973,
+            "left": 600
+          },
+          "scrollY": 917
+        },
+        {
+          "index": 12,
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.1109/tcsii.2022.3224172",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 876,
+            "right": 623,
+            "bottom": 892,
+            "left": 600
+          },
+          "scrollY": 1441
+        },
+        {
+          "index": 13,
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asicon47005.2019.8983491",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 924,
+            "right": 623,
+            "bottom": 940,
+            "left": 600
+          },
+          "scrollY": 1836
+        },
+        {
+          "index": 14,
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 981,
+            "right": 1063,
+            "bottom": 997,
+            "left": 1025
+          },
+          "scrollY": 2054
+        },
+        {
+          "index": 15,
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 981,
+            "right": 1128,
+            "bottom": 997,
+            "left": 1083
+          },
+          "scrollY": 2054
+        },
+        {
+          "index": 16,
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 969,
+            "right": 1253,
+            "bottom": 985,
+            "left": 1148
+          },
+          "scrollY": 2066
+        },
+        {
+          "index": 17,
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 959,
+            "right": 1310,
+            "bottom": 975,
+            "left": 1273
+          },
+          "scrollY": 2076
+        }
+      ],
+      "logicalOrder": true,
+      "everyTargetFocusVisible": true,
+      "everyTargetScrolledIntoView": true,
+      "categories": {
+        "skip": {
+          "count": 1,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "brand": {
+          "count": 1,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "navigation": {
+          "count": 3,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "publication": {
+          "count": 5,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "contact": {
+          "count": 8,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        },
+        "other": {
+          "count": 0,
+          "allReachedInOrder": true,
+          "allFocusVisible": true,
+          "allOutlined": true
+        }
+      },
+      "skipBeforeActivation": {
+        "isSkipLink": true,
+        "focusVisible": true,
+        "top": 1
+      },
+      "skipAfterActivation": {
+        "activeId": "main-content",
+        "hash": "#main-content",
+        "mainTop": -1430
+      }
+    },
+    {
+      "route": "/cv/",
+      "expected": [
+        {
+          "index": 0,
+          "category": "skip",
+          "label": "Skip to main content",
+          "href": "#main-content"
+        },
+        {
+          "index": 1,
+          "category": "brand",
+          "label": "Huifan Zhang, home",
+          "href": "/"
+        },
+        {
+          "index": 2,
+          "category": "navigation",
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "index": 3,
+          "category": "navigation",
+          "label": "Publications",
+          "href": "/publications/"
+        },
+        {
+          "index": 4,
+          "category": "navigation",
+          "label": "CV",
+          "href": "/cv/"
+        },
+        {
+          "index": 5,
+          "category": "contact",
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn"
+        },
+        {
+          "index": 6,
+          "category": "contact",
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull"
+        },
+        {
+          "index": 7,
+          "category": "contact",
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
+        },
+        {
+          "index": 8,
+          "category": "contact",
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X"
+        },
+        {
+          "index": 9,
+          "category": "publication",
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493"
+        },
+        {
+          "index": 10,
+          "category": "publication",
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.23919/date64628.2025.10992916"
+        },
+        {
+          "index": 11,
+          "category": "publication",
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.1109/apccas62602.2024.10808888"
+        },
+        {
+          "index": 12,
+          "category": "publication",
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.1109/tcsii.2022.3224172"
+        },
+        {
+          "index": 13,
+          "category": "publication",
+          "label": "DOI (opens in a new tab)",
+          "href": "https://doi.org/10.1109/asicon47005.2019.8983491"
+        },
+        {
+          "index": 14,
+          "category": "contact",
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn"
+        },
+        {
+          "index": 15,
+          "category": "contact",
+          "label": "GitHub profile (opens in a new tab)",
+          "href": "https://github.com/ivancanull"
+        },
+        {
+          "index": 16,
+          "category": "contact",
+          "label": "Google Scholar profile (opens in a new tab)",
+          "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
+        },
+        {
+          "index": 17,
+          "category": "contact",
+          "label": "ORCID profile (opens in a new tab)",
+          "href": "https://orcid.org/0000-0002-5892-931X"
+        }
+      ],
+      "sequence": [
+        {
+          "index": 0,
+          "label": "Skip to main content",
+          "href": "#main-content",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 1,
+            "right": 240,
+            "bottom": 51,
+            "left": 12
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 1,
+          "label": "Huifan Zhang, home",
+          "href": "/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 210,
+            "bottom": 80,
+            "left": 130
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 2,
+          "label": "Home",
+          "href": "/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1116,
+            "bottom": 80,
+            "left": 1044
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 3,
+          "label": "Publications",
+          "href": "/publications/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1255,
+            "bottom": 80,
+            "left": 1116
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 4,
+          "label": "CV",
+          "href": "/cv/",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 0,
+            "right": 1310,
+            "bottom": 80,
+            "left": 1255
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 5,
+          "label": "Email Huifan Zhang",
+          "href": "mailto:zhanghf@shanghaitech.edu.cn",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
             "top": 339,
             "right": 1310,
             "bottom": 355,
@@ -1568,12 +1604,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 970,
+            "top": 969,
             "right": 709,
-            "bottom": 986,
+            "bottom": 985,
             "left": 687
           },
-          "scrollY": 1681
+          "scrollY": 1682
         },
         {
           "index": 11,
@@ -1583,12 +1619,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 951,
+            "top": 952,
             "right": 709,
-            "bottom": 967,
+            "bottom": 968,
             "left": 687
           },
-          "scrollY": 1914
+          "scrollY": 1913
         },
         {
           "index": 12,
@@ -1598,12 +1634,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 930,
+            "top": 929,
             "right": 709,
-            "bottom": 946,
+            "bottom": 945,
             "left": 687
           },
-          "scrollY": 2150
+          "scrollY": 2151
         },
         {
           "index": 13,
@@ -1613,12 +1649,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 969,
+            "top": 970,
             "right": 709,
-            "bottom": 985,
+            "bottom": 986,
             "left": 687
           },
-          "scrollY": 2325
+          "scrollY": 2324
         },
         {
           "index": 14,
@@ -1658,12 +1694,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 983,
+            "top": 970,
             "right": 1253,
-            "bottom": 999,
+            "bottom": 986,
             "left": 1148
           },
-          "scrollY": 2640
+          "scrollY": 2653
         },
         {
           "index": 17,
@@ -1725,12 +1761,12 @@
       "skipBeforeActivation": {
         "isSkipLink": true,
         "focusVisible": true,
-        "top": 2
+        "top": 1
       },
       "skipAfterActivation": {
         "activeId": "main-content",
         "hash": "#main-content",
-        "mainTop": -2248
+        "mainTop": -2361
       }
     }
   ],

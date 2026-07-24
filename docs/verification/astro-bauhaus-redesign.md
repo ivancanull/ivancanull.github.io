@@ -46,7 +46,8 @@ The production build was served and inspected with:
 ```sh
 pnpm exec astro preview --host 127.0.0.1 --port 4321
 node docs/verification/browser-check.mjs
-# 6 screenshots, 0 failed layouts, 3 keyboard routes, 0 failed keyboard routes,
+# 6 page checks, 6 full-page screenshots, 6 exact-viewport screenshots,
+# 0 failed layouts, 3 keyboard routes, 0 failed keyboard routes,
 # reduced-motion checks passed, print assertions passed; exit 0.
 ```
 
@@ -54,29 +55,43 @@ node docs/verification/browser-check.mjs
 
 ## Responsive visual inspection
 
-Home, Publications, and CV were captured as full-page images at both required viewport sizes. Each capture was directly inspected in addition to the browser assertions.
+Home, Publications, and CV were captured in two distinct forms at both required viewport sizes:
 
-| Page | Viewport | HTML client / scroll width | Body client / scroll width | Body height | Result |
+- Exact-viewport PNGs contain only the visible browser viewport and are exactly 1440 x 1000 or 390 x 844 pixels.
+- Full-page JPEGs preserve the complete document for end-to-end layout inspection and are taller than the configured viewport.
+
+The harness reads each viewport PNG's IHDR width and height from the screenshot buffer and throws before writing a passing result if either dimension differs from the configured viewport. All six stored results report `viewportDimensionsMatch: true`. A separate `sips` check confirmed the same pixel dimensions on disk. Both artifact sets were directly inspected in addition to the browser assertions.
+
+| Page | Configured viewport | Viewport PNG pixels | Full-page JPEG pixels | HTML client / scroll width | Result |
 | --- | --- | ---: | ---: | ---: | --- |
-| Home | 1440 x 1000 | 1440 / 1440 | 1440 / 1440 | 3996 | Pass |
-| Publications | 1440 x 1000 | 1440 / 1440 | 1440 / 1440 | 3107 | Pass |
-| CV | 1440 x 1000 | 1440 / 1440 | 1440 / 1440 | 3695 | Pass |
-| Home | 390 x 844 | 390 / 390 | 390 / 390 | 4307 | Pass |
-| Publications | 390 x 844 | 390 / 390 | 390 / 390 | 3720 | Pass |
-| CV | 390 x 844 | 390 / 390 | 390 / 390 | 4788 | Pass |
+| Home | 1440 x 1000 | 1440 x 1000 | 1440 x 3996 | 1440 / 1440 | Pass |
+| Publications | 1440 x 1000 | 1440 x 1000 | 1440 x 3107 | 1440 / 1440 | Pass |
+| CV | 1440 x 1000 | 1440 x 1000 | 1440 x 3695 | 1440 / 1440 | Pass |
+| Home | 390 x 844 | 390 x 844 | 390 x 4307 | 390 / 390 | Pass |
+| Publications | 390 x 844 | 390 x 844 | 390 x 3720 | 390 / 390 | Pass |
+| CV | 390 x 844 | 390 x 844 | 390 x 4788 | 390 / 390 | Pass |
 
-Across all six captures, the automated scan found zero elements outside the viewport width, zero overflow-clipped text nodes, zero text elements below 11 px, zero broken images, and zero overlapping top-level content regions. The Home portrait loaded at its natural 720 x 720 dimensions in both viewports. Mobile top-level content positions increased in DOM order on every page; no CSS reordering changed the reading order.
+Across all six page/viewport combinations, the automated scan found zero elements outside the viewport width, zero overflow-clipped text nodes, zero text elements below 11 px, zero broken images, and zero overlapping top-level content regions. The Home portrait loaded at its natural 720 x 720 dimensions in both viewports. Mobile top-level content positions increased in DOM order on every page; no CSS reordering changed the reading order.
 
 Direct visual inspection found no clipping, overlap, unreadable text, broken portrait treatment, or excessive red/yellow/blue coverage. Primary colors remain limited to identity and navigation marks, small status/selection accents, the portrait geometry, and the Home status panel; the ivory/black content field remains dominant.
 
-Artifacts:
+Exact-viewport artifacts:
 
-- [Home desktop](assets/home-desktop.jpg)
-- [Home mobile](assets/home-mobile.jpg)
-- [Publications desktop](assets/publications-desktop.jpg)
-- [Publications mobile](assets/publications-mobile.jpg)
-- [CV desktop](assets/cv-desktop.jpg)
-- [CV mobile](assets/cv-mobile.jpg)
+- [Home desktop viewport](assets/home-desktop-viewport.png)
+- [Home mobile viewport](assets/home-mobile-viewport.png)
+- [Publications desktop viewport](assets/publications-desktop-viewport.png)
+- [Publications mobile viewport](assets/publications-mobile-viewport.png)
+- [CV desktop viewport](assets/cv-desktop-viewport.png)
+- [CV mobile viewport](assets/cv-mobile-viewport.png)
+
+Full-page artifacts:
+
+- [Home desktop full page](assets/home-desktop.jpg)
+- [Home mobile full page](assets/home-mobile.jpg)
+- [Publications desktop full page](assets/publications-desktop.jpg)
+- [Publications mobile full page](assets/publications-mobile.jpg)
+- [CV desktop full page](assets/cv-desktop.jpg)
+- [CV mobile full page](assets/cv-mobile.jpg)
 
 ## Keyboard and focus
 

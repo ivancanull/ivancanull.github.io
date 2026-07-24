@@ -22,6 +22,18 @@ const viewports = [
   { name: "mobile", width: 390, height: 844 },
 ];
 
+function readPngDimensions(buffer) {
+  const pngSignature = "89504e470d0a1a0a";
+  if (buffer.length < 24 || buffer.subarray(0, 8).toString("hex") !== pngSignature) {
+    throw new Error("Viewport screenshot is not a valid PNG file");
+  }
+
+  return {
+    width: buffer.readUInt32BE(16),
+    height: buffer.readUInt32BE(20),
+  };
+}
+
 async function waitForPage(page, path) {
   await page.goto(`${baseUrl}${path}`, { waitUntil: "networkidle" });
   await page.evaluate(async () => {
@@ -292,17 +304,38 @@ try {
     const page = await context.newPage();
     for (const route of routes) {
       await waitForPage(page, route.path);
-      const filename = `${route.name}-${viewport.name}.jpg`;
+      const fullPageFilename = `${route.name}-${viewport.name}.jpg`;
       await page.screenshot({
-        path: resolve(assetsDirectory, filename),
+        path: resolve(assetsDirectory, fullPageFilename),
         fullPage: true,
         type: "jpeg",
         quality: 82,
       });
+
+      await page.evaluate(() => scrollTo(0, 0));
+      const viewportFilename = `${route.name}-${viewport.name}-viewport.png`;
+      const viewportScreenshot = await page.screenshot({
+        path: resolve(assetsDirectory, viewportFilename),
+        fullPage: false,
+        type: "png",
+      });
+      const viewportImageDimensions = readPngDimensions(viewportScreenshot);
+      if (
+        viewportImageDimensions.width !== viewport.width ||
+        viewportImageDimensions.height !== viewport.height
+      ) {
+        throw new Error(
+          `${viewportFilename} is ${viewportImageDimensions.width}x${viewportImageDimensions.height}; expected ${viewport.width}x${viewport.height}`,
+        );
+      }
+
       results.screenshots.push({
         route: route.path,
         viewport,
-        artifact: `docs/verification/assets/${filename}`,
+        fullPageArtifact: `docs/verification/assets/${fullPageFilename}`,
+        viewportArtifact: `docs/verification/assets/${viewportFilename}`,
+        viewportImageDimensions,
+        viewportDimensionsMatch: true,
         layout: await collectLayout(page),
       });
     }
@@ -455,7 +488,9 @@ const failedPrint =
 console.log(
   JSON.stringify(
     {
-      screenshots: results.screenshots.length,
+      pageChecks: results.screenshots.length,
+      fullPageScreenshots: results.screenshots.length,
+      exactViewportScreenshots: results.screenshots.filter(({ viewportDimensionsMatch }) => viewportDimensionsMatch).length,
       failedLayouts: failedLayouts.map(({ route, viewport }) => `${route} ${viewport.name}`),
       keyboardRoutes: results.keyboard.length,
       failedKeyboard: failedKeyboard.map(({ route }) => route),
