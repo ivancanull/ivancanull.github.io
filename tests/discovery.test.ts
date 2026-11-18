@@ -40,13 +40,13 @@ describe("built discovery files", () => {
 });
 
 describe("GitHub Pages deployment", () => {
-  it("deploys pushes to master and supports manual dispatch", () => {
+  it("deploys pushes to main and supports manual dispatch", () => {
     const workflowPath = ".github/workflows/deploy.yml";
     expect(existsSync(workflowPath)).toBe(true);
     if (!existsSync(workflowPath)) return;
 
     const workflow = parse(readFileSync(workflowPath, "utf8"));
-    expect(workflow.on.push.branches).toEqual(["master"]);
+    expect(workflow.on.push.branches).toEqual(["main"]);
     expect(Object.hasOwn(workflow.on, "workflow_dispatch")).toBe(true);
   });
 
