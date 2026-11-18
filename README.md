@@ -55,6 +55,6 @@ The command builds the site, starts a local preview, and uses the installed brow
 
 ## GitHub Pages deployment
 
-The workflow in `.github/workflows/deploy.yml` verifies and deploys the site after a push to `master`. It can also be started manually from the Actions tab.
+The workflow in `.github/workflows/deploy.yml` verifies and deploys the site after a push to `main`. It can also be started manually from the Actions tab.
 
 For the one-time repository setup, open **Settings > Pages** and set **Source** to **GitHub Actions**. A successful workflow publishes `dist/` to `https://ivancanull.github.io`.
