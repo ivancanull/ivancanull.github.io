@@ -1,8 +1,10 @@
 education:
-  - degree: Ph.D. Candidate in Electronic Science and Technology
+  - degree: Ph.D. in Electronic Science and Technology
     institution: ShanghaiTech University, Shanghai, China
-    period: 2020 – Expected Jul. 2026
-    detail: "Advisor: Prof. Pingqiang Zhou"
+    period: 2020 – 2026
+    advisor:
+      name: Prof. Pingqiang Zhou
+      url: https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html
   - degree: B.Eng. in Electronic Engineering
     institution: ShanghaiTech University, Shanghai, China
     period: 2016 – 2020

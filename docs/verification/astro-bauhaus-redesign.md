@@ -1,6 +1,6 @@
 # Astro Bauhaus redesign verification
 
-Verified on 2026-07-24 from parent commit `8ef6745253432c5e764c202a0352a22ae63dbf0e`.
+Verified on 2026-07-24 from parent commit `01f4e086a4cc68a45da25e933f1cc9c826a52395`.
 
 ## Runtime and commands
 
@@ -28,7 +28,7 @@ pnpm install --frozen-lockfile
 # Already up to date; exit 0.
 
 pnpm run verify
-# 8 test files and 70 tests passed.
+# 8 test files and 77 tests passed.
 # Astro check: 29 files, 0 errors, 0 warnings, 0 hints.
 # Astro build: 4 pages built; exit 0.
 
@@ -36,7 +36,7 @@ git diff --check
 # No output; exit 0.
 
 git status --short --branch
-# ## feat/astro-bauhaus
+# ## codex/update-phd-profile...origin/master [ahead 4]
 ```
 
 The portable production-browser verification command is:
@@ -64,10 +64,10 @@ The harness reads each viewport PNG's IHDR width and height from the screenshot 
 
 | Page | Configured viewport | Viewport PNG pixels | Full-page JPEG pixels | HTML client / scroll width | Result |
 | --- | --- | ---: | ---: | ---: | --- |
-| Home | 1440 x 1000 | 1440 x 1000 | 1440 x 3996 | 1440 / 1440 | Pass |
+| Home | 1440 x 1000 | 1440 x 1000 | 1440 x 3976 | 1440 / 1440 | Pass |
 | Publications | 1440 x 1000 | 1440 x 1000 | 1440 x 3107 | 1440 / 1440 | Pass |
 | CV | 1440 x 1000 | 1440 x 1000 | 1440 x 3695 | 1440 / 1440 | Pass |
-| Home | 390 x 844 | 390 x 844 | 390 x 4307 | 390 / 390 | Pass |
+| Home | 390 x 844 | 390 x 844 | 390 x 4266 | 390 / 390 | Pass |
 | Publications | 390 x 844 | 390 x 844 | 390 x 3720 | 390 / 390 | Pass |
 | CV | 390 x 844 | 390 x 844 | 390 x 4788 | 390 / 390 | Pass |
 | Home | 320 x 568 | Not captured | Not captured | 320 / 320 | Pass |
@@ -79,7 +79,7 @@ The harness reads each viewport PNG's IHDR width and height from the screenshot 
 
 Across all 12 page/viewport combinations, the automated scan found zero elements outside the viewport width, zero overflow-clipped text nodes, zero text elements below 11 px, zero broken images, and zero overlapping top-level content regions. The Home portrait loaded at its natural 720 x 720 dimensions at all four widths. Top-level content positions increased in DOM order on every page; no CSS reordering changed the reading order.
 
-Direct visual inspection found no clipping, overlap, unreadable text, broken portrait treatment, or excessive red/yellow/blue coverage. Primary colors remain limited to identity and navigation marks, small status/selection accents, the portrait geometry, and the Home status panel; the ivory/black content field remains dominant.
+Direct visual inspection found a uniform plain ivory page background with no repeated vertical-line texture, and no clipping, overlap, unreadable text, broken portrait treatment, or excessive red/yellow/blue coverage. Primary colors remain limited to identity and navigation marks, small status/selection accents, the portrait geometry, and the Home status panel; the ivory/black content field remains dominant.
 
 Exact-viewport artifacts:
 
@@ -119,9 +119,9 @@ Playwright pressed `Tab` through every visible focusable element on each product
 | --- | ---: | ---: | ---: | ---: | --- |
 | Home | 19 | 3 | 3 | 8 | Pass |
 | Publications | 18 | 3 | 5 | 8 | Pass |
-| CV | 18 | 3 | 5 | 8 | Pass |
+| CV | 19 | 3 | 5 | 8 | Pass |
 
-All 55 focus stops matched DOM order, matched `:focus-visible`, had a non-zero 3 px outline, and completed scrolling into the viewport. The first stop on every route was the skip link; after its transition it was onscreen, and activation set focus to `#main-content` and the URL fragment to `#main-content`. The brand and page-action links were included in the full sequence in addition to the table categories. External links were focused but not activated.
+All 56 focus stops matched DOM order, matched `:focus-visible`, had a non-zero 3 px outline, and completed scrolling into the viewport. The first stop on every route was the skip link; after its transition it was onscreen, and activation set focus to `#main-content` and the URL fragment to `#main-content`. The brand, page-action, and CV advisor links were included in the full sequence in addition to the table categories. External links were focused but not activated.
 
 ## Reduced motion
 
@@ -149,6 +149,7 @@ The generated PDF is then parsed in-process by `pdfjs-dist`. Behavioral assertio
 - Education and its first entry appear on page 1. The original mostly blank page-1 regression would fail this check.
 - Education is on page 1; Research Projects, Teaching, and Skills headings share page 2 with their first content; Publications shares page 3 with its first entry.
 - Each of the 16 protected entries has a stable start token and a trailing-content token on the same PDF page: 2 on page 1, 7 on page 2, 5 on page 3, and 2 on page 4. Each selected token identifies exactly one page; when a final field is repeated elsewhere, the harness combines adjacent trailing fields into a unique suffix without dropping the entry's final content.
+- The first Education entry contains the exact completed degree `Ph.D. in Electronic Science and Technology`; its trailing token is the structured advisor destination `https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html` on the same first page.
 
 The PDF was also rendered to four 144-DPI PNG pages with bundled Poppler and directly inspected. The final pagination is:
 
@@ -215,7 +216,7 @@ pnpm install --frozen-lockfile
 # Already up to date; exit 0.
 
 pnpm run verify
-# 8 test files and 70 tests passed.
+# 8 test files and 77 tests passed.
 # Astro check: 29 files, 0 errors, 0 warnings, 0 hints.
 # Astro build: 4 pages built; exit 0.
 
@@ -244,6 +245,20 @@ pnpm exec vitest run tests/output.test.ts
 The narrow intro type now scales to 3.5rem inside the existing 22.5rem breakpoint. The portrait path is checked against `public/` during the Astro build; a missing path omits both the image and social-image metadata and uses the existing Bauhaus geometry instead. DOI accessible names include their publication titles while the visible text remains `DOI`, and the generated 404 carries `noindex, nofollow`.
 
 Focused GREEN runs passed 22 style/browser-helper tests, 19 content tests, and 18 output tests. The final full browser run checked all three routes at 320, 390, 768, and 1440 pixels with zero failed layouts while retaining exactly the six specified screenshot pairs.
+
+## Plain-background and profile-evidence refresh
+
+Two focused assertions were added against the single standalone screen `body` rule. The RED run captured the intended legacy behavior: the body did not use a plain ivory declaration and still contained both `linear-gradient` and the repeated `6.25rem` texture size, while the other 22 focused tests passed.
+
+```sh
+pnpm exec vitest run tests/styles.test.mjs tests/browser-verification-helpers.test.mjs
+# RED: 2 failed, 22 passed; the standalone body rule still contained the vertical-line gradient.
+# GREEN: 2 files and 24 tests passed after replacing only that background stack.
+```
+
+The PDF helper fixtures now model the live completed degree and the advisor's structured HTTPS destination rather than the former candidate label and plain advisor-name suffix. Fresh Home, Publications, and CV desktop/mobile artifacts and `cv-print.pdf` were generated. Direct inspection of the Home and CV full-page and viewport captures confirmed the uniform ivory screen background and unchanged component grids, borders, palette, typography, spacing, and geometry. Direct inspection of all four rendered PDF pages confirmed the exact completed degree, visible advisor link and URL, intact entries, and unchanged four-page pagination.
+
+The final production-browser results contain 12 passing layout checks across 320, 390, 768, and 1440 pixels with matching client/scroll widths and no overflow, clipping, undersized text, broken images, flow overlaps, or DOM/visual-order mismatch. All 56 keyboard stops, the normal/reduced-motion assertions, print-style checks, 16 protected entries, 5 section bodies, and four US Letter PDF pages passed.
 
 ## Limitations
 

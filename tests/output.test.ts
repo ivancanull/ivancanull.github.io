@@ -316,6 +316,25 @@ describe("built CV page", () => {
     for (const publication of publications) expect(cvHtml).toContain(publication.title);
   });
 
+  it("renders the completed Ph.D. and a secure descriptive advisor link", () => {
+    expect(cvHtml).toContain("Ph.D. in Electronic Science and Technology");
+    expect(cvHtml).toContain("2020 – 2026");
+    expect(cvHtml).not.toMatch(/Candidate|Expected/);
+
+    const advisorLink = [...cvHtml.matchAll(/<a\b[^>]*>\s*Prof\. Pingqiang Zhou\s*<\/a>/gi)][0]?.[0] ?? "";
+    expect(cvHtml).toMatch(/Advisor:\s*<a\b/i);
+    expect(getAttribute(advisorLink, "href")).toBe(
+      "https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html",
+    );
+    expect(getAttribute(advisorLink, "target")).toBe("_blank");
+    expect(getAttribute(advisorLink, "rel")?.split(/\s+/)).toEqual(
+      expect.arrayContaining(["noopener", "noreferrer"]),
+    );
+    expect(getAttribute(advisorLink, "aria-label")).toBe(
+      "Prof. Pingqiang Zhou (opens in a new tab)",
+    );
+  });
+
   it("renders the data-driven identity and contact details without client JavaScript", () => {
     expect(cvHtml).toContain(site.name);
     expect(cvHtml).toContain(site.role);

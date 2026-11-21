@@ -52,6 +52,35 @@ describe("portfolio content", () => {
     expect(Object.keys(cv.skills)).toEqual(["Programming", "EDA / Simulation", "Languages"]);
   });
 
+  it("records the completed Ph.D. and structured advisor", () => {
+    expect(site.role).toBe("Ph.D. in Electronic Science and Technology");
+    expect(cv.education[0]).toMatchObject({
+      degree: "Ph.D. in Electronic Science and Technology",
+      period: "2020 – 2026",
+      advisor: {
+        name: "Prof. Pingqiang Zhou",
+        url: "https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html",
+      },
+    });
+    expect(cv.education[0]).not.toHaveProperty("detail");
+    expect(siteSource).not.toMatch(/Candidate|Expected/);
+    expect(cvSource).not.toMatch(/Candidate|Expected/);
+  });
+
+  it.each(["http://example.com", "mailto:advisor@example.com", "not a URL"])(
+    "rejects invalid advisor URL %s with CV field diagnostics",
+    (url) => {
+      const invalidAdvisor = cvSource.replace(
+        "https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html",
+        url,
+      );
+
+      expect(() =>
+        loadPortfolioContent({ siteSource, publicationSource, cvSource: invalidAdvisor }),
+      ).toThrow(/cv\.yml.*advisor.*url/s);
+    },
+  );
+
   it("rejects a CV without the education required by the homepage", () => {
     const emptyEducation = cvSource.replace(/education:\n[\s\S]*?\nprojects:/, "education: []\n\nprojects:");
 

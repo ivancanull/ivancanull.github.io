@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T08:35:39.506Z",
+  "generatedAt": "2026-07-24T09:42:46.892Z",
   "runtime": {
     "playwrightCore": "1.61.1",
     "pdfjs": "5.4.624",
@@ -34,7 +34,7 @@
           "htmlScrollWidth": 1440,
           "bodyClientWidth": 1440,
           "bodyScrollWidth": 1440,
-          "bodyScrollHeight": 3996
+          "bodyScrollHeight": 3976
         },
         "overflowingElements": [],
         "clippedText": [],
@@ -89,17 +89,17 @@
             "label": "Current status and education",
             "top": 3196,
             "right": 1310,
-            "bottom": 3340,
+            "bottom": 3320,
             "left": 130,
             "width": 1180,
-            "height": 144
+            "height": 124
           },
           {
             "domIndex": 4,
             "label": "Contact",
-            "top": 3484,
+            "top": 3464,
             "right": 1440,
-            "bottom": 3866,
+            "bottom": 3846,
             "left": 0,
             "width": 1440,
             "height": 382
@@ -256,7 +256,7 @@
           "htmlScrollWidth": 390,
           "bodyClientWidth": 390,
           "bodyScrollWidth": 390,
-          "bodyScrollHeight": 4307
+          "bodyScrollHeight": 4266
         },
         "overflowingElements": [],
         "clippedText": [],
@@ -267,9 +267,9 @@
           "naturalWidth": 720,
           "naturalHeight": 720,
           "rect": {
-            "top": 891,
+            "top": 869,
             "right": 372,
-            "bottom": 1191,
+            "bottom": 1169,
             "left": 72,
             "width": 300,
             "height": 300
@@ -281,17 +281,17 @@
             "label": "Huifan Zhang",
             "top": 139,
             "right": 374,
-            "bottom": 1289,
+            "bottom": 1267,
             "left": 16,
             "width": 358,
-            "height": 1150
+            "height": 1128
           },
           {
             "domIndex": 1,
             "label": "Research focus",
-            "top": 1289,
+            "top": 1267,
             "right": 374,
-            "bottom": 2105,
+            "bottom": 2083,
             "left": 16,
             "width": 358,
             "height": 816
@@ -299,9 +299,9 @@
           {
             "domIndex": 2,
             "label": "Selected work",
-            "top": 2105,
+            "top": 2083,
             "right": 374,
-            "bottom": 3335,
+            "bottom": 3314,
             "left": 16,
             "width": 358,
             "height": 1230
@@ -309,19 +309,19 @@
           {
             "domIndex": 3,
             "label": "Current status and education",
-            "top": 3335,
+            "top": 3314,
             "right": 374,
-            "bottom": 3562,
+            "bottom": 3521,
             "left": 16,
             "width": 358,
-            "height": 227
+            "height": 207
           },
           {
             "domIndex": 4,
             "label": "Contact",
-            "top": 3642,
+            "top": 3601,
             "right": 390,
-            "bottom": 4136,
+            "bottom": 4094,
             "left": 0,
             "width": 390,
             "height": 493
@@ -478,7 +478,7 @@
           "htmlScrollWidth": 320,
           "bodyClientWidth": 320,
           "bodyScrollWidth": 320,
-          "bodyScrollHeight": 4523
+          "bodyScrollHeight": 4503
         },
         "overflowingElements": [],
         "clippedText": [],
@@ -533,17 +533,17 @@
             "label": "Current status and education",
             "top": 3531,
             "right": 310,
-            "bottom": 3778,
+            "bottom": 3758,
             "left": 10,
             "width": 300,
-            "height": 247
+            "height": 227
           },
           {
             "domIndex": 4,
             "label": "Contact",
-            "top": 3858,
+            "top": 3838,
             "right": 320,
-            "bottom": 4352,
+            "bottom": 4332,
             "left": 0,
             "width": 320,
             "height": 493
@@ -862,7 +862,7 @@
           "htmlScrollWidth": 768,
           "bodyClientWidth": 768,
           "bodyScrollWidth": 768,
-          "bodyScrollHeight": 3537
+          "bodyScrollHeight": 3514
         },
         "overflowingElements": [],
         "clippedText": [],
@@ -885,10 +885,10 @@
             "label": "01Education",
             "top": 416,
             "right": 752,
-            "bottom": 3407,
+            "bottom": 3384,
             "left": 16,
             "width": 736,
-            "height": 2990
+            "height": 2967
           }
         ],
         "flowOverlaps": [],
@@ -1132,7 +1132,7 @@
           "rect": {
             "top": 1,
             "right": 240,
-            "bottom": 52,
+            "bottom": 51,
             "left": 12
           },
           "scrollY": 0
@@ -1250,12 +1250,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 928,
+            "top": 931,
             "right": 455,
-            "bottom": 944,
+            "bottom": 947,
             "left": 433
           },
-          "scrollY": 1650
+          "scrollY": 1647
         },
         {
           "index": 9,
@@ -1280,12 +1280,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 885,
+            "top": 886,
             "right": 455,
-            "bottom": 901,
+            "bottom": 902,
             "left": 433
           },
-          "scrollY": 2122
+          "scrollY": 2121
         },
         {
           "index": 11,
@@ -1295,12 +1295,12 @@
           "outline": "3px solid rgb(239, 195, 61)",
           "inViewport": true,
           "rect": {
-            "top": 983,
+            "top": 970,
             "right": 1088,
-            "bottom": 999,
+            "bottom": 986,
             "left": 1051
           },
-          "scrollY": 2634
+          "scrollY": 2627
         },
         {
           "index": 12,
@@ -1310,12 +1310,12 @@
           "outline": "3px solid rgb(239, 195, 61)",
           "inViewport": true,
           "rect": {
-            "top": 944,
+            "top": 931,
             "right": 1096,
-            "bottom": 960,
+            "bottom": 947,
             "left": 1051
           },
-          "scrollY": 2706
+          "scrollY": 2699
         },
         {
           "index": 13,
@@ -1325,12 +1325,12 @@
           "outline": "3px solid rgb(239, 195, 61)",
           "inViewport": true,
           "rect": {
-            "top": 925,
+            "top": 965,
             "right": 1156,
-            "bottom": 941,
+            "bottom": 981,
             "left": 1051
           },
-          "scrollY": 2759
+          "scrollY": 2699
         },
         {
           "index": 14,
@@ -1340,12 +1340,12 @@
           "outline": "3px solid rgb(239, 195, 61)",
           "inViewport": true,
           "rect": {
-            "top": 958,
+            "top": 946,
             "right": 1088,
-            "bottom": 974,
+            "bottom": 962,
             "left": 1051
           },
-          "scrollY": 2759
+          "scrollY": 2752
         },
         {
           "index": 15,
@@ -1355,12 +1355,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 973,
+            "top": 983,
             "right": 1063,
-            "bottom": 989,
+            "bottom": 999,
             "left": 1025
           },
-          "scrollY": 2951
+          "scrollY": 2921
         },
         {
           "index": 16,
@@ -1370,12 +1370,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 973,
+            "top": 983,
             "right": 1128,
-            "bottom": 989,
+            "bottom": 999,
             "left": 1083
           },
-          "scrollY": 2951
+          "scrollY": 2921
         },
         {
           "index": 17,
@@ -1385,12 +1385,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 963,
+            "top": 983,
             "right": 1253,
-            "bottom": 979,
+            "bottom": 999,
             "left": 1148
           },
-          "scrollY": 2961
+          "scrollY": 2921
         },
         {
           "index": 18,
@@ -1400,12 +1400,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 955,
+            "top": 983,
             "right": 1310,
-            "bottom": 971,
+            "bottom": 999,
             "left": 1273
           },
-          "scrollY": 2969
+          "scrollY": 2921
         }
       ],
       "logicalOrder": true,
@@ -1457,7 +1457,7 @@
       "skipAfterActivation": {
         "activeId": "main-content",
         "hash": "#main-content",
-        "mainTop": -2460
+        "mainTop": -2422
       }
     },
     {
@@ -1591,7 +1591,7 @@
           "rect": {
             "top": 1,
             "right": 240,
-            "bottom": 52,
+            "bottom": 51,
             "left": 12
           },
           "scrollY": 0
@@ -1829,12 +1829,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 973,
+            "top": 963,
             "right": 1253,
-            "bottom": 989,
+            "bottom": 979,
             "left": 1148
           },
-          "scrollY": 2062
+          "scrollY": 2072
         },
         {
           "index": 17,
@@ -1844,12 +1844,12 @@
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 963,
+            "top": 954,
             "right": 1310,
-            "bottom": 979,
+            "bottom": 970,
             "left": 1273
           },
-          "scrollY": 2072
+          "scrollY": 2081
         }
       ],
       "logicalOrder": true,
@@ -1901,7 +1901,7 @@
       "skipAfterActivation": {
         "activeId": "main-content",
         "hash": "#main-content",
-        "mainTop": -1418
+        "mainTop": -1424
       }
     },
     {
@@ -1971,54 +1971,60 @@
         },
         {
           "index": 9,
+          "category": "other",
+          "label": "Prof. Pingqiang Zhou (opens in a new tab)",
+          "href": "https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html"
+        },
+        {
+          "index": 10,
           "category": "publication",
           "label": "DOI for Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling (opens in a new tab)",
           "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493"
         },
         {
-          "index": 10,
+          "index": 11,
           "category": "publication",
           "label": "DOI for Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework (opens in a new tab)",
           "href": "https://doi.org/10.23919/date64628.2025.10992916"
         },
         {
-          "index": 11,
+          "index": 12,
           "category": "publication",
           "label": "DOI for Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation (opens in a new tab)",
           "href": "https://doi.org/10.1109/apccas62602.2024.10808888"
         },
         {
-          "index": 12,
+          "index": 13,
           "category": "publication",
           "label": "DOI for Machine Learning-Based Device Modeling and Performance Optimization for FinFETs (opens in a new tab)",
           "href": "https://doi.org/10.1109/tcsii.2022.3224172"
         },
         {
-          "index": 13,
+          "index": 14,
           "category": "publication",
           "label": "DOI for A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays (opens in a new tab)",
           "href": "https://doi.org/10.1109/asicon47005.2019.8983491"
         },
         {
-          "index": 14,
+          "index": 15,
           "category": "contact",
           "label": "Email Huifan Zhang",
           "href": "mailto:zhanghf@shanghaitech.edu.cn"
         },
         {
-          "index": 15,
+          "index": 16,
           "category": "contact",
           "label": "GitHub profile (opens in a new tab)",
           "href": "https://github.com/ivancanull"
         },
         {
-          "index": 16,
+          "index": 17,
           "category": "contact",
           "label": "Google Scholar profile (opens in a new tab)",
           "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en"
         },
         {
-          "index": 17,
+          "index": 18,
           "category": "contact",
           "label": "ORCID profile (opens in a new tab)",
           "href": "https://orcid.org/0000-0002-5892-931X"
@@ -2035,7 +2041,7 @@
           "rect": {
             "top": 1,
             "right": 240,
-            "bottom": 52,
+            "bottom": 51,
             "left": 12
           },
           "scrollY": 0
@@ -2162,6 +2168,21 @@
         },
         {
           "index": 9,
+          "label": "Prof. Pingqiang Zhou (opens in a new tab)",
+          "href": "https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html",
+          "focusVisible": true,
+          "outline": "3px solid rgb(21, 89, 166)",
+          "inViewport": true,
+          "rect": {
+            "top": 721,
+            "right": 679,
+            "bottom": 738,
+            "left": 531
+          },
+          "scrollY": 0
+        },
+        {
+          "index": 10,
           "label": "DOI for Efficient RF Passive Components Modeling with Bayesian Online Learning and Uncertainty Aware Sampling (opens in a new tab)",
           "href": "https://doi.org/10.1109/asp-dac66049.2026.11420493",
           "focusVisible": true,
@@ -2176,124 +2197,124 @@
           "scrollY": 1503
         },
         {
-          "index": 10,
+          "index": 11,
           "label": "DOI for Time-Domain 3D Electromagnetic Fields Estimation Based on Physics-Informed Deep Learning Framework (opens in a new tab)",
           "href": "https://doi.org/10.23919/date64628.2025.10992916",
           "focusVisible": true,
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 968,
+            "top": 966,
             "right": 709,
-            "bottom": 984,
+            "bottom": 982,
             "left": 687
           },
-          "scrollY": 1683
+          "scrollY": 1685
         },
         {
-          "index": 11,
+          "index": 12,
           "label": "DOI for Quantized Optical Neural Network Based on Microring Resonators with On-Chip Modulation (opens in a new tab)",
           "href": "https://doi.org/10.1109/apccas62602.2024.10808888",
           "focusVisible": true,
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 944,
+            "top": 947,
             "right": 709,
-            "bottom": 960,
+            "bottom": 963,
             "left": 687
           },
-          "scrollY": 1921
+          "scrollY": 1918
         },
         {
-          "index": 12,
+          "index": 13,
           "label": "DOI for Machine Learning-Based Device Modeling and Performance Optimization for FinFETs (opens in a new tab)",
           "href": "https://doi.org/10.1109/tcsii.2022.3224172",
           "focusVisible": true,
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 929,
+            "top": 926,
             "right": 709,
-            "bottom": 945,
+            "bottom": 942,
             "left": 687
           },
-          "scrollY": 2151
+          "scrollY": 2154
         },
         {
-          "index": 13,
+          "index": 14,
           "label": "DOI for A Compact Memory Structure Based on 2T1R Against Single-Event Upset in RRAM Arrays (opens in a new tab)",
           "href": "https://doi.org/10.1109/asicon47005.2019.8983491",
           "focusVisible": true,
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 962,
+            "top": 967,
             "right": 709,
-            "bottom": 978,
+            "bottom": 983,
             "left": 687
           },
-          "scrollY": 2332
+          "scrollY": 2327
         },
         {
-          "index": 14,
+          "index": 15,
           "label": "Email Huifan Zhang",
           "href": "mailto:zhanghf@shanghaitech.edu.cn",
           "focusVisible": true,
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 981,
+            "top": 982,
             "right": 1063,
-            "bottom": 997,
+            "bottom": 998,
             "left": 1025
           },
-          "scrollY": 2642
+          "scrollY": 2641
         },
         {
-          "index": 15,
+          "index": 16,
           "label": "GitHub profile (opens in a new tab)",
           "href": "https://github.com/ivancanull",
           "focusVisible": true,
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 981,
+            "top": 982,
             "right": 1128,
-            "bottom": 997,
+            "bottom": 998,
             "left": 1083
           },
-          "scrollY": 2642
+          "scrollY": 2641
         },
         {
-          "index": 16,
+          "index": 17,
           "label": "Google Scholar profile (opens in a new tab)",
           "href": "https://scholar.google.com/citations?user=zvuteQIAAAAJ&hl=en",
           "focusVisible": true,
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 968,
+            "top": 982,
             "right": 1253,
-            "bottom": 984,
+            "bottom": 998,
             "left": 1148
           },
-          "scrollY": 2655
+          "scrollY": 2641
         },
         {
-          "index": 17,
+          "index": 18,
           "label": "ORCID profile (opens in a new tab)",
           "href": "https://orcid.org/0000-0002-5892-931X",
           "focusVisible": true,
           "outline": "3px solid rgb(21, 89, 166)",
           "inViewport": true,
           "rect": {
-            "top": 968,
+            "top": 969,
             "right": 1310,
-            "bottom": 984,
+            "bottom": 985,
             "left": 1273
           },
-          "scrollY": 2655
+          "scrollY": 2654
         }
       ],
       "logicalOrder": true,
@@ -2331,7 +2352,7 @@
           "allOutlined": true
         },
         "other": {
-          "count": 0,
+          "count": 1,
           "allReachedInOrder": true,
           "allFocusVisible": true,
           "allOutlined": true
@@ -2345,7 +2366,7 @@
       "skipAfterActivation": {
         "activeId": "main-content",
         "hash": "#main-content",
-        "mainTop": -2106
+        "mainTop": -2097
       }
     }
   ],
@@ -2483,10 +2504,10 @@
     "disallowedBackgrounds": [],
     "protectedEntries": [
       {
-        "label": "Ph.D. Candidate in Electronic Science and Technology",
-        "startToken": "Ph.D. Candidate in Electronic Science and Technology",
+        "label": "Ph.D. in Electronic Science and Technology",
+        "startToken": "Ph.D. in Electronic Science and Technology",
         "breakInside": "avoid",
-        "endToken": "Advisor: Prof. Pingqiang Zhou"
+        "endToken": "https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html"
       },
       {
         "label": "B.Eng. in Electronic Engineering",
@@ -2604,7 +2625,7 @@
     "protectedSectionBodies": [
       {
         "label": "01Education",
-        "firstContent": "Ph.D. Candidate in Electronic Science and Technology",
+        "firstContent": "Ph.D. in Electronic Science and Technology",
         "breakBefore": "avoid"
       },
       {
@@ -2646,7 +2667,7 @@
       "sections": [
         {
           "heading": "01Education",
-          "firstContent": "Ph.D. Candidate in Electronic Science and Technology",
+          "firstContent": "Ph.D. in Electronic Science and Technology",
           "page": 1
         },
         {
@@ -2672,9 +2693,9 @@
       ],
       "protectedEntries": [
         {
-          "label": "Ph.D. Candidate in Electronic Science and Technology",
-          "startToken": "Ph.D. Candidate in Electronic Science and Technology",
-          "endToken": "Advisor: Prof. Pingqiang Zhou",
+          "label": "Ph.D. in Electronic Science and Technology",
+          "startToken": "Ph.D. in Electronic Science and Technology",
+          "endToken": "https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html",
           "page": 1
         },
         {

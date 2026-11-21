@@ -4,6 +4,28 @@ import { describe, expect, it } from "vitest";
 const globalCss = readFileSync(new URL("../src/styles/global.css", import.meta.url), "utf8");
 const printCss = readFileSync(new URL("../src/styles/print.css", import.meta.url), "utf8");
 
+function standaloneRule(css, selector) {
+  const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const matches = [...css.matchAll(new RegExp(`^${escapedSelector}\\s*\\{([^}]*)\\}`, "gm"))];
+
+  expect(matches).toHaveLength(1);
+  return matches[0][1];
+}
+
+function bodyBackgroundDeclarations(css) {
+  const bodyRule = standaloneRule(css, "body");
+
+  return [
+    ...bodyRule.matchAll(/(?:^|;)\s*(background(?:-image)?)\s*:\s*([^;]*?)\s*(?=;|$)/gi),
+  ].map(([, property, value]) =>
+    `${property.toLowerCase()}: ${value
+      .replace(/\s+/g, " ")
+      .replace(/\(\s+/g, "(")
+      .replace(/\s+\)/g, ")")
+      .trim()};`,
+  );
+}
+
 function relativeLuminance(hex) {
   const channels = hex
     .slice(1)
@@ -21,6 +43,29 @@ function colorToken(name) {
 }
 
 describe("global styles", () => {
+  it("uses a plain ivory background on the screen body", () => {
+    expect(bodyBackgroundDeclarations(globalCss)).toEqual([
+      "background: var(--color-ivory);",
+    ]);
+  });
+
+  it("surfaces additional body background images for the plain-background contract", () => {
+    const texturedCss = `
+body {
+  background:
+    var(
+      --color-ivory
+    );
+  background-image: repeating-radial-gradient(circle, transparent 0 1rem, black 1rem 2rem);
+}
+`;
+
+    expect(bodyBackgroundDeclarations(texturedCss)).toEqual([
+      "background: var(--color-ivory);",
+      "background-image: repeating-radial-gradient(circle, transparent 0 1rem, black 1rem 2rem);",
+    ]);
+  });
+
   it("keeps authored hex colors within the Bauhaus palette", () => {
     const palette = new Set(["#f4f0e6", "#171713", "#d93a2f", "#1559a6", "#efc33d"]);
     const authoredColors = [...globalCss.matchAll(/#[\da-f]{3,8}\b/gi)].map((match) =>

@@ -92,15 +92,15 @@ describe("PDF verification evidence", () => {
     expectedPageCount: 4,
     educationHeading: "01 Education",
     sections: [
-      { heading: "01 Education", firstContent: "Ph.D. Candidate in Electronic Science and Technology" },
+      { heading: "01 Education", firstContent: "Ph.D. in Electronic Science and Technology" },
       { heading: "02 Research Projects", firstContent: "AI-Driven Electromagnetic Simulation" },
       { heading: "05 Publications", firstContent: "Efficient RF Passive Components Modeling" },
     ],
     protectedEntries: [
       {
-        label: "Ph.D. Candidate in Electronic Science and Technology",
-        startToken: "Ph.D. Candidate in Electronic Science and Technology",
-        endToken: "Advisor Prof. Pingqiang Zhou",
+        label: "Ph.D. in Electronic Science and Technology",
+        startToken: "Ph.D. in Electronic Science and Technology",
+        endToken: "https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html",
       },
       {
         label: "B.Eng. in Electronic Engineering",
@@ -120,7 +120,7 @@ describe("PDF verification evidence", () => {
     ],
   };
   const passingPages = [
-    "Huifan Zhang 01 Education Ph.D. Candidate in Electronic Science and Technology Advisor Prof. Pingqiang Zhou B.Eng. in Electronic Engineering 2016 2020",
+    "Huifan Zhang 01 Education Ph.D. in Electronic Science and Technology Advisor Prof. Pingqiang Zhou https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html B.Eng. in Electronic Engineering 2016 2020",
     "02 Research Projects AI-Driven Electromagnetic Simulation Delivered over 200 speedup",
     "05 Publications Efficient RF Passive Components Modeling asp-dac66049.2026.11420493",
     "Remaining publications",
@@ -150,7 +150,7 @@ describe("PDF verification evidence", () => {
   it("rejects the original mostly blank first-page regression", () => {
     const pages = [
       "Huifan Zhang",
-      "01 Education Ph.D. Candidate in Electronic Science and Technology Advisor Prof. Pingqiang Zhou B.Eng. in Electronic Engineering 2016 2020 02 Research Projects AI-Driven Electromagnetic Simulation Delivered over 200 speedup",
+      "01 Education Ph.D. in Electronic Science and Technology Advisor Prof. Pingqiang Zhou https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html B.Eng. in Electronic Engineering 2016 2020 02 Research Projects AI-Driven Electromagnetic Simulation Delivered over 200 speedup",
       "05 Publications Efficient RF Passive Components Modeling asp-dac66049.2026.11420493",
       "Remaining publications",
     ];
@@ -161,7 +161,7 @@ describe("PDF verification evidence", () => {
   it("rejects orphaned section headings and split protected entries", () => {
     const orphaned = [
       "Huifan Zhang 01 Education",
-      "Ph.D. Candidate in Electronic Science and Technology Advisor Prof. Pingqiang Zhou B.Eng. in Electronic Engineering 2016 2020 02 Research Projects AI-Driven Electromagnetic Simulation Delivered over 200 speedup",
+      "Ph.D. in Electronic Science and Technology Advisor Prof. Pingqiang Zhou https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html B.Eng. in Electronic Engineering 2016 2020 02 Research Projects AI-Driven Electromagnetic Simulation Delivered over 200 speedup",
       "05 Publications Efficient RF Passive Components Modeling asp-dac66049.2026.11420493",
       "Remaining publications",
     ];
@@ -174,8 +174,11 @@ describe("PDF verification evidence", () => {
 
   it("rejects a protected entry whose trailing content spills to another page", () => {
     const split = [...passingPages];
-    split[0] = split[0].replace(" Advisor Prof. Pingqiang Zhou", "");
-    split[1] += " Advisor Prof. Pingqiang Zhou";
+    split[0] = split[0].replace(
+      " https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html",
+      "",
+    );
+    split[1] += " https://faculty.sist.shanghaitech.edu.cn/faculty/zhoupq/home.html";
 
     expect(() => validatePdfEvidence(split, expectations)).toThrow(/spans pages 1 and 2/i);
   });

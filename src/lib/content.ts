@@ -47,7 +47,16 @@ const urlLike = requiredString.refine(
   isSupportedLinkUrl,
   "Must be a valid HTTP(S) URL or mailto URL with a valid recipient",
 );
+const httpsUrl = requiredString.refine((value) => {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && url.hostname.length > 0;
+  } catch {
+    return false;
+  }
+}, "Must be a valid HTTPS URL with a hostname");
 const linkSchema = z.object({ label: requiredString, url: urlLike }).strict();
+const advisorSchema = z.object({ name: requiredString, url: httpsUrl }).strict();
 
 const siteSchema = z
   .object({
@@ -97,6 +106,7 @@ const cvSchema = z
             institution: requiredString,
             period: requiredString,
             detail: requiredString.optional(),
+            advisor: advisorSchema.optional(),
           })
           .strict(),
       )

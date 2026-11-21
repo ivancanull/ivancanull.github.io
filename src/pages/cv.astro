@@ -34,6 +34,19 @@ import { cv, publications, site } from "../lib/content";
             </div>
             <p>{entry.institution}</p>
             {entry.detail && <p>{entry.detail}</p>}
+            {entry.advisor && (
+              <p>
+                Advisor:{" "}
+                <a
+                  href={entry.advisor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${entry.advisor.name} (opens in a new tab)`}
+                >
+                  {entry.advisor.name}
+                </a>
+              </p>
+            )}
           </article>
         ))}
       </div>
